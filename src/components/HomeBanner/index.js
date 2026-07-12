@@ -1,32 +1,50 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-const HomeBanner=()=>{
 
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
-  };
+const HomeBanner =()=>{
 
 return(
-    <div className="homeBanner">
-          <Slider {...settings}>
-            <div className="item">
-                            <img src="https://www.fooodlove.com/images/jcogs_img/cache/012-close-up-view-of-freshly-baked-bakery_-_28de80_-_8782e36ca3e8764a9e4719edc333d3a48e3f4ae7.webp" className="w-100"/>
-
-            </div>
-          <div className="item">
-            <img src="https://d1w7312wesee68.cloudfront.net/dudDTeuG9SCYSWgYmbOylq_K7Sqo0YPWrB6DqUX3yfY/ext:webp/quality:85/c:4960:4969:ce:-438:325/plain/s3://toast-sites-resources-prod/restaurantImages/f793eb64-e46b-498b-a84c-64cd84ba5acd/CREMA1131.jpg" className="w-100"/>
-          </div>
-          </Slider>
+    <div className='HomeBanner col-sm-9 p-3'>
+<div id="carouselExampleDark" className="carousel carousel-dark slide">
+  <div className="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div className="carousel-inner">
+    <div className="carousel-item active" data-bs-interval="10000">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqlWhfW7kSn6Oj5zhZkKiEf4d9tuZPUFhm3u5o6Sl2Su64JgoCagknEOs&s=10" className="img-slider img-slider" alt="..."/>
+      <div className="carousel-caption d-none d-md-block">
+        
+      </div>
     </div>
-)
-}
+    <div className="carousel-item" data-bs-interval="2000">
+      <img src="https://d28f3w0x9i80nq.cloudfront.net/restaurantImages/6575fdbe-1c21-4285-aac8-87ef38e520d2/banner_1596632384.jpg" className="img-slider" alt="..."/>
+      <div className="carousel-caption d-none d-md-block">
+      
+      </div>
+    </div>
+    <div className="carousel-item">
+      <img src="https://harveyslkn.com/pluto-images/a7173544-a5a8-426e-aa1f-1e982cd26115.jpg?w=1920&quality=60&fit=cover" className="img-slider" alt="..."/>
+      <div className="carousel-caption d-none d-md-block">
+        
+      </div>
+    </div>
+  </div>
+  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
+  </button>
+  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+)}
 
+
+    
 
 export default HomeBanner;
