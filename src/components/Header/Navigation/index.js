@@ -10,20 +10,24 @@ import { MdElectricalServices } from "react-icons/md";
 import { PiHairDryer } from "react-icons/pi";
 import { GiWrappedSweet } from "react-icons/gi";
 import { TiMessage } from "react-icons/ti";
+import { useState } from "react";
 
 const Navigation = () =>{
+
+    const[isOpenSideBarVal , setisOpenSideBarVal]= useState(true);
+
     return(
           <nav>
                     <div className='container'>
                         <div className='row'>
                             <div className='col-sm-3 navPart1'>
                                 <div className="catWrapper">
-                                 <Button className='allCatTab align-items-center'>
+                                 <Button className='allCatTab align-items-center' onClick={()=>setisOpenSideBarVal(!isOpenSideBarVal)}>
                                     <span className="icon1 mr-2"><RxHamburgerMenu /></span>
                                     <span className='text'>ALL CATEGORIES</span>
                                     <span className="icon2 ml-4"><FaAngleDown /></span>
                                  </Button>
-                                 <div className="sideBarNav shadow">
+                                 <div className={`sideBarNav ${isOpenSideBarVal === true ? "open" : ""}`}>
                                     <ul>
                                     <li className="list-inline-item"><Link to="/"><Button><IoMdHome />Home</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><MdFoodBank />Meats and Food</Button></Link></li>
@@ -36,7 +40,7 @@ const Navigation = () =>{
                         <div className='col-sm-9 navPart2 d-flex align-items-center'>
                                 <ul className="list list-inline ml-auto">
                                     <li className="list-inline-item"><Link to="/"><Button><IoMdHome />Home</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><MdFoodBank />Meats and Food</Button></Link>
+                                    <li className="list-inline-item"><Link to="/"><Button><MdFoodBank />hot drinks</Button></Link>
                                     <div className="submenu shadow">
                                     <Link to="/"><Button>Cakes</Button></Link>
                                     <Link to="/"><Button>Cupcakes</Button></Link>
@@ -47,8 +51,8 @@ const Navigation = () =>{
                                     <li className="list-inline-item"><Link to="/"><Button><MdOutlineBakeryDining />Bakery</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><GiWrappedSweet />snacks</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><MdElectricalServices/>electronics</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><PiHairDryer />hair care</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><GiClothes />Clothes</Button></Link></li>
+                                    <li className="list-inline-item"><Link to="/"><Button><PiHairDryer />donuts</Button></Link></li>
+                                    <li className="list-inline-item"><Link to="/"><Button><GiClothes />biscuits</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><TiMessage/>Contact</Button></Link></li>
 
                                 
