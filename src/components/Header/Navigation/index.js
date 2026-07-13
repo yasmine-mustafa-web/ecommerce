@@ -11,10 +11,14 @@ import { PiHairDryer } from "react-icons/pi";
 import { GiWrappedSweet } from "react-icons/gi";
 import { TiMessage } from "react-icons/ti";
 import { useState } from "react";
+import { LuBeef } from "react-icons/lu";
+import { GiChickenLeg } from "react-icons/gi";
+import { GiFrenchFries } from "react-icons/gi";
+import { GiSandwich } from "react-icons/gi";
 
 const Navigation = () =>{
 
-    const[isOpenSideBarVal , setisOpenSideBarVal]= useState(true);
+    const[isOpenSideBarVal , setisOpenSideBarVal]= useState(false);
 
     return(
           <nav>
@@ -40,17 +44,23 @@ const Navigation = () =>{
                         <div className='col-sm-9 navPart2 d-flex align-items-center'>
                                 <ul className="list list-inline ml-auto">
                                     <li className="list-inline-item"><Link to="/"><Button><IoMdHome />Home</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><MdFoodBank />hot drinks</Button></Link>
+                                    <li className="list-inline-item"><Link to="/"><Button><LuBeef />beef burger</Button></Link>
                                     <div className="submenu shadow">
-                                    <Link to="/"><Button>Cakes</Button></Link>
-                                    <Link to="/"><Button>Cupcakes</Button></Link>
-                                    <Link to="/"><Button>Tre leche</Button></Link>
+                                    <Link to="/"><Button>classic burgers</Button></Link>
+                                    <Link to="/"><Button>smashed burgers</Button></Link>
+                                    <Link to="/"><Button>burgers combo</Button></Link>
                                     <Link to="/"><Button>Gatoh</Button></Link>
                                     </div>
                                     </li>
-                                    <li className="list-inline-item"><Link to="/"><Button><MdOutlineBakeryDining />Bakery</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><GiWrappedSweet />snacks</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><MdElectricalServices/>electronics</Button></Link></li>
+                                    <li className="list-inline-item"><Link to="/"><Button><GiChickenLeg />chicken burger</Button></Link>
+                                    <div className="submenu shadow">
+                                    <Link to="/"><Button>classic burgers</Button></Link>
+                                    <Link to="/"><Button>burgers combo</Button></Link>
+
+                                    </div>
+                                    </li>
+                                    <li className="list-inline-item"><Link to="/"><Button><GiFrenchFries/>chips</Button></Link></li>
+                                    <li className="list-inline-item"><Link to="/"><Button><GiSandwich/>melt box</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><PiHairDryer />donuts</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><GiClothes />biscuits</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><TiMessage/>Contact</Button></Link></li>

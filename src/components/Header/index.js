@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import Logo from '../../assets/unnamed-removebg-preview.png';
+import Logo from '../../assets/Screenshot_2026-07-12_163830-removebg-preview.png';
 import CountryDropDown from '../CountryDropDown';
 import {Button} from '@mui/material';
 import { IoIosSearch } from "react-icons/io";
@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <>
             <div className="headerWrapper">
-                <div className="top-strip bg-blue">
+                <div className="top-strip bg-red">
                     <div className="container">
                         <p className="text-center my-0">
                             Due to <b>Fifa </b>orders maybe delayed today
@@ -33,12 +33,12 @@ const Header = () => {
 
 
                          <div className='part3 d-flex align-items-center ml-auto' >
-                            <Button className='circle align-items-center justify-content-center mr-3'><FiUser /></Button>
+                            <Button className='circle align-items-center justify-content-center'><FiUser /></Button>
                             <div className='ml-auto cartTab d-flex align-items-center'>
-                                <span className='price'>$3.29</span>
-                                <div className='position-relative  ml-2'>
+                                <span className='price mx-2'>LE 0</span>
+                                <div className='position-relative  mx-2'>
                                    <Button className='circle'><IoBagOutline /></Button>
-                                    <span className='count d-flex align-items-center justify-content-center'>1</span>
+                                    <span className='count d-flex align-items-center justify-content-center'>0</span>
                                 
                                 </div>
                             </div>

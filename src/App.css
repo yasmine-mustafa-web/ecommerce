@@ -1,6 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Dosis:wght@200..800&family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Marmelad&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Playwrite+IE:wght@100..400&family=Poiret+One&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap');
@@ -20,8 +21,11 @@ body{
   font-weight: 400;
   
 }
-.bg-blue{
-  background: rgb(8, 8, 121);
+.bg-red{
+  background: rgb(121, 8, 8);
+}
+.cursor{
+  cursor: pointer;
 }
 .countryList::-webkit-scrollbar{width: 8px !important; height: 8px !important;}
 .countryList::-webkit-scrollbar-thumb{background: #ccc !important;}
@@ -297,7 +301,7 @@ nav .navPart2 ul li{
 }
 nav .navPart2 ul li .submenu{
   position: absolute;
-  top: 150%;
+  top: 90%;
   min-width: 150px;
   background-color: #fff;
   opacity: 0;
@@ -326,15 +330,41 @@ nav .navPart2 ul li:hover .submenu{
   z-index: 100000;
 }
 .HomeBanner{
-  justify-content: flex-end;
-  object-position: right;
-  margin-left: 340px;
+  width: 100%;
 }
 .img-slider{
-  width: 70%;
+  width: 100%;
   object-fit: cover;
-justify-content: center;
-margin: 0 auto;
+object-position: right center;
 border-radius: 20px;
 height: 500px;
+}
+.homeProducts{
+  padding: 25px 0px;
+  width: 100%;
+}
+.banner img{
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+.viewAllBtn{
+  padding: 8px 15px !important;
+  background: #fff !important;
+  border: 1px solid rgba(0,0,0,0.1) !important;
+  color: #232323 !important;
+  font-weight: 200 !important;
+  border-radius: 20px !important;
+  margin-left: auto !important;
+}
+.viewAllBtn:hover{
+color: #000 !important;
+}
+.viewAllBtn svg{
+  font-size: 22px;
+}
+.productItem{
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
