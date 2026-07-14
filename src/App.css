@@ -436,3 +436,46 @@ z-index: 100000;
 color: #fff;
 font-family: 'Quicksand' , sans-serif;
 }
+.actions{
+  position: absolute;
+  top: 10px !important;
+  right: -100% !important;
+  opacity: 0 !important;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px !important;
+  transition: all 0.3s ease;
+}
+.actions button{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 40px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 50% !important;
+    background-color: #fff !important;
+    transition: all 0.0s ease;
+}
+.actions button svg{
+  opacity: 0.8;
+  color: #000;
+  pointer-events: none;
+  font-size: 15px;
+}
+.actions button:hover{
+    background: rgb(121, 8, 8) !important;
+
+}
+.actions button:hover svg{
+  color: #fff !important;
+}
+.card .card-img-top{
+  overflow: hidden !important;
+}
+.card:hover .actions{
+  opacity: 1 !important;
+  right: 10px !important;
+}

@@ -1,19 +1,21 @@
 import { RatingGroup } from "@chakra-ui/react";
 import { SlSizeFullscreen } from "react-icons/sl";
 import { Button } from "@mui/material";
+import { FaRegHeart } from "react-icons/fa";
 
-const ProductItem = ({ image, title, price, discount }) => {
+const ProductItem = ({ image, title, price, discount , className }) => {
 
   return (
-    <div className="card" style={{ width: "13rem" }}>
+    <div className={`card ${className}`} style={{ width: "13rem" }}>
       <img src={image} className="card-img-top" alt={title} />
 
       <span className="badge bg-red">{discount}%</span>
 
       <div className="actions">
-        <Button>
+        <Button className="shadow">
           <SlSizeFullscreen />
         </Button>
+        <Button>< FaRegHeart style={{fontSize:'20px'}}/></Button>
       </div>
 
       <div className="card-body">

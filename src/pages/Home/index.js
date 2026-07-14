@@ -68,7 +68,7 @@ return(
                  <div className="col-md-9">
                     <div className="d-flex align-items-center">
                         <div className="info">
-                            <h3>Best Seller</h3>
+                            <h3>Best Sellers</h3>
 
                              </div>
                              <Button className="ml-auto  align-items-center viewAllBtn ">
@@ -85,6 +85,9 @@ return(
         title={product.title}
         price={product.price}
         discount={product.discount}
+        className={
+          index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
+        }
       />
     ))}
   </Slider>
