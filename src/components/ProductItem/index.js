@@ -44,7 +44,7 @@ const ProductItem = ({ image, title, price, discount , className }) => {
 
       <div className="card-body">
         <a href="#" className="btn btn-card w-100">
-          Read More
+          Add to cart
         </a>
       </div>
     </div>

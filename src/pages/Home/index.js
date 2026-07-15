@@ -5,6 +5,9 @@ import React from "react";
 import Slider from "react-slick";
 import ProductItem from "../../components/ProductItem";
 import AllMenu from "../../components/AllMenu";
+import HomeCat from "../../components/HomeCat";
+
+
 
 const Home = () =>{
      var productSliderOptions = {
@@ -58,6 +61,9 @@ return(
     
     <>
     <HomeBanner/>
+    
+    <HomeCat/>
+
 
     <section className="homeProducts">
                <div
@@ -67,11 +73,15 @@ return(
                     <div className="banner">
                     <img src="https://s3.eu-west-1.amazonaws.com/cdn.getsolo.io/17833505436a4bc50f7f0b5_WhatsApp%20Image%202026-07-06%20at%205.43.19%20PM.jpeg" className="sideImg cursor w-100"/>
                     </div>
+
+                     <div className="banner mt-4">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw1sOY2nPR5FnkMrzya1ECZ0vzBF7DzqkF3EJqx9bJw7EPUIYlU5GsLqJg&s=10" className="sideImg cursor w-100"/>
+                    </div>
                 </div>
                  <div className="col-md-9">
                     <div className="d-flex align-items-center">
                         <div className="info">
-                            <h3>Best Sellers</h3>
+                            <h3>BEST SELLERS</h3>
 
                              </div>
                              <Button className="ml-auto  align-items-center viewAllBtn ">
@@ -95,6 +105,39 @@ return(
     ))}
   </Slider>
 </div>
+
+
+
+                   <div className="d-flex align-items-center mt-5">
+                        <div className="info">
+                            <h3>NEW PRODUCTS</h3>
+                            <p className="text-secondary">New products with updated stocks</p>
+                             </div>
+                             <Button className="ml-auto  align-items-center viewAllBtn ">
+                                View all<IoIosArrowRoundForward/>
+                             </Button>
+                    </div>
+                   
+                            <div className="productRow w-100 mt-3">
+  <Slider {...productSliderOptions}>
+    {products.map((product, index) => (
+      <ProductItem
+        key={index}
+        image={product.image}
+        title={product.title}
+        price={product.price}
+        discount={product.discount}
+        className={
+          index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
+        }
+      />
+    ))}
+  </Slider>
+</div>
+
+
+
+
 </div>
 </div>
 </div>
