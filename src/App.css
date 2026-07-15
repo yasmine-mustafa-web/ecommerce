@@ -479,3 +479,13 @@ font-family: 'Quicksand' , sans-serif;
   opacity: 1 !important;
   right: 10px !important;
 }
+.allMenuProducts{
+  padding: 25px 0px;
+}
+.allMenuProducts .productRow{
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center !important;
+  align-items: center !important;
+}

@@ -25,7 +25,7 @@ const Header = () => {
                     <div className="container">
                         <div className="row">
                             <div className="logoWrapper d-flex align-items-center col-sm-2">
-                                <Link to={'/'}><img src={Logo}/></Link>
+                                <Link to={'/'}><img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg'/></Link>
                             </div>
                         <div className='part2 d-flex align-items-center col-sm-10'>
                          <CountryDropDown />

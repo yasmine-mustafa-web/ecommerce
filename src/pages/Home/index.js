@@ -4,7 +4,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import React from "react";
 import Slider from "react-slick";
 import ProductItem from "../../components/ProductItem";
-
+import AllMenu from "../../components/AllMenu";
 
 const Home = () =>{
      var productSliderOptions = {
@@ -14,6 +14,9 @@ const Home = () =>{
     slidesToShow:4 ,
     slidesToScroll: 1
   };
+
+
+
       const products = [
     {
       image:
@@ -57,12 +60,12 @@ return(
     <HomeBanner/>
 
     <section className="homeProducts">
-        <div
+               <div
         className="container">
             <div className="row">
                 <div className="col-md-3">
                     <div className="banner">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_xC-iqFlaeeeTP5ahMUJ1J5KVx4QNX9CiLK08c5PW31C8uKt6OzkxuEr_&s=10" className="sideImg cursor w-100"/>
+                    <img src="https://s3.eu-west-1.amazonaws.com/cdn.getsolo.io/17833505436a4bc50f7f0b5_WhatsApp%20Image%202026-07-06%20at%205.43.19%20PM.jpeg" className="sideImg cursor w-100"/>
                     </div>
                 </div>
                  <div className="col-md-9">
@@ -92,11 +95,11 @@ return(
     ))}
   </Slider>
 </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    </>
+</div>
+</div>
+</div>
+</section>
+</>
 )
 }
 
