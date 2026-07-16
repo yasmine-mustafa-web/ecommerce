@@ -6,7 +6,8 @@ import Slider from "react-slick";
 import ProductItem from "../../components/ProductItem";
 import AllMenu from "../../components/AllMenu";
 import HomeCat from "../../components/HomeCat";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 const Home = () =>{
@@ -15,10 +16,18 @@ const Home = () =>{
     infinite: false,
     speed: 500,
     slidesToShow:4 ,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    arrows:false,
   };
 
-
+  const catSliderOptions = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 8,
+  slidesToScroll: 1,
+  arrows: true,
+};
 
       const products = [
     {
@@ -57,13 +66,103 @@ const Home = () =>{
       discount: 12,
     },
   ];
+
+const categories = [
+    {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    },
+      {
+        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
+        name:'Skin Care'
+    }
+]
+
+
 return(
     
     <>
     <HomeBanner/>
+    <section className="feautredCat my-3">
+    <div className="container">
+      <h4>Feautred Categories</h4>
     
-    <HomeCat/>
-
+    <div className="mt-3 w-100"> 
+    <Slider {...catSliderOptions}>
+  {categories.map((item,index) => (
+      <HomeCat
+      key={index}
+      image={item.image}
+      name={item.name}
+      className={
+        index===0 ?'firstBack' : index===1 ?'secBack' : index===2 ? 'thirdBack' : 'allBack'
+      }
+    />
+  ))}
+</Slider>
+</div>
+  </div>
+</section>
 
     <section className="homeProducts">
                <div

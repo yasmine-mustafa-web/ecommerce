@@ -495,12 +495,43 @@ font-family: 'Quicksand' , sans-serif;
 }
 .catItem{
     text-align:center;
-    padding:10px;
+    padding:8px !important;
+    border-radius: 10px;
+    margin-right: 10px !important;
 }
 
 .catItem img{
-    width:120px;
-    height:120px;
+    width:100px;
+    height:100px;
     object-fit:contain;
-    margin:auto;
+
+}
+.feautredCat .slick-prev:before,
+.feautredCat .slick-next:before {
+  font-size: 22px !important;
+  z-index: 999999 !important;
+}
+
+.feautredCat .slick-prev{
+  left: 98%!important;
+    top: -30px !important;
+}
+.feautredCat .slick-next{
+  top: -30px !important;
+}
+.feautredCat h4{
+  text-transform: uppercase;
+}
+.firstBack{
+      background-color: #aa5547c4 !important;
+
+}
+.secBack{
+  background-color: #2bbef9 !important;
+}
+.thirdBack{
+  background-color: #ea2b0f !important;
+}
+.allBack{
+  background-color: #fff1ee !important;
 }
