@@ -8,6 +8,8 @@ import AllMenu from "../../components/AllMenu";
 import HomeCat from "../../components/HomeCat";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import offersIMG from "../../assets/special-offer-star-7527442-removebg-preview.png";
+import { GoMail } from "react-icons/go";
 
 
 const Home = () =>{
@@ -233,7 +235,7 @@ return(
 </div>
 
 
-<div className="secHomeBanner col-md-9 d-flex align-items-center my-3">
+<div className="secHomeBanner col-md-9 d-flex align-items-center my-4">
   <div>
       <img src="https://eg.arabiccoupon.com/sites/default/files/styles/article/public/field/image/70off-boots-summer-sale-with-boots-promo-code-en-arabiccoupon-articles-m08-c.jpg"/>
   </div>
@@ -248,6 +250,28 @@ return(
 </div>
 </div>
 </section>
+
+<section className="newsLetterSection bg-red my-3 align-items-center d-flex">
+  <div className="container">
+    <div className="row">
+      <div className="col-md-6">
+        <p className="text-white mb-2 fs-6">20% discount on your first order</p>
+        <h4 className="text-white mb-2 fs-3 fw-bold">Join our newsletter and get...</h4>
+        <p className="text-secondary text-white">Join our email subscription now to get updates on promotions and coupons.</p>
+        <form>
+        <span><GoMail /></span>
+        <input type="email" placeholder="YOUR EMAIL ADDRESS"/>
+        <button className="btn ms-auto text-white bg-red fw-bold" style={{height:'52px'}}>Subscribe</button>
+        </form>
+      </div>
+      <div className="col-md-6">
+        <img className="offersIMG" src={offersIMG}/>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 </>
 )
 }
