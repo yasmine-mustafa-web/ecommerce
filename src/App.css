@@ -556,6 +556,7 @@ font-family: 'Quicksand' , sans-serif;
   height: auto;
   position: relative;
   padding: 100px 0px;
+  margin-bottom: 0 !important;
 }
 .offersIMG{
   position: absolute;
@@ -592,12 +593,12 @@ align-items: center;
    background: rgb(121, 8, 8);
 color: #fff;
 }
-footer{
+.footer{
   width: 100%;
   height: auto;
   padding: 35px 20px;
-  margin: auto;
-  background-color: #fff;
+  margin-top: 0 !important;
+  background-color: #e4e5ee;
 }
 .topInfo{
   border-bottom: 1px solid rgba(0,0,0,0.2);
@@ -617,4 +618,26 @@ padding-bottom: 25px !important;
 .topInfo .col span{
   font-size: 16px !important;
   font-weight: bold;
+}
+.secFooter{
+  width: 100%;
+}
+.secFooter .col{
+  text-align: center !important;
+}
+.secFooter .col ul li{
+  list-style: none ;
+  margin-bottom: 5px !important;
+
+}
+.secFooter .col ul li a{
+  text-decoration: none ;
+  color: #71778e;
+  font-size: 15px;
+}
+.secFooter .col h5{
+  margin: 0px 0px 9px 13px !important;
+}
+footer{
+  background-color: #fff !important;
 }
