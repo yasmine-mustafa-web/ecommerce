@@ -592,3 +592,29 @@ align-items: center;
    background: rgb(121, 8, 8);
 color: #fff;
 }
+footer{
+  width: 100%;
+  height: auto;
+  padding: 35px 20px;
+  margin: auto;
+  background-color: #fff;
+}
+.topInfo{
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+padding-bottom: 25px !important;
+}
+.topInfo .col{
+  border-right: 1px solid rgba(0,0,0,0.15) !important;
+    padding-left:28px;
+
+}
+.topInfo .col:last-child{
+  border-right: none !important;
+}
+.topInfo .col svg{
+  font-size: 25px !important;
+}
+.topInfo .col span{
+  font-size: 16px !important;
+  font-weight: bold;
+}

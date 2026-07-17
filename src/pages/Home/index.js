@@ -11,7 +11,6 @@ import "slick-carousel/slick/slick-theme.css";
 import offersIMG from "../../assets/special-offer-star-7527442-removebg-preview.png";
 import { GoMail } from "react-icons/go";
 
-
 const Home = () =>{
      var productSliderOptions = {
     dots: true,
@@ -271,7 +270,6 @@ return(
     </div>
   </div>
 </section>
-
 </>
 )
 }

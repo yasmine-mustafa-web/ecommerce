@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from "./pages/Home";
 import Header from "./components/Header"
 import { Provider } from "./components/ui/provider.jsx";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" exact={true} element={<Home/>}/>
   
 </Routes>
+<Footer />
 </BrowserRouter>
   </Provider>
   );
