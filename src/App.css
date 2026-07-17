@@ -510,6 +510,7 @@ font-family: 'Quicksand' , sans-serif;
 .feautredCat .slick-next:before {
   font-size: 22px !important;
   z-index: 999999 !important;
+  color: #000 !important;
 }
 
 .feautredCat .slick-prev{
@@ -534,4 +535,18 @@ font-family: 'Quicksand' , sans-serif;
 }
 .allBack{
   background-color: #fff1ee !important;
+}
+.productRow2{
+  flex-wrap: wrap !important;
+  display: flex;
+}
+.secHomeBanner{
+  width: 100%;
+  gap: 25px;
+}
+.secHomeBanner img{
+  width: 370px !important;
+  height: 235px !important;
+  object-fit: cover;
+  border-radius: 8px;
 }

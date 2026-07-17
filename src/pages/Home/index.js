@@ -217,8 +217,7 @@ return(
                              </Button>
                     </div>
                    
-                            <div className="productRow w-100 mt-3">
-  <Slider {...productSliderOptions}>
+                            <div className="productRow w-100 mt-3 d-flex productRow2">
     {products.map((product, index) => (
       <ProductItem
         key={index}
@@ -231,9 +230,17 @@ return(
         }
       />
     ))}
-  </Slider>
 </div>
 
+
+<div className="secHomeBanner col-md-9 d-flex align-items-center my-3">
+  <div>
+      <img src="https://eg.arabiccoupon.com/sites/default/files/styles/article/public/field/image/70off-boots-summer-sale-with-boots-promo-code-en-arabiccoupon-articles-m08-c.jpg"/>
+  </div>
+  <div>
+    <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW_kFLvo9XsKB3KEKhrFFXie4u-KbF0S2JXnBpj7TH77Z4bpvQMHLogLE&s=10"/>
+  </div>
+</div>
 
 
 
