@@ -641,3 +641,12 @@ padding-bottom: 25px !important;
 footer{
   background-color: #fff !important;
 }
+.imgFooterContainer img{
+  width: 120px;
+  height: 40px;
+  margin-top: -10px;
+}
+.thirdFooter{
+  border-bottom: 1px solid rgba(0, 0, 0, 0.179);
+  padding: 30px 0px;
+}

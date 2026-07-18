@@ -11,7 +11,7 @@ import { CiInstagram } from "react-icons/ci";
 const Footer =()=>{
     return(
         <>
-        <div className="footer">
+        <div className="footer d-flex">
             <div className="container">
                 <div className="row topInfo d-flex w-100">
                 <div className="col align-items-center d-flex">
@@ -77,22 +77,24 @@ const Footer =()=>{
                     </div>
                       </div>
                         </div>
-                      <footer>
+                      <footer className="mb-4">
                 <div className="container"> 
-                <div className="thirdFooter row mt-4">
-                    <div className="col-md-3 d-flex text-align-center">
+                <div className="thirdFooter row mt-4 align-items-center">
+                    <div className="col-md-3 d-flex text-align-center col-12">
                     <span className="fs-4 me-3 mt-2">  <TbPhoneCall /></span>  
                     <div>
                         <h4 className="mb-0">01015011656</h4>
                         <p className="text-secondary mt-0">Working 10:00 - 22:00</p>
                     </div>
                     </div>  
-                    <div className="col-md-3">
+                    <div className="col-md-9 d-flex justify-content-end">
+                        <div className="d-flex align-items-center gap-4 ">
+                    <div>
                     
-                        <h6 className="mb-0">Download App on Mobile :</h6>
+                        <h6 className="mb-0 fw-bold">Download App on Mobile :</h6>
                         <p className="text-secondary">15% discount on your first purchase</p>
                     </div>
-                    <div className="col-md-3 d-flex">
+                    <div className="d-flex gap-2 imgFooterContainer">
                         <div>
                             <img src="https://freelogopng.com/images/all_img/1664287128google-play-store-logo-png.png" />
                         </div>
@@ -100,11 +102,16 @@ const Footer =()=>{
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/3840px-Download_on_the_App_Store_Badge.svg.png" />
                         </div>
                     </div>
-                                        <div className="col-md-3 d-flex">
+                                        <div className="d-flex gap-1 fs-4">
                                 <span><CiFacebook /></span>
                                 <span><CiInstagram/></span>
                         </div>
+                        </div>
+                        </div>
                 </div>
+          </div>
+          <div>
+            <p className="text-secondary text-center my-4">Copyright 2026 © E-COMMERCE. All rights reserved. Developed by Yasmine.</p>
           </div>
                           </footer>
 </>
