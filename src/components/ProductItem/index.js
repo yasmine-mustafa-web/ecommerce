@@ -2,21 +2,38 @@ import { RatingGroup } from "@chakra-ui/react";
 import { SlSizeFullscreen } from "react-icons/sl";
 import { Button } from "@mui/material";
 import { FaRegHeart } from "react-icons/fa";
+import ProductModal from "../ProductModal";
+import { useState } from 'react';
 
 const ProductItem = ({ image, title, price, discount , className }) => {
 
+  const [isOpenProductModal,setisOpenProductModal]= useState(false);
+
+  const viewProductDetails=(id)=>{
+    setisOpenProductModal(true);
+
+  }
+  const closeProductModal=()=>{
+        setisOpenProductModal(false);
+
+  }
+
+
   return (
+    <>
     <div className={`card ${className}`} style={{ width: "13rem" }}>
-      <img src={image} className="card-img-top" alt={title} />
-
-      <span className="badge bg-red">{discount}%</span>
-
-      <div className="actions">
-        <Button className="shadow">
+      <div className="upperCard">
+         <div className="actions">
+        <Button  onClick={(e)=>{e.stopPropagation(); viewProductDetails(1);}}>
           <SlSizeFullscreen />
         </Button>
-        <Button>< FaRegHeart style={{fontSize:'20px'}}/></Button>
+        <Button onClick={(e)=>{e.stopPropagation(); }}>< FaRegHeart style={{fontSize:'20px'}}/></Button>
       </div>
+      <img src={image} className="card-img-top" alt={title} />
+    </div>
+      <span className="badge bg-red">{discount}%</span>
+
+     
 
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
@@ -43,11 +60,17 @@ const ProductItem = ({ image, title, price, discount , className }) => {
       </ul>
 
       <div className="card-body">
-        <a href="#" className="btn btn-card w-100">
+        <button onClick={(e)=>{ e.preventDefault()}} href="#" className="btn btn-card w-100">
           Add to cart
-        </a>
+        </button>
       </div>
     </div>
+
+
+ <ProductModal open={isOpenProductModal}
+    closeProductModal={closeProductModal}/>
+
+    </>
   );
 };
 

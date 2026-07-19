@@ -5,7 +5,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 const HomeBanner =()=>{
 
 return(
-    <div className='HomeBanner col-log-9 col-md-12 p-3'>
+    <div className='container mt-3'>
+      <div className='HomeBanner col-log-9 col-md-12 p-3'>
 <div id="carouselExampleDark" className="carousel carousel-dark slide">
   <div className="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
@@ -42,6 +43,7 @@ return(
   </button>
 </div>
 </div>
+    </div>
 )}
 
 

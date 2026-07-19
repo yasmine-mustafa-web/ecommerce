@@ -105,7 +105,7 @@ header .headerSearchBar ::-webkit-input-placeholder{
 }
 header .headerSearchBar button{
   position: absolute;
-  z-index: 1000;
+  z-index: 2;
   height:40px;
   min-width:40px;
   top: 10px;
@@ -198,7 +198,7 @@ padding: 15px 9px;
 .locationModal .countryList li button:active{
   background: #e1e1e1 !important;
 }
-.locationModal .close_{
+.close_{
   position: absolute;
 top: 10px;
 right: 10px;
@@ -238,7 +238,7 @@ nav .allCatTab .icon2 svg{
 nav .navPart1 .catWrapper{
   position: relative;
   margin-top: 54px;
-  z-index: 9999;
+  z-index: 2;
 }
 nav .navPart1 .catWrapper .sideBarNav{
 width: 100%;
@@ -337,7 +337,7 @@ nav .navPart2 ul li:hover .submenu{
   opacity: 1 !important;
   visibility: inherit !important;
   top: 100% !important;
-  z-index: 100000;
+  z-index: 2;
 }
 .HomeBanner{
   width: 100%;
@@ -432,7 +432,7 @@ display: inline-block;
 padding: 8px 15px;
 top: 20px;
 left: 20px;
-z-index: 100000;
+z-index: 2;
 color: #fff;
 font-family: 'Quicksand' , sans-serif;
 }
@@ -441,13 +441,13 @@ font-family: 'Quicksand' , sans-serif;
   top: 10px !important;
   right: -100% !important;
   opacity: 0 !important;
-  z-index: 9999;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 8px !important;
   transition: all 0.3s ease;
 }
-.actions button{
+.actions button {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -472,10 +472,13 @@ font-family: 'Quicksand' , sans-serif;
 .actions button:hover svg{
   color: #fff !important;
 }
-.card .card-img-top{
+.card .upperCard .card-img-top{
   overflow: hidden !important;
 }
-.card:hover .actions{
+.upperCard{
+  position: relative;
+}
+.upperCard:hover .actions{
   opacity: 1 !important;
   right: 10px !important;
 }
@@ -509,7 +512,7 @@ font-family: 'Quicksand' , sans-serif;
 .feautredCat .slick-prev:before,
 .feautredCat .slick-next:before {
   font-size: 22px !important;
-  z-index: 999999 !important;
+  z-index: 2 !important;
   color: #000 !important;
 }
 
@@ -649,4 +652,14 @@ footer{
 .thirdFooter{
   border-bottom: 1px solid rgba(0, 0, 0, 0.179);
   padding: 30px 0px;
+}
+.sideImg{
+  height: 320px !important;
+}
+.socailContainer{
+  margin-top: -10px;
+}
+.productModal .MuiPaper-elevation{
+  padding: 25px;
+  position: relative;
 }

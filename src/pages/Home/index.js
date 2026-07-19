@@ -10,6 +10,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import offersIMG from "../../assets/special-offer-star-7527442-removebg-preview.png";
 import { GoMail } from "react-icons/go";
+import oralCare from "../../assets/Health+Problems+That+Poor+Oral+Hygiene+Cause-removebg-preview.png"
+import hairCare from "../../assets/Category_-_Hair_Care-removebg-preview.png"
 
 const Home = () =>{
      var productSliderOptions = {
@@ -73,21 +75,20 @@ const categories = [
         image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
         name:'Skin Care'
     },
+      {image:oralCare,
+        name:'Oral Hygiene'
+    },
       {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
+        image:hairCare,
+        name:'Hair Care'
     },
       {
         image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
+        name:'Korean Products'
     },
       {
         image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
+        name:'Nail Care'
     },
       {
         image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
@@ -171,7 +172,7 @@ return(
             <div className="row">
                 <div className="col-md-3">
                     <div className="banner">
-                    <img src="https://s3.eu-west-1.amazonaws.com/cdn.getsolo.io/17833505436a4bc50f7f0b5_WhatsApp%20Image%202026-07-06%20at%205.43.19%20PM.jpeg" className="sideImg cursor w-100"/>
+                    <img src="https://www.twffer.com/uploads/offers_attachments/1000/0b061b2a-d195-46b9-b699-13a39664b543.jpg" className="sideImg cursor w-100"/>
                     </div>
 
                      <div className="banner mt-4">

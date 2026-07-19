@@ -102,7 +102,7 @@ const Footer =()=>{
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/3840px-Download_on_the_App_Store_Badge.svg.png" />
                         </div>
                     </div>
-                                        <div className="d-flex gap-1 fs-4">
+                                        <div className="socailContainer d-flex gap-1 fs-4">
                                 <span><CiFacebook /></span>
                                 <span><CiInstagram/></span>
                         </div>
