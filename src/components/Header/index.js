@@ -16,8 +16,8 @@ const Header = () => {
             <div className="headerWrapper">
                 <div className="top-strip bg-red">
                     <div className="container">
-                        <p className="text-center my-0">
-                            Due to <b>Fifa </b>orders maybe delayed today
+                        <p className="text-center my-0 fs-6">
+                           Our HotLine is <b> 19880 </b>
                         </p>
                     </div>
                 </div>

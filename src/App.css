@@ -32,7 +32,10 @@ body{
   
 }
 .bg-red{
-  background: rgb(121, 8, 8);
+  background: rgb(3, 7, 94);
+}
+.font-color{
+  color: rgb(3, 7, 94) ;
 }
 .cursor{
   cursor: pointer;
@@ -199,7 +202,7 @@ padding: 15px 9px;
   background: #e1e1e1 !important;
 }
 .close_{
-  position: absolute;
+  position: absolute !important;
 top: 10px;
 right: 10px;
 color: #000;
@@ -208,19 +211,20 @@ width: 40px;
 height: 40px;
 border-radius: 50% !important;
 }
-.locationModal .close_ svg{
+.close_ svg{
   font-size: 22px;
 }
 nav .allCatTab{
-  background: #2bbef9;
   border-radius: 30px;
   padding: 15px 20px;
+     background: rgb(3, 7, 94);
+
 }
 nav .allCatTab *{
   color: #fff;
 }
 nav .allCatTab:hover{
-    background: #2bbef9;
+   background: rgb(3, 7, 94);
 
 }
 nav .allCatTab .text{
@@ -237,7 +241,6 @@ nav .allCatTab .icon2 svg{
 }
 nav .navPart1 .catWrapper{
   position: relative;
-  margin-top: 54px;
   z-index: 2;
 }
 nav .navPart1 .catWrapper .sideBarNav{
@@ -274,6 +277,9 @@ nav .navPart1 .catWrapper .sideBarNav ul li button{
 nav .navPart1 .catWrapper .sideBarNav ul li button:hover{
   background: transparent;
   color: #2bbef9;
+}
+nav .navPart2 svg{
+  color: rgb(3, 7, 94) ;
 }
 nav .navPart2 ul{
   margin-bottom: 0;
@@ -400,20 +406,20 @@ color: #000 !important;
   border-left: none !important;
 }
 .card-img-top{
-  width: 190px !important;
-  height: 190px !important;
   object-fit: contain;
+  border-radius: none !important;
 }
 .btn-card{
   transition: all 0.3s ease;
   background-color: transparent;
-  border: 1px solid rgb(121, 8, 8);
+  border: 1px solid rgb(3, 7, 94);
   border-radius: 20px;
   color: #000;
 }
 
 .btn-card:hover{
-  background: rgb(121, 8, 8);
+  background: rgb(3, 7, 94);
+
   color: white;
   transform: scale(1.03);
 }
@@ -466,7 +472,7 @@ font-family: 'Quicksand' , sans-serif;
   font-size: 15px;
 }
 .actions button:hover{
-    background: rgb(121, 8, 8) !important;
+  background: rgb(3, 7, 94) !important;
 
 }
 .actions button:hover svg{
@@ -499,15 +505,20 @@ font-family: 'Quicksand' , sans-serif;
 .catItem{
     text-align:center;
     padding:8px !important;
-    border-radius: 10px;
+  transition: all 0.3s ease;
     margin-right: 10px !important;
 }
-
+.catItem:hover img{
+  transform: scale(1.03);
+}
 .catItem img{
-    width:100px;
-    height:100px;
-    object-fit:contain;
+    transition: all 0.3s ease;
 
+    width:150px;
+    height:150px;
+    object-fit:contain;
+    border-radius: 50% !important;
+    border: 1px solid rgba(5, 5, 63, 0.556);
 }
 .feautredCat .slick-prev:before,
 .feautredCat .slick-next:before {
@@ -659,7 +670,22 @@ footer{
 .socailContainer{
   margin-top: -10px;
 }
+.productModal{
+  position: relative;
+}
 .productModal .MuiPaper-elevation{
   padding: 25px;
   position: relative;
+  max-width: 85% !important;
+  width: 85% !important;
+  min-width: 85% !important;
+  height: 90% !important;
+  max-height: 90% !important;
+  min-height: 90% !important;
+}
+.discountprice{
+  text-decoration: line-through;
+}
+.css-vpnvw6{
+  object-fit: contain !important;
 }

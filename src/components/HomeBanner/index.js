@@ -15,19 +15,19 @@ return(
   </div>
   <div className="carousel-inner">
     <div className="carousel-item active" data-bs-interval="10000">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHX4GSvPk9QYAK1nxqfvzfClPDhIYlzHnQLA6m9xkKkwlIPFAoRMweWKY&s=10" className="img-slider" alt="..."/>
+      <img src="https://aqarmap.com.eg/en/advice/wp-content/uploads/2020/01/Pharmacy-in-Gozo.jpg" className="img-slider" alt="..."/>
       <div className="carousel-caption d-none d-md-block">
         
       </div>
     </div>
     <div className="carousel-item" data-bs-interval="2000">
-      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/5f/45/a0/caption.jpg?w=700&h=700&s=1" className="img-slider" alt="..."/>
+      <img src="https://anwar.store/cdn/shop/files/5-3.png?v=1783939635&width=1370" className="img-slider" alt="..."/>
       <div className="carousel-caption d-none d-md-block">
       
       </div>
     </div>
     <div className="carousel-item">
-      <img src="https://packagingoftheworld.com/wp-content/uploads/2022/11/Holmes-per-22222-final-1-1024x651.jpg" className="img-slider" alt="..."/>
+      <img src="https://png.pngtree.com/template/20200503/ourlarge/pngtree-blue-theme-online-medicine-sale-banner-psd-image_368915.jpg" className="img-slider" alt="..."/>
       <div className="carousel-caption d-none d-md-block">
 
       </div>

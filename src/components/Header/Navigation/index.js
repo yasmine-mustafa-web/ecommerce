@@ -15,6 +15,8 @@ import { LuBeef } from "react-icons/lu";
 import { GiChickenLeg } from "react-icons/gi";
 import { GiFrenchFries } from "react-icons/gi";
 import { GiSandwich } from "react-icons/gi";
+import { MdOutlinePriceCheck } from "react-icons/md";
+import { TfiShine } from "react-icons/tfi";
 
 const Navigation = () =>{
 
@@ -27,9 +29,9 @@ const Navigation = () =>{
                             <div className='col-sm-3 navPart1'>
                                 <div className="catWrapper">
                                  <Button className='allCatTab align-items-center' onClick={()=>setisOpenSideBarVal(!isOpenSideBarVal)}>
-                                    <span className="icon1 mr-2"><RxHamburgerMenu /></span>
+                                    <span className="icon1 me-2"><RxHamburgerMenu /></span>
                                     <span className='text'>ALL CATEGORIES</span>
-                                    <span className="icon2 ml-4"><FaAngleDown /></span>
+                                    <span className="icon2 ms-4"><FaAngleDown /></span>
                                  </Button>
                                  <div className={`sideBarNav ${isOpenSideBarVal === true ? "open" : ""}`}>
                                     <ul>
@@ -44,25 +46,17 @@ const Navigation = () =>{
                         <div className='col-sm-9 navPart2 d-flex align-items-center'>
                                 <ul className="list list-inline ml-auto">
                                     <li className="list-inline-item"><Link to="/"><Button><IoMdHome />Home</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><LuBeef />beef burger</Button></Link>
+                                    <li className="list-inline-item"><Link to="/"><Button><TfiShine  />Care</Button></Link>
                                     <div className="submenu shadow">
-                                    <Link to="/"><Button>classic burgers</Button></Link>
-                                    <Link to="/"><Button>smashed burgers</Button></Link>
-                                    <Link to="/"><Button>burgers combo</Button></Link>
-                                    <Link to="/"><Button>Gatoh</Button></Link>
+                                    <Link to="/"><Button>hair care</Button></Link>
+                                    <Link to="/"><Button>oral care</Button></Link>
+                                    <Link to="/"><Button>nail care</Button></Link>
+                                    <Link to="/"><Button>skin care</Button></Link>
                                     </div>
                                     </li>
-                                    <li className="list-inline-item"><Link to="/"><Button><GiChickenLeg />chicken burger</Button></Link>
-                                    <div className="submenu shadow">
-                                    <Link to="/"><Button>classic burgers</Button></Link>
-                                    <Link to="/"><Button>burgers combo</Button></Link>
-
-                                    </div>
-                                    </li>
-                                    <li className="list-inline-item"><Link to="/"><Button><GiFrenchFries/>chips</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><GiSandwich/>melt box</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><PiHairDryer />donuts</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><GiClothes />biscuits</Button></Link></li>
+                                    <li className="list-inline-item"><Link to="/"><Button><TfiShine />korean products</Button></Link></li>
+                                    <li className="list-inline-item"><Link to="/"><Button><MdOutlinePriceCheck/>under LE.200</Button></Link></li>
+                                    <li className="list-inline-item"><Link to="/"><Button><PiHairDryer />curly hair</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><TiMessage/>Contact</Button></Link></li>
 
                                 

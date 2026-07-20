@@ -5,7 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import ProductModal from "../ProductModal";
 import { useState } from 'react';
 
-const ProductItem = ({ image, title, price, discount , className }) => {
+const ProductItem = ({ images, title, realprice,discountprice, price, discount , className ,description , brand }) => {
 
   const [isOpenProductModal,setisOpenProductModal]= useState(false);
 
@@ -29,14 +29,14 @@ const ProductItem = ({ image, title, price, discount , className }) => {
         </Button>
         <Button onClick={(e)=>{e.stopPropagation(); }}>< FaRegHeart style={{fontSize:'20px'}}/></Button>
       </div>
-      <img src={image} className="card-img-top" alt={title} />
+      <img src={images[0]} className="card-img-top" alt={title} />
     </div>
       <span className="badge bg-red">{discount}%</span>
 
      
 
       <div className="card-body">
-        <h5 className="card-title">{title}</h5>
+        <h6 className="card-title fw-bold ">{title}</h6>
       </div>
 
       <ul className="list-group list-group-flush">
@@ -53,10 +53,24 @@ const ProductItem = ({ image, title, price, discount , className }) => {
             <RatingGroup.Control />
           </RatingGroup.Root>
         </li>
-
-        <li className="list-group-item text-secondary">
-          {price} LE
+        <div className="d-flex">
+          {realprice && discountprice ?(
+            <>
+                  <li  style={{border:'none'}}  className="mx-0 pe-1 my-3 list-group-item text-secondary discountprice">
+         
+         <sup>EGP</sup>{realprice}
         </li>
+                  <li style={{border:'none' , fontSize:'17px'}} className="px-0 my-3 mx-0 list-group-item font-color">
+          <sup>EGP</sup>{discountprice}
+        </li>
+        </>
+          ):(   <li  style={{border:'none'}}  className="list-group-item text-secondary">
+          <sup>EGP</sup>{price}
+        </li>)}
+     
+        
+        </div>
+       
       </ul>
 
       <div className="card-body">
@@ -68,7 +82,15 @@ const ProductItem = ({ image, title, price, discount , className }) => {
 
 
  <ProductModal open={isOpenProductModal}
-    closeProductModal={closeProductModal}/>
+    closeProductModal={closeProductModal}
+    name={title}
+    realprice={realprice}
+    discountprice={discountprice}
+    price={price}
+    images={images}
+    description={description}
+    brand={brand}
+    />
 
     </>
   );

@@ -10,8 +10,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import offersIMG from "../../assets/special-offer-star-7527442-removebg-preview.png";
 import { GoMail } from "react-icons/go";
-import oralCare from "../../assets/Health+Problems+That+Poor+Oral+Hygiene+Cause-removebg-preview.png"
-import hairCare from "../../assets/Category_-_Hair_Care-removebg-preview.png"
+import oralcare from "../../assets/oralhygiene.png" ;
+import haircare from "../../assets/haircare.png";
+import nailcare from "../../assets/nailcare.png";
+import under200 from "../../assets/under200.png";
+import skincare from "../../assets/skincare.png";
+import korean from "../../assets/korean.png";
+import sunscreen from "../../assets/sunscreen.jpeg";
 
 const Home = () =>{
      var productSliderOptions = {
@@ -27,119 +32,159 @@ const Home = () =>{
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 8,
+  slidesToShow: 6,
   slidesToScroll: 1,
   arrows: true,
 };
 
-      const products = [
+      const productsNew = [
     {
-      image:
-        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1752334763_9f5fb91b-e92b-470d-87be-3f667d80f6f7.png",
-      title: "Cheesy Mushroom",
-      price: 190,
+            images:[        "https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg",
+       "https://m.media-amazon.com/images/I/61eHITpNFtL._AC_SX569_.jpg",
+,        "https://m.media-amazon.com/images/I/61SVz8DtYBL._AC_SX569_.jpg",
+],
+      title: "La Roche-Posay Effaclar Ultra Concentrated Serum 30ml (12)",
+      price: '1,900',
+      realprice:'1900',
+      discountprice:'1600',
       discount: 28,
+      description:'dark spots coeerction',
+       brand:'La Roche-Posay'
     },
     {
-      image:
-        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1767202250_a0b9e23d-0d20-4cba-b02c-f5f9e60449a5.jpg",
+            images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+      "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg"
+],
       title: "Chicken Burger",
       price: 220,
       discount: 15,
+         description:'dark spots coeerction',
+          brand:'zara'
     },
     {
-      image:
-        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1701100860_9ab6d740-1a26-455d-9765-dbd23efa1175.jpg",
-      title: "Double Burger",
+            images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+],
+    title: "Double Burger",
       price: 250,
       discount: 10,
+         description:'dark spots coeerction',
+          brand:'zara'
     },
     {
-      image:
+      images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+     "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
         "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+],
       title: "Beef Burger",
       price: 210,
       discount: 20,
+         description:'dark spots coeerction',
+          brand:'zara'
     },
     {
-      image:
+            images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
         "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+],
       title: "Classic Burger",
       price: 180,
+      discountprice:80,
       discount: 12,
+         description:'dark spots coeerction',
+          brand:'zara'
+    }
+  ];
+
+
+      const products = [
+    {
+            images:[        "https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg",
+       "https://m.media-amazon.com/images/I/61eHITpNFtL._AC_SX569_.jpg",
+,        "https://m.media-amazon.com/images/I/61SVz8DtYBL._AC_SX569_.jpg",
+],
+      title: "La Roche-Posay Effaclar Ultra Concentrated Serum 30ml (12)",
+      price: '1,900',
+      realprice:'1900',
+      discountprice:'1600',
+      discount: 28,
+      description:'dark spots coeerction',
+       brand:'La Roche-Posay'
     },
+    {
+            images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+      "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg"
+],
+      title: "Chicken Burger",
+      price: 220,
+      discount: 15,
+         description:'dark spots coeerction',
+          brand:'zara'
+    },
+    {
+            images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+],
+    title: "Double Burger",
+      price: 250,
+      discount: 10,
+         description:'dark spots coeerction',
+          brand:'zara'
+    },
+    {
+      images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+     "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+],
+      title: "Beef Burger",
+      price: 210,
+      discount: 20,
+         description:'dark spots coeerction',
+          brand:'zara'
+    },
+    {
+            images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
+],
+      title: "Classic Burger",
+      price: 180,
+      discountprice:80,
+      discount: 12,
+         description:'dark spots coeerction',
+          brand:'zara'
+    }
   ];
 
 const categories = [
     {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {image:oralCare,
-        name:'Oral Hygiene'
+      image:skincare
     },
       {
-        image:hairCare,
-        name:'Hair Care'
+          image:haircare
+       
     },
       {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Korean Products'
+      
+      image:oralcare
     },
       {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Nail Care'
+       image:nailcare
     },
       {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
+        image:korean
     },
       {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
+     image:under200
     },
       {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
-    },
-      {
-        image:"https://static.vecteezy.com/system/resources/thumbnails/007/266/639/small/cosmetics-skincare-facial-wash-woman-logo-vector.jpg",
-        name:'Skin Care'
+       image:sunscreen
     }
-]
-
+  ]
 
 return(
     
@@ -155,10 +200,6 @@ return(
       <HomeCat
       key={index}
       image={item.image}
-      name={item.name}
-      className={
-        index===0 ?'firstBack' : index===1 ?'secBack' : index===2 ? 'thirdBack' : 'allBack'
-      }
     />
   ))}
 </Slider>
@@ -195,10 +236,13 @@ return(
     {products.map((product, index) => (
       <ProductItem
         key={index}
-        image={product.image}
+        images={product.images}
         title={product.title}
         price={product.price}
+        discountprice={product.discountprice}
+        realprice={product.realprice}
         discount={product.discount}
+        description={product.description}
         className={
           index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
         }
@@ -220,13 +264,17 @@ return(
                     </div>
                    
                             <div className="productRow w-100 mt-3 d-flex productRow2">
-    {products.map((product, index) => (
+    {productsNew.map((product, index) => (
       <ProductItem
         key={index}
-        image={product.image}
+        images  ={product.images}
         title={product.title}
         price={product.price}
+        discountprice={product.discountprice}
+        realprice={product.realprice}
+        brand={product.brand}
         discount={product.discount}
+        description={product.description}
         className={
           index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
         }

@@ -8,8 +8,6 @@ const HomeCat =({image,name,className}) =>{
         
     <div className={`catItem ${className} cursor`}>      
         <img src={image}/>
-          <h6>{name}</h6>
-   
     </div>
     )
 }
