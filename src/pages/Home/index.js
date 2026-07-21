@@ -115,7 +115,10 @@ const Home = () =>{
       discount: 28,
       description:'dark spots coeerction',
        brand:'La Roche-Posay',
-          state:'out of stock'
+          state:'out of stock',
+          type:'Serum',
+          MFG:'21-jul-26',
+          life:'2 years'
     },
     {
             images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
@@ -249,6 +252,9 @@ return(
         brand={product.brand}
         description={product.description}
         state={product.state}
+         type={product.type}
+        MFG={product.MFG}
+        life={product.life}
         className={
           index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
         }
@@ -282,6 +288,9 @@ return(
         discount={product.discount}
         description={product.description}
         state={product.state}
+        type={product.type}
+        MFG={product.MFG}
+        life={product.life}
         className={
           index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
         }

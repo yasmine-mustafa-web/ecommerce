@@ -5,7 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import ProductModal from "../ProductModal";
 import { useState } from 'react';
 
-const ProductItem = ({state, images, title, realprice,discountprice, price, discount , className ,description , brand }) => {
+const ProductItem = ({type,MFG , life ,state, images, title, realprice,discountprice, price, discount , className ,description , brand }) => {
 
   const [isOpenProductModal,setisOpenProductModal]= useState(false);
 
@@ -91,6 +91,9 @@ const ProductItem = ({state, images, title, realprice,discountprice, price, disc
     description={description}
     brand={brand}
     state={state}
+     type={type}
+        MFG={MFG}
+        life={life}
     />
 
     </>
