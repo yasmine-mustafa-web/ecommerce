@@ -32,7 +32,7 @@ body{
   
 }
 .bg-red{
-  background: rgb(3, 7, 94);
+  background: rgb(3, 7, 94) !important;
 }
 .font-color{
   color: rgb(3, 7, 94) ;
@@ -712,8 +712,8 @@ justify-content: center;
   background: transparent !important;
   outline: none !important;
   width: 20px !important;
-  margin-left: 10px !important;
   font-size: 16px;
+  text-align: center;
 }
 .instock{
   color: #00b853;

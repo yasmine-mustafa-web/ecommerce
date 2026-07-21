@@ -134,9 +134,14 @@ const ProductModal =({state,open , closeProductModal , name ,price ,discountpric
                       <p className={`${state === 'out of stock' ? 'outofstock' : 'instock'}`}>{state}</p>
                   
                     <p>{description}</p>
-                    <div className='d-flex align-items-center'>
-                          <QtyBox />
+                    <div className='d-flex align-items-center gap-3'>
+                          <QtyBox state={state} />
+                         
+                          <Button style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'140px' , maxWidth: '220px', fontSize:'.8125rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={state==='out of stock'} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
                     </div>
+                    
+
+
                     </div>
                     </div>
         </Dialog>

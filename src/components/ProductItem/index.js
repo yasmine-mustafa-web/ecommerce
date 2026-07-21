@@ -74,7 +74,7 @@ const ProductItem = ({state, images, title, realprice,discountprice, price, disc
       </ul>
 
       <div className="card-body">
-        <button onClick={(e)=>{ e.preventDefault()}} href="#" className="btn btn-card w-100">
+        <button disabled={state==='out of stock'} onClick={(e)=>{ e.preventDefault()}} href="#" className="btn btn-card w-100">
           Add to cart
         </button>
       </div>
