@@ -60,7 +60,8 @@ const Home = () =>{
       price: 220,
       discount: 15,
          description:'dark spots coeerction',
-          brand:'zara'
+          brand:'zara',
+          state:'In Stock'
     },
     {
             images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
@@ -71,7 +72,8 @@ const Home = () =>{
       price: 250,
       discount: 10,
          description:'dark spots coeerction',
-          brand:'zara'
+          brand:'zara',
+          state:'out of stock'
     },
     {
       images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
@@ -94,7 +96,8 @@ const Home = () =>{
       discountprice:80,
       discount: 12,
          description:'dark spots coeerction',
-          brand:'zara'
+          brand:'zara',
+          state:'out of stock'
     }
   ];
 
@@ -111,7 +114,8 @@ const Home = () =>{
       discountprice:'1600',
       discount: 28,
       description:'dark spots coeerction',
-       brand:'La Roche-Posay'
+       brand:'La Roche-Posay',
+          state:'out of stock'
     },
     {
             images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
@@ -242,7 +246,9 @@ return(
         discountprice={product.discountprice}
         realprice={product.realprice}
         discount={product.discount}
+        brand={product.brand}
         description={product.description}
+        state={product.state}
         className={
           index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
         }
@@ -275,6 +281,7 @@ return(
         brand={product.brand}
         discount={product.discount}
         description={product.description}
+        state={product.state}
         className={
           index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
         }

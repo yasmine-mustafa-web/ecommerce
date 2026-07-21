@@ -7,14 +7,13 @@ import React, { useEffect } from 'react';
 import Slide from '@mui/material/Slide';
 import { Carousel, IconButton, Image } from "@chakra-ui/react"
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
-import { FaMinus } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa6";
+import QtyBox from '../QtyBox';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 })
 
-const ProductModal =({open , closeProductModal , name ,price ,discountprice, realprice , images , brand, description})=>{
+const ProductModal =({state,open , closeProductModal , name ,price ,discountprice, realprice , images , brand, description})=>{
     return(
         <>
            <Dialog
@@ -49,7 +48,7 @@ const ProductModal =({open , closeProductModal , name ,price ,discountprice, rea
                 <div className='col-12 col-md-4'>
              <div className='d-flex col-md-4 justify-content-between align-items-center' >
                 {brand &&(
-                                 <p className='mt-2 pe-2 me-2 text-secondary' style={{borderRight:'1px solid rgba(0,0,0,0.1)', flexWrap:'nowrap' , whiteSpace:'nowrap'}}>Brands: <b>{brand}</b></p>
+                                 <p className='mt-2 pe-2 me-2 text-secondary' style={{borderRight:'1px solid rgba(0,0,0,0.1)', flexWrap:'nowrap' , whiteSpace:'nowrap'}}>Brand : <b>{brand}</b></p>
 
                 )}
              <li className="list-group-item">
@@ -123,21 +122,20 @@ const ProductModal =({open , closeProductModal , name ,price ,discountprice, rea
                         {
                             discountprice && realprice ? (
                                 <>
-                                <h4>{discountprice}</h4>
-                                <h4 className='discountprice'>{realprice}</h4>
+                                <div className='d-flex gap-2'>
+                                <h6 className='discountprice text-secondary '><sup>EGP</sup>{realprice}</h6>
+                                <h4><sup>EGP</sup>{discountprice}</h4>                             
+                                </div>
                                 </>
                             ):(
                                    <h4>{price}</h4>
                             )
                         }
-                      
+                      <p className={`${state === 'out of stock' ? 'outofstock' : 'instock'}`}>{state}</p>
+                  
                     <p>{description}</p>
                     <div className='d-flex align-items-center'>
-                          <div className='qtyDrop d-flex align-items-center'>
-                            <button><FaMinus/></button>
-                            <input type='text'/>
-                            <button><FaPlus/></button>
-                    </div>
+                          <QtyBox />
                     </div>
                     </div>
                     </div>

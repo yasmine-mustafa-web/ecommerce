@@ -5,7 +5,7 @@ import { FaRegHeart } from "react-icons/fa";
 import ProductModal from "../ProductModal";
 import { useState } from 'react';
 
-const ProductItem = ({ images, title, realprice,discountprice, price, discount , className ,description , brand }) => {
+const ProductItem = ({state, images, title, realprice,discountprice, price, discount , className ,description , brand }) => {
 
   const [isOpenProductModal,setisOpenProductModal]= useState(false);
 
@@ -40,7 +40,7 @@ const ProductItem = ({ images, title, realprice,discountprice, price, discount ,
       </div>
 
       <ul className="list-group list-group-flush">
-        <li className="list-group-item text-green">In Stock</li>
+        <li className={`list-group-item ${state=== 'out of stock' ? 'text-danger' :'text-green' }`}>{state}</li>
 
         <li className="list-group-item">
           <RatingGroup.Root
@@ -90,6 +90,7 @@ const ProductItem = ({ images, title, realprice,discountprice, price, discount ,
     images={images}
     description={description}
     brand={brand}
+    state={state}
     />
 
     </>
