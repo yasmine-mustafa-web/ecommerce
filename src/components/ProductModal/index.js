@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import Dialog from '@mui/material/Dialog'
 import { RatingGroup } from "@chakra-ui/react";
 import { MdClose } from "react-icons/md";
-import { useState } from 'react';
+import { useState} from 'react';
 import React, { useEffect } from 'react';
 import Slide from '@mui/material/Slide';
 import { Carousel, IconButton, Image } from "@chakra-ui/react"
@@ -11,6 +11,8 @@ import QtyBox from '../QtyBox';
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineCompareArrows } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
+import ZoomImage from '../ZoomImg';
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
@@ -81,13 +83,7 @@ const ProductModal =({type,MFG , life ,state,open , closeProductModal , name ,pr
         <Carousel.ItemGroup width="full">
           {images.map((item, index) => (
             <Carousel.Item key={index} index={index}>
-              <Image
-                aspectRatio="16/9"
-                src={item}
-                w="100%"
-                h="100%"
-                objectFit="cover"
-              />
+              <ZoomImage src={item} />
             </Carousel.Item>
           ))}
         </Carousel.ItemGroup>
@@ -143,9 +139,9 @@ const ProductModal =({type,MFG , life ,state,open , closeProductModal , name ,pr
                           <Button style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'125px' , maxWidth: '220px', fontSize:'.9rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={state==='out of stock'} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
                     </div>
                     <div className='my-5 d-flex align-items-center gap-2'>
-                      <button  type="button" class=" text-uppercase btn rounded-pill d-flex align-items-center py-2 px-2" style={{height: '2.0625rem' , border:'1px solid rgba(0,0,0,0.3)',    fontFamily: '"Dosis", sans-serif'
+                      <button  type="button" className=" text-uppercase btn rounded-pill d-flex align-items-center py-2 px-2" style={{height: '2.0625rem' , border:'1px solid rgba(0,0,0,0.3)',    fontFamily: '"Dosis", sans-serif'
     , fontSize:'14px'}}><FaRegHeart className='fs-6' /> &nbsp; add to wishlist</button>
-                         <button  type="button" class=" text-uppercase btn  d-flex align-items-center py-2 px-2" style={{height: '2.0625rem'   , fontFamily: '"Dosis", sans-serif'
+                         <button  type="button" className=" text-uppercase btn  d-flex align-items-center py-2 px-2" style={{height: '2.0625rem'   , fontFamily: '"Dosis", sans-serif'
     , fontSize:'14px'}}><MdOutlineCompareArrows /> &nbsp; add to compare</button>
                     </div>
                           <div style={{borderBottom:'1px solid rgba(0,0,0,0.1)' , color:'#3e445a'}} className='align-items-center'>

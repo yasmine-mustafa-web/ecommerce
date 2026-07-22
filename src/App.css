@@ -736,3 +736,32 @@ justify-content: center;
    font-size: 0.75rem;
    font-family: "Dosis", sans-serif;
 }
+.zoom-wrapper {
+  position: relative;
+  width: 100%;
+  height: 360px; 
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.zoom-base-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain !important;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.zoom-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+   transition: background-position 0.05s ease-out;
+  background-repeat: no-repeat;
+  background-size: 250%; 
+  z-index: 10;
+  pointer-events: none;
+}
