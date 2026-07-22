@@ -5,18 +5,32 @@ import Home from "./pages/Home";
 import Header from "./components/Header"
 import { Provider } from "./components/ui/provider.jsx";
 import Footer from "./components/Footer";
+import SignIn from './pages/SignIn/index.js';
+import { useState , createContext } from 'react';
+export const MyContext = createContext();
 
 function App() {
+
+  const [isHeaderFooterShow , setisHeaderFooterShow ] = useState(true);
+
+  const values = {
+      isHeaderFooterShow,
+    setisHeaderFooterShow
+  }
   return (
  <Provider>
 <BrowserRouter>
-<Header/>
+<MyContext.Provider value={values}>
+  {isHeaderFooterShow === true && <Header/>
+ }
 <Routes>
    
         <Route path="/" exact={true} element={<Home/>}/>
-  
+        <Route path="/signIn" exact={true} element={<SignIn/>}/>
+
 </Routes>
-<Footer />
+  {isHeaderFooterShow === true && <Footer />}
+</MyContext.Provider>
 </BrowserRouter>
   </Provider>
   );

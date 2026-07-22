@@ -765,3 +765,37 @@ justify-content: center;
   z-index: 10;
   pointer-events: none;
 }
+.signInPage{
+  width: 100%;
+  height: 100vh;
+
+}
+.signInPage .box{
+  width: 500px !important;
+  height: 80% !important;
+  margin: 0 auto !important;
+  background: #fff;
+  z-index: 100;
+  position: relative;
+}
+.signInPage .box img{
+  width: 170px;
+  height: 170px;
+  margin: auto;
+}
+.signInPage .box form .form-floating{
+margin: 20px 0px;
+}
+.signInPage .box form a{
+  text-decoration: none;
+}
+.signInPage .box form a:hover{
+  text-decoration: underline;
+}
+.socialsForm{
+  display: flex;
+  justify-content: center;
+}
+.socialsForm svg{
+  font-size: 24px !important;
+}
