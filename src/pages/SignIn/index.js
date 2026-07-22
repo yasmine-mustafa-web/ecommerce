@@ -13,9 +13,9 @@ const SignIn = () =>{
         context.setisHeaderFooterShow(false);
     },[])
     return(
-        <section className="signInPage justify-content-center p-3">
+        <section className="signInPage justify-content-center p-0">
             <div className="container">
-                <div className="card shadow border-0 p-3 box">
+                <div className="card border-0 p-0 box">
                     <div className="text-center">
                         <img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg' />
                     </div>
@@ -33,13 +33,18 @@ const SignIn = () =>{
 <a className="cursor">Forgot password?</a>
 <Button className="my-3 btn w-100 btn-lg bg-red text-white fw-semibold">Sign In</Button>
 <p>Not registerd? <Link to='/signUp'>Sign up</Link></p>
-<h6 className="text-center mt-4 fw-bold">Or continue with social account</h6>
-<ul className="socialsForm d-flex gap-2 mt-2">
-    <li className="text-center">
-        <Link to='#'><FcGoogle/></Link>
+
+<div className="d-flex align-items-center my-4">
+  <hr className="flex-grow-1 m-0" />
+  <span className="px-3 text-secondary">OR</span>
+  <hr className="flex-grow-1 m-0" />
+</div>
+<ul className="socialsForm d-flex p-0 m-0 text-center justify-content-center gap-2">
+    <li> 
+    <Link  style={{ width: "90px", height: "50px" }} className="rounded-4 btn btn-outline-secondary d-flex align-items-center text-center justify-content-center" to='#'><FcGoogle/></Link> 
     </li>
     <li>
-                <Link to='#'><FaFacebookF/></Link>
+       <Link  style={{ width: "90px", height: "50px" }} className="rounded-4 btn btn-outline-secondary d-flex align-items-center text-center justify-content-center" to='#'><FaFacebookF/></Link>        
 
     </li>
 </ul>
