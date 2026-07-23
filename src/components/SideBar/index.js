@@ -67,7 +67,7 @@ import { Slider, Stack, Text } from "@chakra-ui/react"
               <div className="filteredBox">
                 <h6 className="text-uppercase fw-bold">filter by price</h6>
                   <Stack gap="4" width="300px">
-      <Slider.Root defaultValue={[30, 70]} thumbCollisionBehavior="push">
+      <Slider.Root className="range" defaultValue={[30, 70]} thumbCollisionBehavior="push">
         <Slider.Label>Price Range</Slider.Label>
         <Slider.Control>
           <Slider.Track>
@@ -76,9 +76,6 @@ import { Slider, Stack, Text } from "@chakra-ui/react"
           <Slider.Thumbs />
         </Slider.Control>
       </Slider.Root>
-      <Text color="fg.muted" textStyle="sm">
-        Try dragging the thumbs together to see them push each other
-      </Text>
     </Stack>
               </div><br/><br/>
                <div className="filteredBox ">

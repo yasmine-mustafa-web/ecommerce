@@ -815,6 +815,7 @@ flex-direction: row !important;
 .productListing .content-right{
    width: 80%;
   flex: 0 0 80%;
+  padding: 0px 20px;
 }
 .content-right img{
   height: 280px !important;
@@ -822,4 +823,22 @@ flex-direction: row !important;
 .showBy{
   height: 50px !important;
   background-color: #f7f8fd;
+  width: 100%;
+  padding: 0px 20px !important;
+  align-items: center !important;
+}
+.showBy .btnWrapper{
+  align-items: center !important;
+}
+.showBy .btnWrapper button{
+  min-width: 45px !important;
+  width: 45px !important;
+  height: 45px !important;
+  border-radius: 50% !important;
+}
+.showBy .btnWrapper button svg{
+  font-size: 1.28rem !important;
+}
+.range{
+  width: 65% !important;
 }
