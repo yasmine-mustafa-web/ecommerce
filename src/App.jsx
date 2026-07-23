@@ -7,6 +7,7 @@ import { Provider } from "./components/ui/provider.jsx";
 import Footer from "./components/Footer";
 import SignIn from './pages/SignIn/index.js';
 import { useState , createContext } from 'react';
+import SignUp from './pages/SignUp/index.js';
 export const MyContext = createContext();
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
    
         <Route path="/" exact={true} element={<Home/>}/>
         <Route path="/signIn" exact={true} element={<SignIn/>}/>
+        <Route path="/signUp" exact={true} element={<SignUp/>}/>
 
 </Routes>
   {isHeaderFooterShow === true && <Footer />}
