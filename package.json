@@ -6,6 +6,7 @@
     "@chakra-ui/react": "^3.36.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@hookform/resolvers": "^5.4.0",
     "@mui/icons-material": "^6.5.0",
     "@mui/material": "^6.5.0",
     "@mui/styled-engine-sc": "^9.1.1",
@@ -26,7 +27,8 @@
     "react-slider": "^2.0.6",
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.4.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zod": "^4.4.3"
   },
   "scripts": {
     "start": "react-scripts start",

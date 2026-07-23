@@ -802,3 +802,24 @@ margin: 20px 0px;
 .css-sfay1y{
 flex-direction: row !important;
 }
+.productsListing{
+  padding: 35px 0px;
+}
+.productListing{
+  gap: 20px;
+}
+.productListing .sidebar{
+  width: 20%;
+  flex: 0 0 20%;
+}
+.productListing .content-right{
+   width: 80%;
+  flex: 0 0 80%;
+}
+.content-right img{
+  height: 280px !important;
+}
+.showBy{
+  height: 50px !important;
+  background-color: #f7f8fd;
+}
