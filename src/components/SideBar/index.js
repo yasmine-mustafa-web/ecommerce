@@ -1,5 +1,13 @@
 import { Slider, Stack, Text } from "@chakra-ui/react"
-    const SideBar=()=>{
+    const SideBar=({
+  brandsList,
+  selectedBrands,
+  toggleBrand,
+  selectedStatus,
+  toggleStatus,
+  priceRange=[0,1500],
+  setPriceRange,
+})=>{
         
 
         return(
@@ -67,7 +75,14 @@ import { Slider, Stack, Text } from "@chakra-ui/react"
               <div className="filteredBox">
                 <h6 className="text-uppercase fw-bold">filter by price</h6>
                   <Stack gap="4" width="300px">
-      <Slider.Root className="range" defaultValue={[30, 70]} thumbCollisionBehavior="push">
+      <Slider.Root
+       className="range"
+       value={priceRange}
+       min={0}
+       max={1500}
+     thumbCollisionBehavior="push"
+      onValueChange={(details) => setPriceRange(details.value)}
+      >
         <Slider.Label>Price Range</Slider.Label>
         <Slider.Control>
           <Slider.Track>
@@ -76,24 +91,26 @@ import { Slider, Stack, Text } from "@chakra-ui/react"
           <Slider.Thumbs />
         </Slider.Control>
       </Slider.Root>
+      <p>Price : EGP {priceRange[0]} - EGP {priceRange[1]} </p>
     </Stack>
               </div><br/><br/>
                <div className="filteredBox ">
                 <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product status</h6>
                 <div className="scroll" >
                     <ul>
-                        <li>
-                              <div className="form-check">
-                                <input className="form-check-input" type="checkbox" role="switch" id="check"/>
-                                <label className="form-check-label text-capitalize" htmlFor="check">in stock</label>
+                        {["in stock " , 'out of stock ' , "on sale"].map((status) =>(
+                            <li key={status}>
+                             <div className="form-check">
+                                <input className="form-check-input"
+                                 type="checkbox" 
+                                 role="switch"
+                                 id={status}
+                                 checked={selectedStatus.includes(status)}
+                                 onChange={() => toggleStatus(status)}/>
+                                <label className="form-check-label text-capitalize" htmlFor={status}>{status}</label>
                               </div>
-                        </li>
-                          <li>
-                              <div className="form-check">
-                                <input className="form-check-input" type="checkbox" role="switch" id="check"/>
-                                <label className="form-check-label text-capitalize" htmlFor="check">on sale</label>
-                              </div>
-                        </li> 
+                            </li>
+                        ))}
                         </ul>
                         </div>
                         </div> <br/><br/>
@@ -101,19 +118,24 @@ import { Slider, Stack, Text } from "@chakra-ui/react"
                 <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>brands</h6>
                 <div className="scroll" >
                     <ul>
-                        <li>
-                              <div className="form-check">
-                                <input className="form-check-input" type="checkbox" role="switch" id="check"/>
-                                <label className="form-check-label text-capitalize" htmlFor="check">in stock</label>
+                        {brandsList.map(({name,count}) =>(
+                            <li key={name}>
+                                <div className="form-check">
+                                <input className="form-check-input"
+                                 type="checkbox"
+                                role="switch"
+                                id={name}
+                                checked={selectedBrands.includes(name)}
+                                onChange={() => toggleBrand(name)}
+                                />
+                                <label className="form-check-label text-capitalize" htmlFor={name}>{name}</label>
                               </div>
-                        </li>
-                          <li>
-                              <div className="form-check">
-                                <input className="form-check-input" type="checkbox" role="switch" id="check"/>
-                                <label className="form-check-label text-capitalize" htmlFor="check">on sale</label>
-                              </div>
-                        </li> 
+                               <span className="text-secondary">({count})</span>
+                            </li>
+                        ))}
                         </ul>
+                              
+        
                         </div>
                           </div><br/><br/>
                         <div className="w-100">

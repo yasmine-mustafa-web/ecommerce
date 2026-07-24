@@ -5,7 +5,7 @@ import { CgMenuGridO } from "react-icons/cg";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import { TfiLayoutGrid4 } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState , useMemo } from "react";
 import ProductItem from "../../components/ProductItem";
 const Listing=()=>{
          const products = [
@@ -73,12 +73,65 @@ const Listing=()=>{
     }
   ];
 
+
+        const [selectedBrands, setSelectedBrands] = useState([]);
+        const [selectedStatus, setSelectedStatus] = useState([]);
+        const [priceRange, setPriceRange] = useState([0, 1500]);
+
+         const brandsList = useMemo(()=>{
+            const counts = {};
+            products.forEach((product) =>{
+                if (product.brand) counts[product.brand ]= (counts[product.brand] || 0) + 1;
+            });
+            return Object.entries(counts).map(([name,count]) => ({name , count}))
+         }, [products]);
+
+
+         const toggleBrand = (brand) =>{
+            setSelectedBrands((prev) =>
+            prev.includes(brand)
+            ? prev.filter((b) => b !== brand)
+            : [...prev , brand] 
+            );
+         };
+
+
+        const toggleStatus = (status) => {
+        setSelectedStatus((prev) =>
+        prev.includes(status)
+        ? prev.filter((s) => s !== status)
+        : [...prev, status]
+  );
+};
+
+        const filteredProducts = products.filter((product) =>{
+            const matchesBrand = selectedBrands.length===0 ||selectedBrands.includes(product.brand);
+            const matchesStatus = selectedStatus.length===0 ||selectedStatus.includes(product.state);
+            const priceValue = Number(
+              String(product.discountprice || product.price).replace(/,/g, "")
+             );
+             const matchesPrice =
+             priceValue >= priceRange[0] && priceValue <= priceRange[1];
+           
+             return matchesBrand && matchesStatus && matchesPrice;
+        });
+
     return(
         <>
+       
             <section className="productsListing">
                 <div className="container">
                     <div className="productListing d-flex">
-                        <SideBar/>
+                        <SideBar
+                             brandsList={brandsList}
+                             selectedBrands={selectedBrands}
+                             toggleBrand={toggleBrand}
+                             selectedStatus={selectedStatus}
+                             toggleStatus={toggleStatus}
+                             priceRange={priceRange}
+                             setPriceRange={setPriceRange}
+                        
+                        />
 
                         <div className="content-right">
                             <div>
@@ -107,7 +160,7 @@ const Listing=()=>{
                         
                   
                 <div className="productRow w-100 mt-3 d-flex">
-                    {products.map((product,index) =>(
+                    {filteredProducts.map((product,index) =>(
                         <ProductItem
                                 key={index}
                                 images={product.images}
@@ -123,7 +176,7 @@ const Listing=()=>{
                                 MFG={product.MFG}
                                 life={product.life}
                                 className={
-                                  index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
+                                  index===0 ?"card-right" :index===filteredProducts.length-1 ?"card-left" :"card-middle"
                                 }
                               />
                                  ))}
