@@ -406,7 +406,7 @@ color: #000 !important;
   border-left: none !important;
 }
 .card-img-top{
-  object-fit: contain;
+  object-fit: contain !important;
   border-radius: none !important;
 }
 .btn-card{
@@ -841,4 +841,40 @@ flex-direction: row !important;
 }
 .range{
   width: 65% !important;
+}
+.pagination {
+  font-family: 'Dosis', sans-serif;
+}
+
+.page-btn {
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.page-btn:hover {
+  color: #29abe2;
+}
+
+.page-btn.active {
+  background-color: #29abe2;
+  color: #fff;
+}
+
+.next-btn {
+  font-size: 18px;
+}
+
+.next-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }

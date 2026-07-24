@@ -1,12 +1,15 @@
 import { Slider, Stack, Text } from "@chakra-ui/react"
-    const SideBar=({
+const SideBar=({
   brandsList,
   selectedBrands,
   toggleBrand,
   selectedStatus,
   toggleStatus,
-  priceRange=[0,1500],
+  priceRange=[0,3000],
   setPriceRange,
+   categoriesList = [],         
+  selectedCategories = [],  
+  toggleCategory,
 })=>{
         
 
@@ -16,58 +19,26 @@ import { Slider, Stack, Text } from "@chakra-ui/react"
                 <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product categories</h6>
                 <div className="scroll" >
                     <ul>
-                        <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>
-                          <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>  <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>  <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>  <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>  <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>  <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>  <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>  <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>  <li>
-                              <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault"/>
-                                <label class="form-check-label" htmlFor="switchCheckDefault">Hair</label>
-                              </div>
-                        </li>
+                       {categoriesList.map(({ name, count }) => (
+  <li key={name}>
+    <div className="form-check form-switch d-flex justify-content-between">
+      <div>
+        <input
+          className="form-check-input"
+          type="checkbox"
+          role="switch"
+          id={`cat-${name}`}
+          checked={selectedCategories.includes(name)}
+          onChange={() => toggleCategory(name)}
+        />
+        <label className="form-check-label text-capitalize" htmlFor={`cat-${name}`}>
+          {name}
+        </label>
+      </div>
+      <span className="text-secondary">({count})</span>
+    </div>
+  </li>
+))}
                     </ul>
                   
                 </div>
@@ -79,7 +50,7 @@ import { Slider, Stack, Text } from "@chakra-ui/react"
        className="range"
        value={priceRange}
        min={0}
-       max={1500}
+       max={3000}
      thumbCollisionBehavior="push"
       onValueChange={(details) => setPriceRange(details.value)}
       >
