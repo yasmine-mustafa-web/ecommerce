@@ -21,7 +21,7 @@ const ProductItem = ({category , type,MFG , life ,state, images, title, realpric
 
   return (
     <>
-    <div className={`card ${className}`} style={{ width: "13rem" }}>
+    <div className={`card ${className}`}>
       <div className="upperCard">
          <div className="actions">
         <Button  onClick={(e)=>{e.stopPropagation(); viewProductDetails(1);}}>

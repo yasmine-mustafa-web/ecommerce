@@ -429,7 +429,6 @@ color: #000 !important;
 }
 .card{
   position: relative;
-  width: 13rem !important;
   overflow: hidden !important;
 }
 .card .badge{
@@ -877,4 +876,29 @@ flex-direction: row !important;
 .next-btn:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+}
+.active-view {
+  background-color: rgba(41, 171, 226, 0.1) !important;
+  color: #29abe2 !important;
+}
+.grid-cols-1 .card{
+    width: calc(65% - 15px);
+    justify-content: center;
+    margin: 0 auto !important;
+}
+.grid-cols-2 .card{
+    width: calc(35% - 15px);
+    justify-content: center;
+    margin: 0 auto !important;
+}
+.grid-cols-4 .card {
+  width: calc(25% - 15px);
+}
+
+.grid-cols-3 .card {
+  width: calc(33.333% - 15px);
+}
+
+.productRow {
+  gap: 15px;
 }

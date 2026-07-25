@@ -3,8 +3,8 @@ const SideBar=({
   brandsList,
   selectedBrands,
   toggleBrand,
-  selectedStatus,
-  toggleStatus,
+  selectedState,
+  toggleState,
   priceRange=[0,3000],
   setPriceRange,
    categoriesList = [],         
@@ -66,19 +66,19 @@ const SideBar=({
     </Stack>
               </div><br/><br/>
                <div className="filteredBox ">
-                <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product status</h6>
+                <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product state</h6>
                 <div className="scroll" >
                     <ul>
-                        {["in stock " , 'out of stock ' , "on sale"].map((status) =>(
-                            <li key={status}>
+                        {["in stock " , 'out of stock ' , "on sale"].map((state) =>(
+                            <li key={state}>
                              <div className="form-check">
                                 <input className="form-check-input"
                                  type="checkbox" 
                                  role="switch"
-                                 id={status}
-                                 checked={selectedStatus.includes(status)}
-                                 onChange={() => toggleStatus(status)}/>
-                                <label className="form-check-label text-capitalize" htmlFor={status}>{status}</label>
+                                 id={state}
+                                 checked={selectedState.includes(state)}
+                                 onChange={() => toggleState(state)}/>
+                                <label className="form-check-label text-capitalize" htmlFor={state}>{state}</label>
                               </div>
                             </li>
                         ))}
