@@ -10,6 +10,7 @@ import { MdElectricalServices } from "react-icons/md";
 import { PiHairDryer } from "react-icons/pi";
 import { GiWrappedSweet } from "react-icons/gi";
 import { TiMessage } from "react-icons/ti";
+import { MdProductionQuantityLimits } from "react-icons/md";
 import { useState } from "react";
 import { LuBeef } from "react-icons/lu";
 import { GiChickenLeg } from "react-icons/gi";
@@ -46,6 +47,7 @@ const Navigation = () =>{
                         <div className='col-sm-9 navPart2 d-flex align-items-center'>
                                 <ul className="list list-inline ml-auto">
                                     <li className="list-inline-item"><Link to="/"><Button><IoMdHome />Home</Button></Link></li>
+                                    <li className="list-inline-item"><Link to="/listing/:id"><Button><MdProductionQuantityLimits />Shop</Button></Link></li>
                                     <li className="list-inline-item"><Link to="/"><Button><TfiShine  />Care</Button></Link>
                                     <div className="submenu shadow">
                                     <Link to="/"><Button>hair care</Button></Link>

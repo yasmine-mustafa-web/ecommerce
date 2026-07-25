@@ -4,15 +4,33 @@ import { Button } from "@mui/material";
 import { FaRegHeart } from "react-icons/fa";
 import ProductModal from "../ProductModal";
 import { useState } from 'react';
-
+import { Link } from "react-router-dom";
+import Details from '../../pages/Details';
+import { useNavigate } from "react-router-dom";
 const ProductItem = ({category , type,MFG , life ,state, images, title, realprice,discountprice, price, discount , className ,description , brand }) => {
+const navigate = useNavigate();
 
   const [isOpenProductModal,setisOpenProductModal]= useState(false);
-
-  const viewProductDetails=(id)=>{
+const goToDetails = () => {
+navigate("/details", {
+        state: {
+            title,
+            images,
+            description,
+            brand,
+            state,
+            price,
+            realprice,
+            discountprice,
+            type,
+            MFG,
+            life,
+        },
+    });
+  };
+   const viewProductDetails = () => {
     setisOpenProductModal(true);
-
-  }
+  };
   const closeProductModal=()=>{
         setisOpenProductModal(false);
 
@@ -21,10 +39,12 @@ const ProductItem = ({category , type,MFG , life ,state, images, title, realpric
 
   return (
     <>
-    <div className={`card ${className}`}>
+       <div className={`card ${className}`}  onClick={goToDetails}
+  style={{ cursor: "pointer" }}>
+
       <div className="upperCard">
          <div className="actions">
-        <Button  onClick={(e)=>{e.stopPropagation(); viewProductDetails(1);}}>
+        <Button  onClick={(e)=>{e.stopPropagation();   viewProductDetails();}}>
           <SlSizeFullscreen />
         </Button>
         <Button onClick={(e)=>{e.stopPropagation(); }}>< FaRegHeart style={{fontSize:'20px'}}/></Button>
@@ -74,28 +94,26 @@ const ProductItem = ({category , type,MFG , life ,state, images, title, realpric
       </ul>
 
       <div className="card-body">
-        <button disabled={state==='out of stock'} onClick={(e)=>{ e.preventDefault()}} href="#" className="btn btn-card w-100">
+        <button disabled={state==='out of stock'} onClick={(e)=>{ e.preventDefault(); e.stopPropagation();}} href="#" className="btn btn-card w-100">
           Add to cart
         </button>
       </div>
     </div>
-
-
- <ProductModal open={isOpenProductModal}
-    closeProductModal={closeProductModal}
-    name={title}
-    realprice={realprice}
-    discountprice={discountprice}
-    price={price}
-    images={images}
-    description={description}
-    brand={brand}
-    state={state}
-     type={type}
-        MFG={MFG}
-        life={life}
-    />
-
+    <ProductModal
+  open={isOpenProductModal}
+  closeProductModal={closeProductModal}
+  name={title}
+  realprice={realprice}
+  discountprice={discountprice}
+  price={price}
+  images={images}
+  description={description}
+  brand={brand}
+  state={state}
+  type={type}
+  MFG={MFG}
+  life={life}
+/>
     </>
   );
 };

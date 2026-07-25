@@ -7,47 +7,39 @@ import React, { useEffect } from 'react';
 import Slide from '@mui/material/Slide';
 import { Carousel, IconButton, Image } from "@chakra-ui/react"
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
-import QtyBox from '../QtyBox';
+import QtyBox from '../../components/QtyBox';
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineCompareArrows } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import ZoomImage from '../ZoomImg';
-import Details from '../../pages/Details';
-
+import ZoomImage from '../../components/ZoomImg';
+import { useLocation } from "react-router-dom";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 })
 
-const ProductModal =({type,MFG , life ,state,open , closeProductModal , name ,price ,discountprice, realprice , images , brand, description})=>{
+const Details =()=>{
+    const {state} = useLocation();
+    if(!state){
+        return <h2>Product not found</h2>
+    }
+
+    const {
+        type,MFG , life ,open , closeProductModal , title ,price ,discountprice, realprice , images , brand, description ,} = state;
+
+
+     
+const stockState = state.state;
+
     return(
         <>
-           <Dialog
-            sx={{ zIndex: 130000 }}
-           className='productModal'
-            TransitionComponent={Transition}
-            open={open}
-            onClose={()=>closeProductModal()}
-             disableRestoreFocus
-           
-        >
-        
-        
-        
-            <Button
-                className="close_"
-                 onClick={(e)=>{
-                    e.stopPropagation()
-                    closeProductModal();}}
-            >
-                <MdClose />
-            </Button>
-            <div className='container'></div>
+          <div className='p-5'>
+            <div className='container'>
             <div className='row'>
                 <div className='col-12' style={{borderBottom:'1px solid rgba(0,0,0,0.1)' , padding:'10px 20px' , marginBottom:'20px'}}>
            
              
-             <h4 className='fw-bold' >{name}</h4>
+             <h4 className='fw-bold' >{title}</h4>
                </div>
              </div>
              <div className='row'>
@@ -131,13 +123,13 @@ const ProductModal =({type,MFG , life ,state,open , closeProductModal , name ,pr
                                    <h4>{price}</h4>
                             )
                         }
-                      <p className={`${state === 'out of stock' ? 'outofstock' : 'instock'}`}>{state}</p>
+                      <p className={`${stockState === 'out of stock' ? 'outofstock' : 'instock'}`}>{stockState}</p>
                   
                     <p>{description}</p>
                     <div className='d-flex align-items-center gap-3'>
-                          <QtyBox state={state} />
+                          <QtyBox state={stockState} />
                          
-                          <Button style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'125px' , maxWidth: '220px', fontSize:'.9rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={state==='out of stock'} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
+                          <Button style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'125px' , maxWidth: '220px', fontSize:'.9rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={stockState==='out of stock'} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
                     </div>
                     <div className='my-5 d-flex align-items-center gap-2'>
                       <button  type="button" className=" text-uppercase btn rounded-pill d-flex align-items-center py-2 px-2" style={{height: '2.0625rem' , border:'1px solid rgba(0,0,0,0.3)',    fontFamily: '"Dosis", sans-serif'
@@ -159,9 +151,10 @@ const ProductModal =({type,MFG , life ,state,open , closeProductModal , name ,pr
 
                     </div>
                     </div>
-        </Dialog>
+                    </div>
+        </div>
         </>
     )
 }
 
-export default ProductModal;
+export default Details;

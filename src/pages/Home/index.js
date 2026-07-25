@@ -17,6 +17,7 @@ import under200 from "../../assets/under200.png";
 import skincare from "../../assets/skincare.png";
 import korean from "../../assets/korean.png";
 import sunscreen from "../../assets/sunscreen.jpeg";
+import { Link } from "react-router-dom";
 
 const Home = () =>{
      var productSliderOptions = {
@@ -41,7 +42,7 @@ const Home = () =>{
     {
             images:[        "https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg",
        "https://m.media-amazon.com/images/I/61eHITpNFtL._AC_SX569_.jpg",
-,        "https://m.media-amazon.com/images/I/61SVz8DtYBL._AC_SX569_.jpg",
+        "https://m.media-amazon.com/images/I/61SVz8DtYBL._AC_SX569_.jpg",
 ],
       title: "La Roche-Posay Effaclar Ultra Concentrated Serum 30ml (12)",
       price: '1,900',
@@ -106,7 +107,7 @@ const Home = () =>{
     {
             images:[        "https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg",
        "https://m.media-amazon.com/images/I/61eHITpNFtL._AC_SX569_.jpg",
-,        "https://m.media-amazon.com/images/I/61SVz8DtYBL._AC_SX569_.jpg",
+        "https://m.media-amazon.com/images/I/61SVz8DtYBL._AC_SX569_.jpg",
 ],
       title: "La Roche-Posay Effaclar Ultra Concentrated Serum 30ml (12)",
       price: '1,900',
@@ -120,6 +121,43 @@ const Home = () =>{
           MFG:'21-jul-26',
           life:'2 years'
     },
+        {
+            images: [
+                'https://m.media-amazon.com/images/I/61+dkbadKNL._AC_SY879_.jpg'
+            ],
+            title: 'Beauty of Korean Revive Eye Serum with Ginseng & Retinal (30m) | Anti-Aging, Wrinkle Care, Korean Eye Cream for Dark Circles & Fine Lines',
+            brand: 'ELLENTRACY',
+            category:
+                'korean products'
+            ,
+            price: "",
+            realprice: 1400,
+            discountprice: 830,
+            discount: '41%',
+            type: 'serum',
+            life: '1 year',
+            MFG: '8 june 2026',
+            state: 'in stock',
+            description: 'Ginseng and Retinol serum for improving eye care, measures 30ml and is suitable for all ages. Contains high-quality ingredients to ensure the highest quality and durability. Comes in a single size.Includes one serum for endless eye care possibilities. Perfect for reducing dark circles and encouraging anti-aging development. Suitable for all skin types and ages.Features a unique blend of ginseng and retinol to improve skin texture and elasticity. Ideal for anti-aging and improving overall eye health.Made with high-quality ingredients to provide intense hydration and nourishment. Suitable for all skin conditions, perfect for dry and sensitive skin. Offers anti-aging benefits to all skin types.to solve common eye concerns. Perfect for daily use and travel.Reduces the appearance of fine lines, wrinkles, and dark circles. Offers hydration, nourishment, and protection to the delicate skin around the eyes.'
+        },
+        {
+            images: [
+                'https://m.media-amazon.com/images/I/71339RJcfTL._AC_SY879_.jpg',
+                'https://m.media-amazon.com/images/I/710fWnbZ4HL._AC_SY879_.jpg',
+                'https://m.media-amazon.com/images/I/31Z8N2-NSsL._AC_.jpg'
+            ],
+            title: 'Mood 8 Hawaiian Hand Scented Shea Shower Gel 750ml',
+            brand: 'MOOD',
+            price: "",
+            discountprice: 79,
+            realprice: 89,
+            type: 'shower gel',
+            life: '2 years',
+            MFG: '28 july 2026',
+            category: 'skin',
+            state: 'out of stock',
+            description: 'Relaxes your body and soothes your skin Unique formula provides a gentle scrubbing action Leaves your skin feeling velvety smooth for a brilliant beauty experience'
+        },
     {
             images:[        "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
         "https://foodics-console-production.s3.eu-west-1.amazonaws.com/images/585174_1739978869_9e400a3e-93d6-44fa-b9fd-847a4ceea88d.jpeg",
@@ -233,12 +271,10 @@ return(
                             <h3>BEST SELLERS</h3>
 
                              </div>
-                             <Button className="ml-auto  align-items-center viewAllBtn ">
-                                View all<IoIosArrowRoundForward/>
-                             </Button>
+                             <Link to="/listing/:id" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
+                             
                     </div>
-                   
-                            <div className="productRow w-100 mt-3">
+                            <div className="productRow w-100 mt-3" style={{width:'18rem'}}>
   <Slider {...productSliderOptions}>
     {products.map((product, index) => (
       <ProductItem
@@ -262,17 +298,15 @@ return(
     ))}
   </Slider>
 </div>
-
-
+  
 
                    <div className="d-flex align-items-center mt-5">
                         <div className="info">
                             <h3>NEW PRODUCTS</h3>
                             <p className="text-secondary">New products with updated stocks</p>
                              </div>
-                             <Button className="ml-auto  align-items-center viewAllBtn ">
-                                View all<IoIosArrowRoundForward/>
-                             </Button>
+                         <Link to="/listing/:id" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
+
                     </div>
                    
                             <div className="productRow w-100 mt-3 d-flex productRow2">

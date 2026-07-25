@@ -9,6 +9,7 @@ import SignIn from './pages/SignIn/index.js';
 import { useState , createContext } from 'react';
 import SignUp from './pages/SignUp/index.js';
 import Listing from './pages/Listing/index.js';
+import Details from './pages/Details/index.js';
 export const MyContext = createContext();
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
    
         <Route path="/" exact={true} element={<Home/>}/>
         <Route path="/listing/:id" exact={true} element={<Listing/>}/>
+        <Route path="/details" exact={true} element={<Details/>}/>
         <Route path="/signIn" exact={true} element={<SignIn/>}/>
         <Route path="/signUp" exact={true} element={<SignUp/>}/>
 
