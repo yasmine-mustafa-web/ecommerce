@@ -385,6 +385,7 @@ color: #000 !important;
   width: 100%;
   height: auto;
   border: 1px solid rgba(0, 0, 0, 0.1);
+
 }
 .card-title{
   margin-top: 0 !important;
@@ -811,6 +812,8 @@ flex-direction: row !important;
 }
 .productListing{
   gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .sidebar {
   width: 20%;
@@ -838,8 +841,8 @@ flex-direction: row !important;
   
 }
 .content-right{
-   width: 80%;
-  flex: 0 0 80%;
+   width: 78%;
+  flex: 0 0 78%;
   padding: 0px 20px;
 }
 .content-right img{
@@ -1080,4 +1083,27 @@ justify-content: center;
 }
 .cartDetails{
   position: sticky !important;
+}
+.productListing .productItem{
+  display: flex;
+}
+.productListing .productItem.four{
+  width: 23% !important;
+
+}
+.productListing .productItem.three{
+  width: 31.5% !important;
+
+}.productListing .productItem.two{
+  width: 48% !important;
+
+}
+.productListing .productItem.one{
+  width: 100% !important;
+display: flex !important;
+align-items: center;
+}
+.productListing .productItem.one .imgWrapper{
+  width: 25% !important;
+
 }

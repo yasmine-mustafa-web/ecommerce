@@ -261,12 +261,12 @@ const Listing = () => {
     ];
 
 
-    const [selectedBrands, setSelectedBrands] = useState([]);
-    const [selectedState, setSelectedState] = useState([]);
-    const [selectedCategories, setSelectedCategories] = useState([]);
-    const [priceRange, setPriceRange] = useState([0, 3000]);
-    const [sortBy, setSortBy] = useState('latest');
-
+     const [selectedBrands, setSelectedBrands] = useState([]);
+     const [selectedState, setSelectedState] = useState([]);
+     const [selectedCategories, setSelectedCategories] = useState([]);
+     const [priceRange, setPriceRange] = useState([0, 3000]);
+     const [sortBy, setSortBy] = useState('latest');
+    const[productView,setProductView] = useState('four');
     const categoriesList = useMemo(() => {
         const counts = {};
         products.forEach((product) => {
@@ -400,49 +400,13 @@ const Listing = () => {
   <img className="rounded-4 w-100 object-fit-cover" src="https://i.ytimg.com/vi/VFzcPwyT8RU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGFIgZShgMA8=&rs=AOn4CLCu0g88-ssSpWvh5QUNCEwrMc7rqA" />
   <div className="showBy w-100 d-flex rounded-4 mt-3">
       <div className="btnWrapper">
-          <Button onClick={() => setGridColoumns(1)} className={`text-dark ${gridColoumns === 1 ? "active-view" : ""}`}><IoMdMenu /></Button>
-          <Button onClick={() => setGridColoumns(2)} className={`text-dark ${gridColoumns === 2 ? "active-view" : ""}`}><RxDragHandleDots2 /></Button>
-          <Button onClick={() => setGridColoumns(3)} className={`text-dark ${gridColoumns === 3 ? "active-view" : ""}`}><CgMenuGridO /></Button>
-          <Button onClick={() => setGridColoumns(4)} className={`text-dark ${gridColoumns === 4 ? "active-view" : ""}`}><TfiLayoutGrid4 /></Button>
+          <Button onClick={() => setProductView('one')}><IoMdMenu /></Button>
+          <Button onClick={() =>setProductView('two') }>< RxDragHandleDots2/></Button>
+          <Button onClick={() => setProductView('three')}><CgMenuGridO /></Button>
+          <Button onClick={() => setProductView('four')}><TfiLayoutGrid4 /></Button>
       </div>
-      <div className="ms-auto">
-          <div className="btn-grp">
-              <Button className="dropdown-toggle text-dark" type="button" aria-expanded="false" data-bs-toggle="dropdown">
-   {sortBy === 'latest' && 'Sort by latest'}
-   {sortBy === 'popularity' && 'Sort by popularity'}
-   {sortBy === 'cheapest' && 'Sort by price: low to high'}
-   {sortBy === 'expensive' && 'Sort by price: high to low'}
-              </Button>
-              <ul className="dropdown-menu align-items-center p-1">
-   <li className="mb-1">
-       <button className="dropdown-item" onClick={() => setSortBy('latest')}>
-           Sort by latest
-       </button>
-   </li>
-   <li className="mb-1">
-       <button className="dropdown-item" onClick={() => setSortBy('popularity')}>
-           Sort by popularity
-       </button>
-   </li>
-   <li className="mb-1">
-       <button className="dropdown-item" onClick={() => setSortBy('cheapest')}>
-           Sort by price: low to high
-       </button>
-   </li>
-   <li className="mb-1">
-       <button className="dropdown-item" onClick={() => setSortBy('expensive')}>
-           Sort by price: high to low
-       </button>
-   </li>
-   <li className="mb-1">
-       <button className="dropdown-item" onClick={() => setSortBy('expensive')}>
-           Sort by price: high to low
-       </button>
-          </li>
-        </ul>
-                  </div>
-              </div>
-              <div className="ml-auto showByFilter align-items-center">
+    
+              <div className="ms-auto showByFilter align-items-center">
           <div className="d-flex gap-0 align-items-center"><span className="text-secondary show">Show</span>   <Button className="text-dark align-items-center ms-0 px-0" onClick={handleClick}> 9 <FaAngleDown className="ms-1"/> </Button></div>   
                 <Menu 
                 id="basic-menu"
@@ -463,8 +427,21 @@ const Listing = () => {
       </div>
 
 
-      <div className={`productRow w-100 mt-4 d-flex grid-cols-${gridColoumns}`} style={{ flexWrap: 'wrap' }}>
-          {paginatedProducts.map((product, index) => (
+      <div className={`productListing productRow w-100 mt-4 d-flex`} style={{ flexWrap: 'wrap' }}>
+        
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+                <ProductItem itemView={productView}/>
+
+          {/* {paginatedProducts.map((product, index) => (
               <ProductItem
                   key={index}
                   images={product.images}
@@ -483,7 +460,7 @@ const Listing = () => {
 index === 0 ? "card-right" : index === paginatedProducts.length - 1 ? "card-left" : "card-middle"
                   }
               />
-          ))}
+          ))} */}
 
       </div>
       {totalPages > 1 && (
