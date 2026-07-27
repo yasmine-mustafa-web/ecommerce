@@ -1024,3 +1024,60 @@ width: 90% !important;
 .show{
   margin-right: -12px !important;
 }
+
+.cartItemImgWrapper .imgWrapper{
+width: 100px;
+overflow: hidden;
+min-width: 100px;
+}
+.cartItemImgWrapper .imgWrapper img{
+  width: 100%;
+  object-fit: contain;
+}
+tbody .infoTable {
+  align-items: flex-start !important;
+  text-align: start !important;
+}
+tbody td{
+  text-align: center ;
+  align-items: center ;
+}
+tbody{
+  padding: 20px !important;
+}
+.qtybox{
+text-align: center !important;
+align-items: center !important;
+display: flex;
+}
+table .remove svg{
+  font-size: 35px !important;
+}
+table .remove svg:hover{
+ color: #be143c;
+}
+.cartPage .qtyDrop button{
+border-radius: 50% !important;
+background-color: #dfdfdf;
+min-width: 25px !important;
+width: 25px;
+height: 25px;
+min-height: 25px;
+color: #000;
+border: 1px solid rgba(0, 0, 0, 0.1);
+align-items: center !important;
+text-align: center !important;
+display: flex;
+justify-content: center;
+}
+.cartPage .qtyDrop input{
+  border: 0 !important;
+  background: transparent !important;
+  outline: none !important;
+  width: 20px !important;
+  font-size: 12px;
+  text-align: center;
+}
+.cartDetails{
+  position: sticky !important;
+}
