@@ -1,4 +1,11 @@
 import { Slider, Stack, Text } from "@chakra-ui/react"
+import FormGroup from "@mui/material/FormGroup";
+import { FormControlLabel } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import {Label } from "@mui/icons-material";
+import RangeSlider from 'react-range-slider-input';
+import 'react-range-slider-input/dist/style.css';
+import { useState } from "react";
 const SideBar=({
   brandsList,
   selectedBrands,
@@ -13,57 +20,53 @@ const SideBar=({
 })=>{
         
 
+const [value,setValue]=useState([100,60000]);
+const[value2,setValue2]=useState(0);
+
         return(
             <div className="sidebar" style={{fontFamily:"'Dosis' , sans-serif"}}>
             <div className="filteredBox">
                 <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product categories</h6>
                 <div className="scroll" >
+              
                     <ul>
                        {categoriesList.map(({ name, count }) => (
-  <li key={name}>
-    <div className="form-check form-switch d-flex justify-content-between">
-      <div>
-        <input
-          className="form-check-input"
-          type="checkbox"
-          role="switch"
-          id={`cat-${name}`}
-          checked={selectedCategories.includes(name)}
-          onChange={() => toggleCategory(name)}
-        />
-        <label className="form-check-label text-capitalize" htmlFor={`cat-${name}`}>
-          {name}
-        </label>
-      </div>
-      <span className="text-secondary">({count})</span>
-    </div>
-  </li>
-))}
+                      <li key={name} className="mb-0 mt-0">
+                      <div className="d-flex align-items-center">
+                        <FormControlLabel
+                        control={<Checkbox/>} 
+                        label={name}
+                        checked={selectedCategories.includes(name)}
+                        onChange={() => toggleCategory(name)}
+                          />
+                        {/* <input
+                          className="form-check-input"
+                          type="checkbox"
+                          role="switch"
+                          id={`cat-${name}`}
+                          checked={selectedCategories.includes(name)}
+                          onChange={() => toggleCategory(name)}
+                        />
+                        <label className="form-check-label text-capitalize" htmlFor={`cat-${name}`}>
+                          {name}
+                        </label> */}
+                      
+                      <span className="text-secondary ms-auto me-1">({count})</span>
+                      </div>
+                  </li>
+                ))}
                     </ul>
                   
                 </div>
             </div><br/><br/>
               <div className="filteredBox">
                 <h6 className="text-uppercase fw-bold">filter by price</h6>
-                  <Stack gap="4" width="300px">
-      <Slider.Root
-       className="range"
-       value={priceRange}
-       min={0}
-       max={3000}
-     thumbCollisionBehavior="push"
-      onValueChange={(details) => setPriceRange(details.value)}
-      >
-        <Slider.Label>Price Range</Slider.Label>
-        <Slider.Control>
-          <Slider.Track>
-            <Slider.Range />
-          </Slider.Track>
-          <Slider.Thumbs />
-        </Slider.Control>
-      </Slider.Root>
-      <p>Price : EGP {priceRange[0]} - EGP {priceRange[1]} </p>
-    </Stack>
+                <RangeSlider value={value} onInput={setValue} min={100} max={6000} step={100}/>
+                <div className="d-flex py-2 priceRange">
+                  <span>Price:<strong className="text-success"><sup>EGP</sup>{value[0]}</strong></span>
+                  <span><span className="mx-1 fw-5"> — </span><strong className="text-success"><sup>EGP</sup>{value[1]}</strong></span>
+
+                </div>
               </div><br/><br/>
                <div className="filteredBox ">
                 <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product state</h6>

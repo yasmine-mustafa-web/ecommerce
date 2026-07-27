@@ -3,15 +3,16 @@ import { SlSizeFullscreen } from "react-icons/sl";
 import { Button } from "@mui/material";
 import { FaRegHeart } from "react-icons/fa";
 import ProductModal from "../ProductModal";
-import { useState } from 'react';
+import { useContext,  useState } from 'react';
 import { Link } from "react-router-dom";
 import Details from '../../pages/Details';
 import { useNavigate } from "react-router-dom";
+
+
 const ProductItem = ({category , type,MFG , life ,state, images, title, realprice,discountprice, price, discount , className ,description , brand }) => {
 const navigate = useNavigate();
 
-  const [isOpenProductModal,setisOpenProductModal]= useState(false);
-const goToDetails = () => {
+        const goToDetails = () => {
 navigate("/details", {
         state: {
             title,
@@ -28,19 +29,21 @@ navigate("/details", {
         },
     });
   };
-   const viewProductDetails = () => {
-    setisOpenProductModal(true);
-  };
-  const closeProductModal=()=>{
-        setisOpenProductModal(false);
 
+  const [isOpenProductModal,setIsOpenProductModal] = useState(false);
+   const viewProductDetails=(id)=>{
+      setIsOpenProductModal(true);
+    }
+
+  const closeProductModal=()=>{
+    setIsOpenProductModal(false);
   }
 
 
   return (
     <>
        <div className={`card ${className}`}  onClick={goToDetails}
-  style={{ cursor: "pointer" }}>
+  style={{ cursor: "pointer" ,width:'14rem'}}>
 
       <div className="upperCard">
          <div className="actions">
@@ -99,7 +102,7 @@ navigate("/details", {
         </button>
       </div>
     </div>
-    <ProductModal
+ {isOpenProductModal === true && <ProductModal
   open={isOpenProductModal}
   closeProductModal={closeProductModal}
   name={title}
@@ -113,7 +116,7 @@ navigate("/details", {
   type={type}
   MFG={MFG}
   life={life}
-/>
+/> }   
     </>
   );
 };

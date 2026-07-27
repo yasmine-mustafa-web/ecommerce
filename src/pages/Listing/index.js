@@ -7,6 +7,11 @@ import { TfiLayoutGrid4 } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { useState, useMemo, useEffect } from "react";
 import ProductItem from "../../components/ProductItem";
+import { FaAngleDown } from 'react-icons/fa6';
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
+
 const Listing = () => {
     const products = [
         {
@@ -60,7 +65,7 @@ const Listing = () => {
             type: 'Moisturizer',
             MFG: '21-jul-26',
             life: '2 years',
-            category: 'skin'
+            category: ['esraa']
 
         },
         {
@@ -73,7 +78,7 @@ const Listing = () => {
             description: 'Contains ingredients that help lighten dark spots and even skin tone, contributing to a brighter, more radiant complexion.Designed to absorb quickly without leaving a sticky residue, making it ideal for daily use.Suitable for use on all body areas, including elbows, knees, and other dry patches that may need extra care.Has nourishing and moisturizing properties, providing deep hydration and promoting skin softness.Milk & Honey Scented',
             brand: 'Telofill',
             type: 'cream',
-            category: 'skin',
+            category: ['medicine'],
             MFG: '1 july 2026',
             life: '3 years',
             state: 'in stock'
@@ -92,7 +97,7 @@ const Listing = () => {
             type: 'serum',
             life: '2 years',
             MFG: '20 july 2026',
-            category: 'skin'
+            category: ['body']
         },
         {
             images: ["https://m.media-amazon.com/images/I/41uQgoOkmvL._AC_SY879_.jpg"],
@@ -103,7 +108,7 @@ const Listing = () => {
             discount: "",
             description: 'Hydrates skin texture Reduces fine lines prevents the appearance of dryness Reduces the sign of irritated skinControls oil production',
             brand: 'Telofill',
-            category: 'skin',
+            category: 'curly hair',
             life: '2 years',
             MFG: '5 july 2026',
             type: 'cream',
@@ -122,7 +127,7 @@ const Listing = () => {
             life: '3 years',
             MFG: '24 july 2026',
             type: 'Toner',
-            category: 'skin',
+            category: ['foot' , 'skin' , 'curly hair'],
             state: 'in stock'
 
 
@@ -140,7 +145,7 @@ const Listing = () => {
             , life: '3 years',
             MFG: '24 july 2026',
             type: 'oil',
-            category: 'hair',
+            category: ['hair'],
             state: 'in stock'
 
 
@@ -158,7 +163,7 @@ const Listing = () => {
             , life: '3 years',
             MFG: '24 july 2026',
             type: 'oil',
-            category: 'hair',
+            category: ['hair'],
             state: 'in stock'
 
 
@@ -177,7 +182,7 @@ const Listing = () => {
             type: 'shower gel',
             life: '2 years',
             MFG: '28 july 2026',
-            category: 'skin',
+            category: ['skin'],
             state: 'out of stock',
             description: 'Relaxes your body and soothes your skin Unique formula provides a gentle scrubbing action Leaves your skin feeling velvety smooth for a brilliant beauty experience'
         },
@@ -192,7 +197,7 @@ const Listing = () => {
             realprice: '',
             discountprice: '',
             type: 'mouth wash',
-            category: 'oral',
+            category: ['oral'],
             MFG: "21-Jul-2026",
             life: "2 Years",
             state: "In Stock",
@@ -265,7 +270,11 @@ const Listing = () => {
     const categoriesList = useMemo(() => {
         const counts = {};
         products.forEach((product) => {
-            if (product.category) counts[product.category] = (counts[product.category] || 0) + 1;
+            if (product.category  && Array.isArray(product.category)){
+                 product.category.forEach((cat) => {
+                counts[cat] = (counts[cat] || 0) + 1;
+                 })
+            } 
         });
         return Object.entries(counts).map(([name, count]) => ({ name, count }));
     }, [products]);
@@ -359,7 +368,14 @@ const Listing = () => {
         setCurrentPage(1);
     }, [selectedBrands, selectedState, priceRange, selectedCategories, productsPerPage, sortBy]);
 
-
+    const [anchorEl , setAnchorEl]=useState(null);
+    const open=Boolean(anchorEl);
+    const handleClick=(event)=>{
+        setAnchorEl(event.currentTarget);
+    }
+     const handleClose=(event)=>{
+        setAnchorEl(null);
+    }
     return (
         <>
 
@@ -425,6 +441,23 @@ const Listing = () => {
           </li>
         </ul>
                   </div>
+              </div>
+              <div className="ml-auto showByFilter align-items-center">
+          <div className="d-flex gap-0 align-items-center"><span className="text-secondary show">Show</span>   <Button className="text-dark align-items-center ms-0 px-0" onClick={handleClick}> 9 <FaAngleDown className="ms-1"/> </Button></div>   
+                <Menu 
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    'aria-labelledby':'basic-button',
+                }}
+                >
+                <MenuItem onClick={handleClose}>12</MenuItem>
+                <MenuItem onClick={handleClose}>24</MenuItem>
+                <MenuItem onClick={handleClose}>36</MenuItem>
+                <MenuItem onClick={handleClose}>48</MenuItem>
+                </Menu>
               </div>
           </div>
       </div>

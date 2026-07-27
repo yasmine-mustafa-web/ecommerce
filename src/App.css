@@ -408,6 +408,9 @@ color: #000 !important;
 .card-img-top{
   object-fit: contain !important;
   border-radius: none !important;
+  width: 100% !important;
+  height: 220px !important;
+  display: block;
 }
 .btn-card{
   transition: all 0.3s ease;
@@ -482,6 +485,8 @@ font-family: 'Quicksand' , sans-serif;
 }
 .upperCard{
   position: relative;
+  height: 220px !important;
+  overflow: hidden;
 }
 .upperCard:hover .actions{
   opacity: 1 !important;
@@ -807,11 +812,32 @@ flex-direction: row !important;
 .productListing{
   gap: 20px;
 }
-.productListing .sidebar{
+.sidebar {
   width: 20%;
   flex: 0 0 20%;
+  
 }
-.productListing .content-right{
+.sidebar .scroll{ 
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.sidebar .filteredBox .scroll::-webkit-scrollbar{
+  width: 5px !important;
+  height: 5px !important;
+ 
+}
+.sidebar .scroll::-webkit-scrollbar-thumb {
+  background:  #cdcdcd;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.sidebar .scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  
+}
+.content-right{
    width: 80%;
   flex: 0 0 80%;
   padding: 0px 20px;
@@ -899,6 +925,102 @@ flex-direction: row !important;
   width: calc(33.333% - 15px);
 }
 
-.productRow {
-  gap: 15px;
+.productZoom{
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 0px;
+  z-index: 2;
+  overflow: hidden;
+}
+.zoomSliderBig{
+  width: 100% !important;
+}
+.zoomSlider{
+  padding-top: 5%;
+}
+.zoomSlider *{outline: none !important;}
+.zoomSlider .slick-slide{
+  padding-right: 20px !important;
+}
+.zoomSlider .item{
+  border: 2px solid transparent !important;
+  overflow: hidden;
+  border-radius: 15px;
+  height: 65px !important;
+width: 65px !important;
+object-fit: cover;
+align-items: center;
+margin: 0 auto;
+}
+.zoomSlider .slick-current .item{
+  border: 2px solid #3bb77e !important;
+
+}
+
+.zoomSlider .slick-arrow{
+  top: 55% !important;
+  zoom:80% !important;
+}
+.zoomSlider .slick-arrow.slick-next{
+  right: -2% !important;
+}
+.zoomSlider .slick-arrow.slick-prev{
+  left: -5% !important;
+}
+.productItem .info{
+  padding: 15px;
+}
+.productItem .info h4{
+  font-size: 15px;
+  font-weight: 600;
+}
+.info .oldPrice{
+  text-decoration: line-through;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(0,0,0,0.2);
+
+}
+.info .netPrice{
+  font-size: 16px;
+  font-weight: bold;
+}
+.info .netPrice.lg , .info .oldPrice.lg{
+  font-size: 20px;
+}
+.badge{
+  display: inline-block;
+  padding: 7px 10px;
+}
+.badge.bg-success{
+   color: #00b853 !important;
+  background: #e5f8ed !important;
+}
+.productZoom .badge{
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+}
+.range-slider .range-slider__thumb{
+   background: rgb(3, 7, 94) !important;
+  width: 15px !important; 
+  height: 15px !important;
+}
+.range-slider{
+height: 5px !important;
+width: 90% !important;
+}
+.range-slider .range-slider__range {
+     background: rgb(3, 7, 94) !important;
+
+}
+.showByFilter button svg{
+  opacity: 0.7 !important;
+}
+/* .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  margin-left: 30px !important;
+} */
+.show{
+  margin-right: -12px !important;
 }
