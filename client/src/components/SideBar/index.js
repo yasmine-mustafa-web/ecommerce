@@ -24,7 +24,7 @@ const [value,setValue]=useState([100,60000]);
 const[value2,setValue2]=useState(0);
 
         return(
-            <div className="sidebar" style={{fontFamily:"'Dosis' , sans-serif"}}>
+            <div className="sidebar sticky-top" style={{fontFamily:"'Dosis' , sans-serif"}}>
             <div className="filteredBox">
                 <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product categories</h6>
                 <div className="scroll" >

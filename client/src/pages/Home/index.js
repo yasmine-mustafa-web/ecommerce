@@ -274,7 +274,7 @@ return(
                              <Link to="/listing/:id" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
                              
                     </div>
-                            <div className="productRow w-100 mt-3" style={{width:'18rem'}}>
+                            <div className="productRow w-100 mt-3">
   <Slider {...productSliderOptions}>
     {products.map((product, index) => (
       <ProductItem

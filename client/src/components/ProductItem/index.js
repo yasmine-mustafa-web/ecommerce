@@ -56,11 +56,11 @@ const context= useContext(MyContext);
       <div className="imgWrapper">
       <img src="https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg" className="card-img-top"/>
       </div>
-    </div>
+    
       <span className="badge bg-red">0%</span>
-
+</div>
      
-
+<div className="productInfo">
       <div className="card-body">
         <h6 className="card-title fw-bold ">here</h6>
       </div>
@@ -95,8 +95,11 @@ const context= useContext(MyContext);
         </button>
       </div>
     </div>
+    </div>
  {isOpenProductModal === true && <ProductModal
-/> }   
+  open={isOpenProductModal}
+        closeProductModal={closeProductModal}
+ /> }   
     </>
   );
 };

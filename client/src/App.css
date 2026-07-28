@@ -818,8 +818,8 @@ flex-direction: row !important;
 .sidebar {
   width: 20%;
   flex: 0 0 20%;
-  
 }
+
 .sidebar .scroll{ 
   max-height: 200px;
   overflow-y: auto;
@@ -1084,8 +1084,8 @@ justify-content: center;
 .cartDetails{
   position: sticky !important;
 }
-.productListing .productItem{
-  display: flex;
+.productListing .productItem.one{
+  display: flex !important;
 }
 .productListing .productItem.four{
   width: 23% !important;
@@ -1100,10 +1100,29 @@ justify-content: center;
 }
 .productListing .productItem.one{
   width: 100% !important;
-display: flex !important;
-align-items: center;
+  display: flex !important;
+  flex-direction: row;
+  align-items: stretch;
+  padding: 15px;
 }
 .productListing .productItem.one .imgWrapper{
-  width: 25% !important;
+  width: 100% !important;
+  height: 100%;
 
+}
+.productListing .productItem.one .upperCard{
+    width: 35%;
+    flex: 0 0 35%;
+}
+.productListing .productItem.one .productInfo{
+    width: 65%;
+    flex: 0 0 65%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+.productListing .productItem.one .imgWrapper img{
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
 }
