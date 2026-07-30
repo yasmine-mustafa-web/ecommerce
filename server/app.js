@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 
 app.use(`/api/category` , categoryRoutes);
 
-app.post('/test', (req, res) => {
+app.get('/test', (req, res) => {
     console.log("TEST ROUTE HIT");
     res.json({ message: "Working" });
 });
