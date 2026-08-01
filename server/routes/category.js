@@ -1,4 +1,4 @@
-const { Promise } = require('mongoose');
+const mongoose= require('mongoose');
 const { cloudinary } = require('../cloudinary');
 const {Category} = require('../models/category');
 const express = require('express');
@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/' , async(req,res) =>{
     const categoryList = await Category.find();
     if(!categoryList){
-        res.status(500).json({success:false})
+      return  res.status(500).json({success:false})
     }
     res.send(categoryList);
 })
@@ -17,12 +17,12 @@ router.get('/' , async(req,res) =>{
 router.get('/:id' , async(req,res) =>{
 const category =  await Category.findById(req.params._id);
 if(!category){
-    res.status(500).json({message:'The category whith this id is not existing'})
+return    res.status(500).json({message:'The category whith this id is not existing'})
 }
 return res.status(201).send(category);
 })
 
-router.post('/create' , async(req,res) =>{
+router.post('/' , async(req,res) =>{
     console.log(req.body);
     const limit = pLimit(3);
 
@@ -32,23 +32,7 @@ router.post('/create' , async(req,res) =>{
             return result;
         })
     })
-})
-
-router.delete('/:id' , async(req,res) =>{
-    const deletedUser = await Category.findByIdAndRemove(req.params._id);
-
-    if(!deletedUser){
-        res.status(404).json({
-            message:'category not found',
-            success:false
-        })
-    }
-    res.status(201).json({
-        message:'category is deleted',
-        success:true
-    })
-
-const uploadStatus = await Promise.all(imagesToUpload);
+    const uploadStatus = await Promise.all(imagesToUpload);
 
 const imgUrl = uploadStatus.map((item)=>{
     return item.secure_url
@@ -67,7 +51,7 @@ let category = new Category({
 })
 
 if(!category){
-    res.status(500).json({
+ return   res.status(500).json({
         error:err,
         status:false
     })
@@ -75,7 +59,21 @@ if(!category){
 
 category =await category.save();
 
-res.status(201).json(category);
+return res.status(201).json(category);
+})
+
+router.delete('/:id' , async(req,res) =>{
+    const deletedUser = await Category.findByIdAndDelete(req.params.id);
+    if(!deletedUser){
+      return  res.status(404).json({
+            message:'category not found',
+            success:false
+        })
+    }
+ return   res.status(200).json({
+        message:'category is deleted',
+        success:true
+    })
 })
 
 module.exports=router;

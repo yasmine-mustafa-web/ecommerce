@@ -1,11 +1,14 @@
+require('dotenv/config');
 const express = require('express');
 const app=express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors=require('cors');
 const categoryRoutes=require('./routes/category');
+const productRoutes=require('./routes/product');
 const plimit = require('p-limit')
-require('dotenv/config');
+
+console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 
 app.use(cors());
 // app.options('/*splat',cors());
@@ -34,12 +37,14 @@ async function main() {
 app.use(bodyParser.json());
 
 app.use(`/api/category` , categoryRoutes);
+app.use(`/api/product` , productRoutes);
+
 
 app.post('/test', (req, res) => {
     console.log("TEST ROUTE HIT");
     res.json({ message: "Working" });
 });
-
+    
 app.listen(process.env.PORT ,()=>{
     console.log(`is running on ${process.env.PORT}`)
 })
