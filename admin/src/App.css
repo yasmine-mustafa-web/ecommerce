@@ -3,9 +3,13 @@
   margin: 0px;
   padding: 0px;
 }
+body , html{
+  overflow-x: hidden;
+}
 body{
   font-family: 'Open sans' , sans-serif;
-  background:#ebe9e9;
+  background: #ebebeb;
+  box-sizing: border-box;
 }
 header{
   width: 100%;
@@ -13,6 +17,88 @@ header{
   background: #fff;
 }
 .logo{
-  width: 45px;
  text-decoration: none;
+}
+.logo img{
+  width: 105px;
+
+}
+header .logo span{
+    color: #292929 !important;
+    font-size: 24px !important;
+
+}
+header button.rounded-circle{
+  min-width: 45px !important;
+  width: 45px !important;
+  height: 45px !important;
+  min-height: 45px !important;
+  border-radius: 50% !important;
+  background: #f0f5ff !important;
+}
+header button.rounded-circle svg{
+  color: #292929 !important;
+  transition: all 0.3s ease;
+}
+header button.rounded-circle svg:hover{
+  color: #0858f7 !important;
+}
+.searchBox{
+  width: 400px !important;
+  height: 40px !important;
+  background: #f0f5ff !important;
+  border-radius: 6px;
+  padding: 3px 15px;
+}
+.searchBox input{
+  background: none;
+  border: 0px;
+  outline: none;
+  padding: 0px 5px;
+  font-size: 14px ;
+  color: #292929;
+}
+.searchBox input::-webkit-input-placeholder{
+  color: rgba(0,0,0,0.6);
+}
+.searchBox svg{
+  font-size: 18px;
+  color: #292929;
+}
+.myAcc{
+  text-align: left !important;
+}
+.myAcc .userImg{
+width: 40px;
+height: 40px;
+cursor: pointer;
+border: 1px solid #0858f7;
+border-radius: 50% !important ;
+}
+/* .userInfo{
+  margin-top: 13px !important;
+} */
+.userInfo p{
+  font-size: 12px !important;
+}
+.part2{
+  flex: 1;
+}
+.part3{
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+.myAccWrapper{
+  min-width: 0;
+}
+.userInfo{
+  min-width: 0;
+  overflow: hidden;
+}
+.userInfo h6,
+.userInfo p{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
 }
