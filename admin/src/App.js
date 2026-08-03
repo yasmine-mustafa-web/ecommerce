@@ -6,6 +6,9 @@ import Header from './components/Header/index.js';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import SideBar from './components/SideBar/index.js';
 import { useState } from "react";
+import Products from "./pages/Products";
+import AddProduct from "./pages/AddProduct";
+import EditProduct from "./pages/EditProduct";
 
 function App() {
 
@@ -22,8 +25,10 @@ function App() {
       />
       <main className={isSidebarOpen? "mainContent" : "mainContent collapsed"}>
       <Routes>
-        <Route path='/'  element={<DashBoard/>}>
-        </Route>
+        <Route path='/'  element={<DashBoard/>}/>
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/add" element={<AddProduct />} />
+        <Route path="/products/edit/:id" element={<EditProduct />} />
       </Routes>
       </main>
       </BrowserRouter>

@@ -36,8 +36,8 @@ async function main() {
 // })
 app.use(bodyParser.json());
 
-app.use(`/api/category` , categoryRoutes);
-app.use(`/api/product` , productRoutes);
+app.use(`/api/categories` , categoryRoutes);
+app.use(`/api/products` , productRoutes);
 
 
 app.post('/test', (req, res) => {

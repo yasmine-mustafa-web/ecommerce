@@ -2,7 +2,9 @@ import DashboardCards from "../../components/DashboardCards";
 import SalesChart from "../../components/SalesChart";
 import TopProducts from "../../components/TopProducts";
 import RecentOrders from "../../components/RecentOrders";
-
+import { useEffect, useState } from "react";
+import { getProducts } from "../../Services/productApi";
+import { getCategories } from "../../Services/categoryApi";
 import {
     FaBoxOpen,
     FaShoppingCart,
@@ -12,10 +14,14 @@ import {
 
 
 const DashBoard = () =>{
+    const [productCount, setProductCount] = useState(0);
+    useEffect(() => {
+    getProducts().then(res => setProductCount(res.data.length)).catch(console.log);
+}, []);
     const cards = [
     {
         title: "Products",
-        value: 1250,
+        value:  productCount,
         icon: <FaBoxOpen />,
         color: "#4f46e5"
     },
