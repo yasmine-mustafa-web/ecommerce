@@ -102,3 +102,120 @@ border-radius: 50% !important ;
   text-overflow: ellipsis;
   max-width: 100px;
 }
+.chakra-menu__positioner{
+  width: 270px !important;
+  min-width: 270px !important;
+  max-width: 270px !important;
+  align-items: center !important;
+  /* text-align: center !important; */
+}
+.chakra-menu__content{
+  padding: 10px !important;
+    height: 230px !important;
+}
+.notWrapper img{
+width: 45px;
+height: 45px;
+border-radius: 50%;
+border: 1px solid rgb(43, 43, 212);
+margin-top: -25px !important;
+}
+.mainContent{
+    margin-left:260px;
+    margin-top:80px;
+    padding:25px;
+    transition:all .3s ease;
+    min-height:100vh;
+    background:#f5f5f5;
+}
+
+.mainContent.collapsed{
+    margin-left:80px;
+}
+.sidebar{
+    position:fixed;
+    top:80px;
+    left:0;
+    height:calc(100vh - 80px);
+}
+.dashboardCard{
+    background:#fff;
+    border-radius:15px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    transition:.3s;
+    cursor:pointer;
+  
+    text-align: center !important;
+}
+
+.dashboardCard:hover{
+    transform:translateY(-5px);
+}
+
+.iconBox{
+    width:65px;
+    height:65px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:28px;
+}
+
+.info h5{
+    color:#888;
+    margin-bottom:10px;
+}
+
+.info h2{
+    font-weight:700;
+}
+.salesChart{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+.topProducts{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.productItem{
+    display:flex;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.productItem img{
+    width:60px;
+    height:60px;
+    border-radius:10px;
+    object-fit:cover;
+}
+
+.productItem .info{
+    margin-left:15px;
+}
+
+.productItem .info h6{
+    margin:0;
+}
+
+.productItem .info span{
+    color:#888;
+    font-size:14px;
+}
+
+.stock{
+    margin-left:auto;
+    font-weight:600;
+    color:#4f46e5;
+}

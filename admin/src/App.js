@@ -4,18 +4,28 @@ import { Provider } from "./components/ui/provider.jsx";
 import DashBoard from './pages/DashBoard/index.js';
 import Header from './components/Header/index.js';
 import 'bootstrap/dist/css/bootstrap.min.css'
-
+import SideBar from './components/SideBar/index.js';
+import { useState } from "react";
 
 function App() {
+
+   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   return (
     <Provider>
       <BrowserRouter>
-      <Header>
+      <Header
+       isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}/>
+           <SideBar
+        isSidebarOpen={isSidebarOpen}
+      />
+      <main className={isSidebarOpen? "mainContent" : "mainContent collapsed"}>
       <Routes>
-        <Route path='/' exact={true} element={<DashBoard/>}>
+        <Route path='/'  element={<DashBoard/>}>
         </Route>
       </Routes>
-      </Header>
+      </main>
       </BrowserRouter>
     </Provider>
   );
