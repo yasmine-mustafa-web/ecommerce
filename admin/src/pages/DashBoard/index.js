@@ -1,5 +1,7 @@
 import DashboardCards from "../../components/DashboardCards";
 import SalesChart from "../../components/SalesChart";
+import TopProducts from "../../components/TopProducts";
+import RecentOrders from "../../components/RecentOrders";
 
 import {
     FaBoxOpen,
@@ -72,9 +74,17 @@ return(
     </div>
 
     <div className="col-lg-4">
+          <TopProducts />
+    </div>
+<div className="row mt-4">
+
+    <div className="col-12">
+
+        <RecentOrders />
 
     </div>
 
+</div>
 </div>
 
 </div>

@@ -219,3 +219,32 @@ margin-top: -25px !important;
     font-weight:600;
     color:#4f46e5;
 }
+.recentOrders{
+    background:#fff;
+    margin-top:30px;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.status{
+    padding:6px 14px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.delivered{
+    background:#d1fae5;
+    color:#059669;
+}
+
+.pending{
+    background:#fef3c7;
+    color:#d97706;
+}
+
+.cancelled{
+    background:#fee2e2;
+    color:#dc2626;
+}
