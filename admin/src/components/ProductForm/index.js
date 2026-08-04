@@ -50,7 +50,7 @@ const loadProduct = async () => {
 
     description: "",
 
-    category: "",
+    category: [],
 
     brand: "",
 
@@ -67,7 +67,9 @@ const handleSubmit = async (e) => {
         const payload = new FormData();
         payload.append("name", formData.name);
         payload.append("description", formData.description);
-        payload.append("category", formData.category);
+        formData.category.forEach((catId) => {
+            payload.append("category", catId);
+        });
         payload.append("brand", formData.brand);
         payload.append("price", formData.price);
         payload.append("countInStock", formData.countInStock);
@@ -130,11 +132,13 @@ onChange={handleChange}
 <select
 className="form-select"
 name="category"
+multiple
 value={formData.category}
-onChange={handleChange}
+onChange={(e) => {
+    const selected = Array.from(e.target.selectedOptions , (opt) => opt.value);
+    setFormData((prev) => ({...prev , category:selected}))
+}}
 >
-<option value="">Choose Category</option>
-
 {categories.map((cat) => (
     <option key={cat._id} value={cat._id}>
         {cat.name}

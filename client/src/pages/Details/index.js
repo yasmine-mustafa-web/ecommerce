@@ -26,7 +26,7 @@ const Details =()=>{
     }
 
     const {
-        type,MFG , life ,open , closeProductModal , title ,price ,discountprice, realprice , images , brand, description ,} = state;
+        type,MFG , life ,open , closeProductModal , title ,price , images , brand, description ,countInStock } = state;
 
 
      
@@ -112,18 +112,7 @@ const stockState = state.state;
     </Carousel.Root>
                    </div>
                     <div className='col-12 col-md-6'>
-                        {
-                            discountprice && realprice ? (
-                                <>
-                                <div className='d-flex gap-2'>
-                                <h6 className='discountprice text-secondary '><sup>EGP</sup>{realprice}</h6>
-                                <h4><sup>EGP</sup>{discountprice}</h4>                             
-                                </div>
-                                </>
-                            ):(
-                                   <h4>{price}</h4>
-                            )
-                        }
+                       <h4><sup>EGP</sup>{price}</h4>
                       <p className={`${stockState === 'out of stock' ? 'outofstock' : 'instock'}`}>{stockState}</p>
                   
                     <p>{description}</p>

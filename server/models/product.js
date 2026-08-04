@@ -23,11 +23,11 @@ price:{
     type:Number,
     default:0
 },
-category:{
+category:[{
     type:Schema.Types.ObjectId,
     ref:'Category',
     required:true
-},
+}],
 countInStock:{
     type:Number,
     required:true
@@ -43,6 +43,18 @@ isFeatured:{
 dateCreated:{
   type:Date,
   default: Date.now
+},
+MFG:{
+    type:String,
+    required:true
+},
+type:{
+    type:String,
+    required:true
+},
+life:{
+    type:String,
+    required:true
 }
 })
 module.exports = mongoose.model('Product' , productSchema);

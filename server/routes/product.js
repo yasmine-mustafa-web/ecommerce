@@ -68,7 +68,17 @@ router.post('/' , async(req,res) =>{
    return res.status(201).json(product);
 })
 router.get('/:id' , async(req,res) =>{
-    const product =  await Product.findById(req.params.id);
+    const product =  await Product.findById(req.params.id , {
+             name: req.body.name,
+            description: req.body.description,
+            images: imgUrl,
+            brand: req.body.brand,
+            countInStock: req.body.countInStock,
+            price: req.body.price,
+            rating: req.body.rating,
+            category: req.body.category,
+            isFeatured: req.body.isFeatured
+        }, { new: true });
     if(!product){
         res.status(500).json({message:"product with that id is not found"})
     }

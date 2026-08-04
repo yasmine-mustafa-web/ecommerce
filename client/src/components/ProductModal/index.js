@@ -111,7 +111,7 @@ const ProductModal =(props)=>{
              <div className='row'>
                 <div className='col-12 col-md-5'>
                 <div className='productZoom position-relative'>
-                  <div className='badge bg-red position-absolute'>23%</div>
+                  {/* <div className='badge bg-red position-absolute'>23%</div> */}
                   <Slider {...settings2} className='zoomSliderBig' ref={zoomSliderBig}>
                     <div className='item'>
                     <InnerImageZoom zoomType='hover' zoomScale={1} src='https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg'/>
@@ -137,11 +137,10 @@ const ProductModal =(props)=>{
                    </div>
                     <div className='col-12 col-md-7'>
                        
-                                <div className='d-flex info algin-items-center mb-2'>
-                                <h6 className='oldPrice me-2 lg'><sup>EGP</sup>9.6</h6>
-                                <h4 className='netPrice text-danger lg'><sup>EGP</sup>5.2</h4>                             
+                            <div className='d-flex info algin-items-center mb-2'>
+                                <h4 className='netPrice lg'><sup>EGP</sup>{props.price}</h4>                             
                                 </div>
-                             <span className='badge  bg-success'>In Stock</span>
+                             <span className='badge  bg-success'>{props.countInStock}</span>
                             
                   
                     <p className='mt-3'> lorem</p>

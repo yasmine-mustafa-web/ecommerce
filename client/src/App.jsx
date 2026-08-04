@@ -42,7 +42,7 @@ const[ isOpenProductModal,
    
         <Route path="/" exact={true} element={<Home/>}/>
         <Route path="/listing/:id" exact={true} element={<Listing/>}/>
-        <Route path="/details" exact={true} element={<Details/>}/>
+        <Route path="/product/details" exact={true} element={<Details/>}/>
         <Route path="/cart" exact={true} element={<Cart/>}/>
         <Route path="/signIn" exact={true} element={<SignIn/>}/>
         <Route path="/signUp" exact={true} element={<SignUp/>}/>

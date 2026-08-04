@@ -14,21 +14,20 @@ const ProductItem = (props) => {
 const navigate = useNavigate();
 
         const goToDetails = () => {
-// navigate("/details", {
-//         state: {
-//             title,
-//             images,
-//             description,
-//             brand,
-//             state,
-//             price,
-//             realprice,
-//             discountprice,
-//             type,
-//             MFG,
-//             life,
-//         },
-//     });
+           navigate("/product/details", {
+        state: {
+            title: props.title,
+            images: props.images,
+            description: props.description,
+            brand: props.brand,
+            state: props.state,
+            price: props.price,
+            type: props.type,
+            MFG: props.MFG,
+            life: props.life,
+            rating: props.rating,
+        },
+    });
   };
 const context= useContext(MyContext);
   const [isOpenProductModal,setIsOpenProductModal] = useState(false);
@@ -43,9 +42,8 @@ const context= useContext(MyContext);
 
   return (
     <>
-       <div className={`card productItem ${props.itemView}`}  onClick={goToDetails}
-  style={{ cursor: "pointer"}}>
-
+       <div className={`card productItem ${props.itemView} ${props.className || ""}`}  onClick={goToDetails}
+        style={{ cursor: "pointer"}}>
       <div className="upperCard">
          <div className="actions">
         <Button  onClick={(e)=>{e.stopPropagation();   viewProductDetails();}}>
@@ -54,19 +52,18 @@ const context= useContext(MyContext);
         <Button onClick={(e)=>{e.stopPropagation(); }}>< FaRegHeart style={{fontSize:'20px'}}/></Button>
       </div>
       <div className="imgWrapper">
-      <img src="https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg" className="card-img-top"/>
+      <img src={props.images?.[0]} className="card-img-top"/>
       </div>
     
-      <span className="badge bg-red">0%</span>
 </div>
      
 <div className="productInfo">
       <div className="card-body">
-        <h6 className="card-title fw-bold ">here</h6>
+      <h6 className="card-title fw-bold ">{props.title}</h6>
       </div>
 
       <ul className="list-group list-group-flush">
-        <li className='list-group-item'>stock</li>
+        <li className={`list-group-item ${props.state === 'out of stock' ? 'text-danger' : 'text-green'}`}>{props.state}</li>
 
         <li className="list-group-item">
           <RatingGroup.Root
@@ -79,12 +76,8 @@ const context= useContext(MyContext);
             <RatingGroup.Control />
           </RatingGroup.Root>
         </li>
-        <div className="d-flex">
-           <li  style={{border:'none'}}  className="list-group-item text-secondary">
-          <sup>EGP</sup>100
-        </li>
-     
-        
+       <div className="d-flex gap-2 align-items-center">
+              <li style={{border:'none'}} className="list-group-item text-secondary"><sup>EGP</sup>{props.price}</li>
         </div>
        
       </ul>
