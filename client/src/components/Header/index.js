@@ -9,8 +9,9 @@ import SerachBox from './SearchBox';
 import { RxHamburgerMenu } from "react-icons/rx";
 import {FaAngleDown} from 'react-icons/fa6';
 import Navigation from './Navigation';
-
+import { useNavigate } from 'react-router-dom';
 const Header = () => {
+    const navigate = useNavigate();
     return (
         <>
             <div className="headerWrapper">
@@ -29,10 +30,11 @@ const Header = () => {
                             </div>
                         <div className='part2 d-flex align-items-center col-sm-10'>
                          <CountryDropDown />
-                      <SerachBox />
+                        <SerachBox />
 
 
                          <div className='part3 d-flex align-items-center ml-auto' >
+                            <button className="btn bg-red" onClick={() => navigate('/signin')}>Sign In</button>
                             <Button className='circle align-items-center justify-content-center'><FiUser /></Button>
                             <div className='ml-auto cartTab d-flex align-items-center'>
                                 <span className='price mx-2'>LE 0</span>

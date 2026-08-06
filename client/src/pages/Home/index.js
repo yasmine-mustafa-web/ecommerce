@@ -1,4 +1,5 @@
 import HomeBanner from "../../components/HomeBanner";
+import { useState , useEffect } from "react";
 import {Button} from '@mui/material';
 import { IoIosArrowRoundForward } from "react-icons/io";
 import React from "react";
@@ -18,6 +19,7 @@ import skincare from "../../assets/skincare.png";
 import korean from "../../assets/korean.png";
 import sunscreen from "../../assets/sunscreen.jpeg";
 import { Link } from "react-router-dom";
+import {getProducts} from "../../Services/productApi";
 
 const Home = () =>{
      var productSliderOptions = {

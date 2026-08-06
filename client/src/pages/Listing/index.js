@@ -10,8 +10,7 @@ import ProductItem from "../../components/ProductItem";
 import { FaAngleDown } from 'react-icons/fa6';
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import productApi from '../Services/productApi';
-
+import {getProducts} from "../../Services/productApi";
 const Listing = () => {
  
     const [products, setProducts] = useState([]);

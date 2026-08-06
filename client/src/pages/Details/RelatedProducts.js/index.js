@@ -4,6 +4,8 @@ import {Button} from '@mui/material';
 
 
 const RelatedProducts=(props)=>{
+   const { title, products = [] } = props;
+
     var productSliderOptions = {
     dots: true,
     infinite: false,
