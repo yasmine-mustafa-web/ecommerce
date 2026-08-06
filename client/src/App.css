@@ -1126,3 +1126,19 @@ justify-content: center;
     height: 280px;
     object-fit: contain;
 }
+.signUp{
+  color: rgb(3, 7, 94);
+  border: 1px solid rgb(3, 7, 94);
+  transition: all 0.3s ease;
+}
+.signUp:hover{
+  transform: scale(1.03);
+  color: rgb(3, 7, 94);
+  border: 1px solid rgb(3, 7, 94);
+}
+.signIn{
+  transition: all 0.3s ease;
+}
+.signIn:hover{
+  transform: scale(1.03);
+}

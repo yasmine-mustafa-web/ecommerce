@@ -24,7 +24,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction='up' ref={ref} {...props} />;
 })
 
-const ProductModal =(props)=>{
+const ProductModal =({open , closeProductModal , product})=>{
 
     const context = useContext(MyContext);
 
@@ -65,8 +65,8 @@ const ProductModal =(props)=>{
             sx={{ zIndex: 130000 }}
            className='productModal'
             TransitionComponent={Transition}
-            open={props.open}
-            onClose={()=>props.closeProductModal()}
+            open={open}
+            onClose={closeProductModal}
              disableRestoreFocus
            
         >
@@ -75,7 +75,7 @@ const ProductModal =(props)=>{
         
             <Button
                 className="close_"
-                 onClick={()=>props.closeProductModal()}
+                 onClick={()=>closeProductModal()}
             >
                 <MdClose />
             </Button>
@@ -84,14 +84,14 @@ const ProductModal =(props)=>{
                 <div className='col-12' style={{borderBottom:'1px solid rgba(0,0,0,0.1)' , padding:'10px 20px' , marginBottom:'20px'}}>
            
              
-             <h4 className='mb-1 fw-bold' >love</h4>
+             <h4 className='mb-1 fw-bold' >{product.name}</h4>
                </div>
              </div>
              <div className='row'>
                 <div className='col-12 col-md-4'>
              <div className='d-flex col-md-4 justify-content-between align-items-center' >
                
-                                 <p className='mt-2 pe-2 me-2 text-secondary' style={{borderRight:'1px solid rgba(0,0,0,0.1)', flexWrap:'nowrap' , whiteSpace:'nowrap'}}>Brand </p>
+                                 <p className='mt-2 pe-2 me-2 text-secondary' style={{borderRight:'1px solid rgba(0,0,0,0.1)', flexWrap:'nowrap' , whiteSpace:'nowrap'}}>Brand:{product.brand} </p>
 
               
              <li className="list-group-item">
@@ -113,37 +113,32 @@ const ProductModal =(props)=>{
                 <div className='productZoom position-relative'>
                   {/* <div className='badge bg-red position-absolute'>23%</div> */}
                   <Slider {...settings2} className='zoomSliderBig' ref={zoomSliderBig}>
-                    <div className='item'>
-                    <InnerImageZoom zoomType='hover' zoomScale={1} src='https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg'/>
+                     {product.images?.map((img, i) => (
+                    <div className='item' key={i}>
+                    <InnerImageZoom zoomType='hover' zoomScale={1} src={img}/>
                     </div>
-                    <div className='item'>
-                    <InnerImageZoom zoomType='hover' zoomScale={1} src='https://m.media-amazon.com/images/I/61eHITpNFtL._AC_SX569_.jpg'/>
-                    </div><div className='item'>
-                    <InnerImageZoom zoomType='hover' zoomScale={1} src='https://m.media-amazon.com/images/I/61SVz8DtYBL._AC_SX569_.jpg'/>
-                    </div>
+                     ))}
                   </Slider>
                 </div>
                   <Slider {...settings} className='zoomSlider' ref={zoomSlider}>
+                    {product.images?.map((img,i ) => (
+
+                   
                     <div className='item'>
-                      <img className='w-100' onClick={()=>goto(0)} src='https://m.media-amazon.com/images/I/61dzGbM7EnL._AC_SX569_.jpg'/>
+                      <img className='w-100' onClick={()=>goto(i)} src={img}/>
                     </div>
-                    <div className='item'>
-                      <img className='w-100' onClick={()=>goto(1)} src="https://m.media-amazon.com/images/I/61eHITpNFtL._AC_SX569_.jpg"/>
-                    </div>
-                     <div className='item'>
-                      <img className='w-100' onClick={()=>goto(2)} src="https://m.media-amazon.com/images/I/61SVz8DtYBL._AC_SX569_.jpg"/>
-                    </div>
+                     ))}
                   </Slider>
                    </div>
                     <div className='col-12 col-md-7'>
                        
                             <div className='d-flex info algin-items-center mb-2'>
-                                <h4 className='netPrice lg'><sup>EGP</sup>{props.price}</h4>                             
+                                <h4 className='netPrice lg'><sup>EGP</sup>{product.price}</h4>                             
                                 </div>
-                             <span className='badge  bg-success'>{props.countInStock}</span>
+                             <span className='badge  bg-success'>No. of items in stock:{product.countInStock}</span>
                             
                   
-                    <p className='mt-3'> lorem</p>
+                    <p className='mt-3'>{product.description}</p>
                     <div className='d-flex align-items-center gap-3'>
                           <QtyBox/>
                          
@@ -156,13 +151,13 @@ const ProductModal =(props)=>{
                     </div>
                           <div style={{borderBottom:'1px solid rgba(0,0,0,0.1)' , color:'#3e445a'}} className='align-items-center'>
                           <div  >
-                          <p className='d-flex align-items-center mb-1'><TiTick className='fs-6 text-green' /> Type : </p>
+                          <p className='d-flex align-items-center mb-1'><TiTick className='fs-6 text-green' /> Type : {product.type} </p>
                           </div>
                           <div >
-                          <p className='d-flex align-items-center mb-1'><TiTick className='fs-6 text-green' /> MFG : </p>   
+                          <p className='d-flex align-items-center mb-1'><TiTick className='fs-6 text-green' /> MFG :{product.MFG} </p>   
                           </div>
                            <div >
-                           <p className='d-flex align-items-center'><TiTick className='fs-6 text-green' /> LIFE : </p>    
+                           <p className='d-flex align-items-center'><TiTick className='fs-6 text-green' /> LIFE : {product.life} </p>    
                            </div>
                        </div>
 

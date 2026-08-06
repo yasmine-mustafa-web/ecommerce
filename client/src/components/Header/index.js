@@ -23,7 +23,7 @@ const Header = () => {
                     </div>
                 </div>
                 <header className="header">
-                    <div className="container">
+                    <div className="container-fluid">
                         <div className="row">
                             <div className="logoWrapper d-flex align-items-center col-sm-2">
                                 <Link to={'/'}><img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg'/></Link>
@@ -34,16 +34,19 @@ const Header = () => {
 
 
                          <div className='part3 d-flex align-items-center ml-auto' >
-                            <button className="btn bg-red" onClick={() => navigate('/signin')}>Sign In</button>
+                          
                             <Button className='circle align-items-center justify-content-center'><FiUser /></Button>
                             <div className='ml-auto cartTab d-flex align-items-center'>
-                                <span className='price mx-2'>LE 0</span>
+                                <span className='price mx-2' style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}}>LE 0</span>
                                 <div className='position-relative  mx-2'>
                                    <Button className='circle'><IoBagOutline /></Button>
                                     <span className='count d-flex align-items-center justify-content-center'>0</span>
                                 
                                 </div>
+
                             </div>
+                              <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signIn btn bg-red text-white me-2 rounded-4" onClick={() => navigate('/signIn')}>Sign In</button>
+                            <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => navigate('/signUp')}>Sign Up</button>
                          </div>
 
 

@@ -10,7 +10,12 @@ const plimit = require('p-limit')
 
 console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 
-app.use(cors());
+app.use(cors(
+    {
+    origin: ["http://localhost:5173", "http://localhost:5174"], // admin + client dev ports
+    credentials: true
+}
+));
 // app.options('/*splat',cors());
 
 main().catch(err => {

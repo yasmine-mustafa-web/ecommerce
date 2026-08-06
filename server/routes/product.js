@@ -77,7 +77,10 @@ router.get('/:id' , async(req,res) =>{
             price: req.body.price,
             rating: req.body.rating,
             category: req.body.category,
-            isFeatured: req.body.isFeatured
+            isFeatured: req.body.isFeatured,
+            type:req.body.type,
+            MFG:req.body.MFG,
+            life:req.body.life
         }, { new: true });
     if(!product){
         res.status(500).json({message:"product with that id is not found"})
@@ -121,9 +124,11 @@ router.put('/:id' , upload.array('images') , async(req,res) =>{
             price: req.body.price,
             rating: req.body.rating,
             category: req.body.category,
-            isFeatured: req.body.isFeatured
+            isFeatured: req.body.isFeatured,
+            type:req.body.type,
+            MFG:req.body.MFG,
+            life:req.body.life
         }, { new: true });
-
         if (!product) return res.status(404).json({ message: "the product cannot be updated", status: false });
         return res.status(200).json(product);
     } catch (err) {

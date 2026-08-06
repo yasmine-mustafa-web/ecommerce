@@ -11,6 +11,9 @@ const SignIn = () =>{
 
     useEffect(()=>{
         context.setisHeaderFooterShow(false);
+         return () => {
+        context.setisHeaderFooterShow(true);
+    };
     },[])
     return(
         <section className="signInPage justify-content-center p-0">

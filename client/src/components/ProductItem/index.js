@@ -31,7 +31,7 @@ const navigate = useNavigate();
   };
 const context= useContext(MyContext);
   const [isOpenProductModal,setIsOpenProductModal] = useState(false);
-   const viewProductDetails=(id)=>{
+   const viewProductDetails=()=>{
       setIsOpenProductModal(true);
     }
 
@@ -92,6 +92,7 @@ const context= useContext(MyContext);
  {isOpenProductModal === true && <ProductModal
   open={isOpenProductModal}
         closeProductModal={closeProductModal}
+        product={props}
  /> }   
     </>
   );
