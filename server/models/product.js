@@ -40,13 +40,9 @@ isFeatured:{
     type:Boolean,
     default:false
 },
-dateCreated:{
-  type:Date,
-  default: Date.now
-},
 MFG:{
-    type:String,
-    required:true
+    type:Date,
+    required:true   
 },
 type:{
     type:String,

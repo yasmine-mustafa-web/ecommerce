@@ -4,6 +4,7 @@ const {Category} = require('../models/category');
 const express = require('express');
 const pLimit = require('p-limit');
 const router = express.Router();
+const Product = require('../models/product');
 
 
 router.get('/' , async(req,res) =>{
@@ -23,31 +24,22 @@ return res.status(201).send(category);
 })
 
 router.post('/' , async(req,res) =>{
+    try{
     console.log(req.body);
-    const limit = pLimit(3);
 
-    const imagesToUpload = req.body.images.map((img)=>{
-        return limit (async()=>{
-            const result = await cloudinary.uploader.upload(img);
-            return result;
-        })
-    })
-    const uploadStatus = await Promise.all(imagesToUpload);
+    const result = await cloudinary.uploader.upload(req.body.image);
 
-const imgUrl = uploadStatus.map((item)=>{
-    return item.secure_url
+    if(!result){
+    return  res.status(500).json({
+    error:'image cannot be upload',
+    status:false
+    
 })
-
-if(!uploadStatus){
-    return res.status(500).json({
-        error:'images cannot be uploaded',
-        status:false
-    })
 }
 
 let category = new Category({
     name:req.body.name,
-    images:imgUrl
+    image:result.secure_url
 })
 
 if(!category){
@@ -60,6 +52,13 @@ if(!category){
 category =await category.save();
 
 return res.status(201).json(category);
+    }catch(error){
+           return res.status(500).json({
+            message: 'cannot create category',
+            error: error.message
+        });
+    }
+
 })
 
 router.delete('/:id' , async(req,res) =>{
@@ -70,7 +69,7 @@ router.delete('/:id' , async(req,res) =>{
             success:false
         })
     }
- return   res.status(200).json({
+     return   res.status(200).json({
         message:'category is deleted',
         success:true
     })

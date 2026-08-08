@@ -53,7 +53,13 @@ useEffect(() => {
                 price: p.price,
                 brand: p.brand,
                 description: p.description,
-                state: p.countInStock > 0 ? "in stock" : "out of stock",
+                type:p.type,
+                MFG:p.MFG,
+                life:p.life,
+                countInStock:p.countInStock,
+                isFeatured:p.isFeatured,
+                rating: p.rating,
+                category: p.category?.map((c) => c.name )  || [],
             }));
             setProducts(mapped);
             setProductsNew([...mapped].reverse());
@@ -127,14 +133,14 @@ return(
                             <h3>BEST SELLERS</h3>
 
                              </div>
-                             <Link to="/listing/:id" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
-                             
+                             <Link to="/listing?sort=bestsellers" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
                     </div>
                             <div className="productRow w-100 mt-3">
   <Slider {...productSliderOptions}>
     {products.map((product, index) => (
       <ProductItem
         key={index}
+        isFeatured={product.isFeatured}
         images={product.images}
         title={product.title}
         price={product.price}
@@ -144,6 +150,7 @@ return(
         countInStock={product.countInStock}
         type={product.type}
         MFG={product.MFG}
+        rating={product.rating}
         life={product.life}
         className={
           index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
@@ -159,8 +166,7 @@ return(
                             <h3>NEW PRODUCTS</h3>
                             <p className="text-secondary">New products with updated stocks</p>
                              </div>
-                         <Link to="/listing/:id" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
-
+                             <Link to="/listing?sort=bestsellers" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
                     </div>
                    
                             <div className="productRow w-100 mt-3 d-flex productRow2">
@@ -175,7 +181,8 @@ return(
         brand={product.brand}
         discount={product.discount}
         description={product.description}
-        state={product.state}
+        rating={product.rating}
+        isFeatured={product.isFeatured}
         type={product.type}
         MFG={product.MFG}
         life={product.life}

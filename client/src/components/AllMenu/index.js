@@ -6,10 +6,10 @@ import Slider from "react-slick";
 
 
 
-const AllMenu=({image , title , discount ,price })=>{
+const AllMenu=({images , name , discount ,price , countInStock ,rating }) => {
     return(
          <div className={`card`} style={{ width: "13rem" }}>
-      <img src={image} className="card-img-top" alt={title} />
+      <img src={images} className="card-img-top" alt={name} />
 
       <span className="badge bg-red">{discount}%</span>
 
@@ -21,11 +21,11 @@ const AllMenu=({image , title , discount ,price })=>{
       </div>
 
       <div className="card-body">
-        <h5 className="card-title">{title}</h5>
+        <h5 className="card-title">{name}</h5>
       </div>
 
       <ul className="list-group list-group-flush">
-        <li className="list-group-item text-green">In Stock</li>
+        <li className="list-group-item text-green">In Stock:{countInStock}</li>
 
         <li className="list-group-item">
           <RatingGroup.Root

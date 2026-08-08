@@ -16,16 +16,17 @@ const navigate = useNavigate();
         const goToDetails = () => {
            navigate("/product/details", {
         state: {
-            title: props.title,
+            name: props.name,
             images: props.images,
             description: props.description,
             brand: props.brand,
-            state: props.state,
             price: props.price,
             type: props.type,
             MFG: props.MFG,
             life: props.life,
             rating: props.rating,
+            isFeatured:props.isFeatured,
+            countInStock:props.countInStock
         },
     });
   };
@@ -59,12 +60,15 @@ const context= useContext(MyContext);
      
 <div className="productInfo">
       <div className="card-body">
-      <h6 className="card-title fw-bold ">{props.title}</h6>
+      <h6 className="card-title fw-bold ">{props.name}</h6>
       </div>
 
       <ul className="list-group list-group-flush">
-        <li className={`list-group-item ${props.state === 'out of stock' ? 'text-danger' : 'text-green'}`}>{props.state}</li>
-
+        <li className={`list-group-item ${
+    props.countInStock > 0 ? 'text-green' : 'text-danger'
+      }`}>
+          {props.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+      </li>
         <li className="list-group-item">
           <RatingGroup.Root
             count={5}
@@ -83,7 +87,7 @@ const context= useContext(MyContext);
       </ul>
 
       <div className="card-body">
-        <button  onClick={(e)=>{ e.preventDefault(); e.stopPropagation();}} href="#" className="btn btn-card w-100">
+        <button  onClick={(e)=>{ e.preventDefault(); e.stopPropagation();}} className="btn btn-card w-100">
           Add to cart
         </button>
       </div>

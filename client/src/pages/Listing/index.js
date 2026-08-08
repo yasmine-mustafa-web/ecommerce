@@ -27,7 +27,12 @@ useEffect(() => {
                 description: p.description,
                 rating: p.rating,
                 category: p.category?.map((c) => c.name )  || [],
-                state: p.countInStock > 0 ? "in stock" : "out of stock",
+                type:p.type,
+                MFG:p.MFG,
+                life:p.life,
+                countInStock:p.countInStock,
+                isFeatured:p.isFeatured,
+            
             }));
             setProducts(mapped);
         })
@@ -217,6 +222,7 @@ useEffect(() => {
                   type={product.type}
                   MFG={product.MFG}
                   life={product.life}
+                  isFeatured={product.isFeatured}
                   className={
 index === 0 ? "card-right" : index === paginatedProducts.length - 1 ? "card-left" : "card-middle"
                   }

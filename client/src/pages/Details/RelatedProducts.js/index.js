@@ -32,6 +32,7 @@ const RelatedProducts=(props)=>{
         type={product.type}
         MFG={product.MFG}
         life={product.life}
+        rating={product.rating}
         className={
           index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
         }
