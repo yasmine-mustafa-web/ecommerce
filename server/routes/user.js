@@ -1,4 +1,4 @@
-const {User} = require('../models/user');
+const User = require('../models/user');
 const express = require('express');
 const router = express.Router();
 const bcrypt=require('bcrypt');
@@ -6,21 +6,22 @@ const jwt = require('jsonwebtoken');
 
 
 router.post(`/signup` , async(req,res) =>{
-    const { name , password , phone , email} = req.body;
+    const { firstName , lastName , password , phone , email} = req.body;
     try{
         const existingUser = await User.findOne({email:email})
 
         if(existingUser){
-            res.status(400).json({msg:"User alredy exist"})
+        return res.status(400).json({msg:"User with this email is already exists"})
         }
 
         const hashPassword = await bcrypt.hash(password , 10);
 
         const result = await User.create({
-            name:name,
+            firstName :firstName ,
+            lastName:lastName ,
             phone:phone,
             email:email,
-            password:password
+            password:hashPassword
         });
 
         const token = jwt.sign({email:result.email , id:result._id} , process.env.JSON_WEB_TOKEN_SECRET_KEY);
@@ -32,29 +33,31 @@ router.post(`/signup` , async(req,res) =>{
 
     }catch(error){
         console.log(error);
-        res.status(500).json({msg:"smth went wrong"})
+       return res.status(500).json({msg:"smth went wrong"})
     }
 })
 
 router.post(`/signin` , async(req,res) =>{
-    const {email , paswword} = req.body;
+    const {email , password} = req.body;
     try{
         const existingUser = await User.findOne({email:email});
         if(!existingUser){
-            res.status(404).json({msg:'user not found'})
+        return res.status(404).json({msg:'user not found'})
         }
 
         const matchPassword= await bcrypt.compare(password , existingUser.password);
-        if(!matchedPassword){
+        if(!matchPassword){
             return res.status(404).json({msg:"invalid password"})
         }
 
-        const token = jwt.sign({email:existingUser.email , is:existingUser._id},
-            JSON_WEB_TOKEN_SECRET_KEY
+        const token = jwt.sign({email:existingUser.email , id:existingUser._id},
+            process.env.JSON_WEB_TOKEN_SECRET_KEY
         );
 
-        res.status(200).json({
-            message:'Welcome Back'
+        return res.status(200).json({
+            message:'Welcome Back',
+            user:existingUser,
+            token:token
         })
     }catch(err){
         res.status(404).json({message:"smth went wrong"})
@@ -105,7 +108,7 @@ router.get(`/get/count` , async(req,res) =>{
 })
 
 router.put('/:id' , async(req,res) =>{
-    const {name , password , phone , email } = req.body;
+    const {  firstName , lastName , password , phone , email } = req.body;
 
     const userExist = await User.findById(req.params.id);
 
@@ -113,13 +116,14 @@ router.put('/:id' , async(req,res) =>{
     if(req.body.password){
         newPassword = bcrypt.hashSync(req.body.password , 10)
     } else{
-        newPassword = userExist.passwordHash;
+        newPassword = userExist.password;
     }
     
     const user = await User.findByIdAndUpdate(
         req.params.id,
         {
-            name:name,
+            firstName:firstName,
+            lastName:lastName,
             phone:phone,
             email:email,
             password:newPassword

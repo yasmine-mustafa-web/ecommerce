@@ -1,23 +1,115 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect , useState } from "react";
 import {MyContext } from '../../App';
-import Logo from '../../assets/Screenshot_2026-07-12_163830-removebg-preview.png';
 import { Button } from '@mui/material';
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
-
+import axios from "axios";
 
 
 const SignUp = () =>{
+    const [inputIndex, setInputIndex] = useState();
+    const [ isLoading , setIsLoading] = useState(false);
+    const [formfields , setFormfields] = useState({
+      firstName:"",
+      lastName:"",
+      email:"",
+      password:"",
+      phone:"",
+    })
+
+    const navigate = useNavigate();
 
     const context = useContext(MyContext);
 
-    useEffect(()=>{
-        context.setisHeaderFooterShow(false);
-              return () => {
-        context.setisHeaderFooterShow(true);
-    };
-    },[])
+    useEffect(() => {
+    window.scrollTo(0,0);
+    }, []);
+
+    const focusInput = (index) => {
+      setInputIndex(index);
+    }
+
+    const onchangeInput = (e) =>{
+      const {name , value} = e.target
+      setFormfields((prev)=> ({
+        ...prev,
+        [name]: value
+      }))
+    }
+
+    const signUp = async (e) => {
+      e.preventDefault();
+      
+        if (formfields.firstName.trim() === ""){
+          context.setAlertBox({
+            open:true,
+            error:true,
+            msg:"first name cannot be blank"
+          });
+          return;
+        }
+
+        if (formfields.lastName.trim() === ""){
+          context.setAlertBox({
+            open:true,
+            error:true,
+            msg:"last name cannot be blank"
+          });
+          return;
+        }
+        
+        if (formfields.email.trim() === ""){
+          context.setAlertBox({
+            open:true,
+            error:true,
+            msg:"email cannnot be blank"
+          });
+          return;
+        }
+         if (formfields.password.trim() === ""){
+          context.setAlertBox({
+            open:true,
+            error:true,
+            msg:"password cannnot be blank"
+          });
+          return;
+        }
+         if (formfields.phone === ""){
+          context.setAlertBox({
+            open:true,
+            error:true,
+            msg:"phone cannnot be blank"
+          });
+          return;
+        }
+        try{
+          setIsLoading(true);
+        
+          const response = await axios.post(
+             "http://localhost:4000/api/user/signup",
+             formfields
+          )
+
+        console.log(response.data);
+
+        context.setAlertBox({
+          open:true,
+          error:false,
+          msg:"Account created successfully"
+        })
+        navigate('/signIn');
+        }catch(err) {
+            console.error("SIGNUP ERROR:", err); 
+          context.setAlertBox({
+            open:true,
+            error:true,
+            msg: err?.response?.data?.msg || "smth went wrong"
+          })
+        }finally{
+          setIsLoading(false);
+        }
+    }
     return(
         <section className="signInPage justify-content-center p-0">
             <div className="container">
@@ -26,27 +118,34 @@ const SignUp = () =>{
                         <img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg' />
                     </div>
                         
-<form className="m-0 p-0">
+<form className="m-0 p-0" onSubmit={signUp}>
  <h4>Sign Up</h4>
- <div class="input-group">
-  <span class="input-group-text">First and last name</span>
-  <input type="text" aria-label="First name" class="form-control"/>
-  <input type="text" aria-label="Last name" class="form-control"/>
+ <div className="input-group">
+  <span className="input-group-text">First and last name</span>
+  <input type="text" name="firstName"  onChange={onchangeInput}
+                                onFocus={() => focusInput(0)} value={formfields.firstName} aria-label="First name" className="form-control"/>
+  <input type="text" name="lastName"  onChange={onchangeInput}
+                                onFocus={() => focusInput(1)} value={formfields.lastName} aria-label="Last name" className="form-control"/>
 </div>
 <div className="form-floating">
-  <input type="tel" className="form-control" id="phoneNumber" placeholder="Phone Number"/>
-  <label for="phoneNumber">Phone Number</label>
+  <input type="tel" name="phone"  onChange={onchangeInput}
+                                onFocus={() => focusInput(2)} value={formfields.phone} className="form-control" id="phone" placeholder="Phone Number"/>
+  <label htmlFor="phone">Phone Number</label>
 </div> 
 <div className="form-floating mb-3">
-  <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
-  <label  for="floatingInput">Email address</label>
+  <input name="email" value={formfields.email}  onChange={onchangeInput}
+                                onFocus={() => focusInput(3)} type="email" className="form-control" id="email" placeholder="name@example.com"/>
+  <label  htmlFor="email">Email address</label>
 </div>
 <div className="form-floating">
-  <input type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
-  <label for="floatingPassword">Password</label>
+  <input type="password" name="password" value={formfields.password}  onChange={onchangeInput}
+                                onFocus={() => focusInput(4)} className="form-control" id="password" placeholder="Password"/>
+  <label htmlFor="password">Password</label>
 </div>   
 <a className="cursor">Forgot password?</a>
-<Button className="my-3 btn w-100 btn-lg bg-red text-white fw-semibold">Sign In</Button>
+<Button type="submit" disabled={isLoading} className="my-3 btn w-100 btn-lg bg-red text-white fw-semibold">
+ {isLoading ? "Signing Up..." : "Sign Up"}
+  </Button>
 <p>Already registerd? <Link to='/signIn'>Sign In</Link></p>
 
 <div className="d-flex align-items-center my-4">

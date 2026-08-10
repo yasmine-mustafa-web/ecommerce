@@ -7,16 +7,17 @@ const cors=require('cors');
 const categoryRoutes=require('./routes/category');
 const productRoutes=require('./routes/product');
 const plimit = require('p-limit')
-
+const userRouter = require('./routes/user');
+const authJwt = require("../server/helper/jwt");
 console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 
 app.use(cors(
     {
-    origin: ["http://localhost:5173", "http://localhost:5174"], // admin + client dev ports
+    origin: ["http://localhost:3000", "http://localhost:5173"],
     credentials: true
 }
 ));
-// app.options('/*splat',cors());
+app.options('/*splat',cors());
 
 main().catch(err => {
     console.log(err);
@@ -39,17 +40,25 @@ async function main() {
 // .catch((e) =>{
 //     console.log('error:' , e)
 // })
-app.use(bodyParser.json());
-
+app.use(express.json());
+app.use(authJwt({ secret:process.env.JSON_WEB_TOKEN_SECRET_KEY, algorithms: ['HS256'] }).unless({
+    path: [
+      '/api/user/signup',
+      '/api/user/signin'
+    ]
+}));
+app.use(`/api/user` , userRouter)
 app.use(`/api/categories` , categoryRoutes);
 app.use(`/api/products` , productRoutes);
 
 
-app.post('/test', (req, res) => {
-    console.log("TEST ROUTE HIT");
-    res.json({ message: "Working" });
+app.use((err, req, res, next) => {
+  if (err.name === 'UnauthorizedError') {
+    return res.status(401).json({ msg: 'Invalid or missing token' });
+  }
+  next(err);
 });
-    
+
 app.listen(process.env.PORT ,()=>{
     console.log(`is running on ${process.env.PORT}`)
 })

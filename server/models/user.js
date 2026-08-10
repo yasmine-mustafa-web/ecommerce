@@ -2,12 +2,16 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const userSchema= new Schema({
-    name:{
+    firstName:{
+        type:String,
+        required:true
+    },
+    lastName:{
         type:String,
         required:true
     },
     phone:{
-        type:Number,
+        type:String,
         required:true
     },
     email:{
@@ -19,6 +23,10 @@ const userSchema= new Schema({
         type:String,
         required:true
     },
+    admin:{
+        type:Boolean,
+        default:false
+    }
 
 })
 
@@ -27,4 +35,4 @@ userSchema.virtual('id').get(function () {
 })
 
 
-module.export=mongoose.model('User' , userSchmea);
+module.exports=mongoose.model('User' , userSchema);
