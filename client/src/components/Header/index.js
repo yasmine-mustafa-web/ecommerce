@@ -10,8 +10,34 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import {FaAngleDown} from 'react-icons/fa6';
 import Navigation from './Navigation';
 import { useNavigate } from 'react-router-dom';
+import {useContext , useState , useEffect} from 'react';
+import { MyContext } from '../../App';
 const Header = () => {
     const navigate = useNavigate();
+    const context = useContext(MyContext);
+
+    const [existingUser , setExistingUser] = useState(false);
+
+    useEffect(() =>{
+        const token = localStorage.getItem("token");
+        setExistingUser(!!token);
+        
+    }, [context?.isLogin]);
+
+    const handleLogout=() =>{
+        localStorage.removeItem("token");
+        setExistingUser(false);
+        context.setIsLogin(false);
+        context.setAlertBox(
+            {
+                open:true,
+                error:false,
+                msg:"Logged out successfully!"
+            }
+        )
+        navigate('/');
+    }
+
     return (
         <>
             <div className="headerWrapper">
@@ -45,8 +71,14 @@ const Header = () => {
                                 </div>
 
                             </div>
-                              <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signIn btn bg-red text-white me-2 rounded-4" onClick={() => navigate('/signIn')}>Sign In</button>
+                            {context?.isLogin? (
+                                <button onClick={handleLogout} className='btn logout text-white bg-red rounded-4'>Logout</button>
+                            ):(
+                        <>
+                            <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signIn btn bg-red text-white me-2 rounded-4" onClick={() => navigate('/signIn')}>Sign In</button>
                             <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => navigate('/signUp')}>Sign Up</button>
+                        </>
+                            )}
                          </div>
 
 

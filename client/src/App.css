@@ -1142,3 +1142,12 @@ justify-content: center;
 .signIn:hover{
   transform: scale(1.03);
 }
+.logout{
+  
+  transition: all 0.3s ease;
+}
+.logout:hover{
+  transform: scale(1.03);
+  color: rgb(3, 7, 94);
+  border: 1px solid rgb(3, 7, 94);
+}

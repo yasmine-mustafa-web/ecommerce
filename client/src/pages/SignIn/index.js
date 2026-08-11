@@ -6,6 +6,7 @@
     import { FaFacebookF } from "react-icons/fa";
     import axios from "axios";
 
+
     const SignIn = () =>{
         const [inputIndex , setInputIndex]=useState();
         const [isLoading, setIsLoading] = useState(false);
@@ -55,20 +56,24 @@
                 })
             return;
             }
+    
 
         try{
            setIsLoading(true);
            const response= await axios.post(
               "http://localhost:4000/api/user/signin",
               formfields
-           )
-           console.log(response.data);
+           );
+
+       
 
            context.setAlertBox({
             open:true,
             error:false,
             msg:"signed in successfully"
            })
+           localStorage.setItem("token", response.data.token);
+           context.setIsLogin(true);
            navigate('/')
         }catch(err){
             console.log('SIGNIN ERROR:' , err);

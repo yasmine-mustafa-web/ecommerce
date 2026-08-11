@@ -12,6 +12,7 @@ import SignIn from './pages/SignIn/index.js';
 import { useState , createContext } from 'react';
 import SignUp from './pages/SignUp/index.js';
 import Listing from './pages/Listing/index.js';
+import {useEffect} from "react"
 import Details from './pages/Details/index.js';
 import ProductModal from './components/ProductModal/index.js';
 import Cart from './pages/Cart/index.js'
@@ -22,6 +23,10 @@ function Layout() {
 
   const location = useLocation();
 
+  const [isLogin, setIsLogin] = useState(() =>{
+    return !!localStorage.getItem("token");
+  });
+
   const [alertBox, setAlertBox] = useState({
   open: false,
   error: false,
@@ -31,6 +36,11 @@ function Layout() {
   const [isHeaderFooterShow ,
     setisHeaderFooterShow ] = useState(true);
 
+
+    useEffect(() =>{
+      const token = localStorage.getItem("token");
+      setIsLogin(!!token)
+    },[])
   const[ isOpenProductModal, setIsOpenProductModal]= useState(false);
 
     const closeProductModal=()=>{
@@ -46,7 +56,9 @@ function Layout() {
       isOpenProductModal,
       setIsOpenProductModal,
       alertBox,
-      setAlertBox
+      setAlertBox,
+      isLogin, 
+      setIsLogin
     }
   return (
 
