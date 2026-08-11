@@ -45,9 +45,10 @@ app.use(authJwt({ secret:process.env.JSON_WEB_TOKEN_SECRET_KEY, algorithms: ['HS
     path: [
       '/api/user/signup',
       '/api/user/signin',
-      '/api/admin/signin'
+      '/api/admin/login'
     ]
 }));
+
 app.use(`/api/user` , userRouter)
 app.use(`/api/categories` , categoryRoutes);
 app.use(`/api/products` , productRoutes);
