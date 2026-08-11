@@ -306,3 +306,17 @@ margin-top: -25px !important;
 .sidebar.collapsed a{
     justify-content:center;
 }
+.signInPage img{
+  width: 190px !important;
+  margin: 20px auto !important;
+  display: block;
+}
+.formSign{
+  max-width: 400px;
+  width: 100%;
+  align-items: center !important;
+  margin: 0 auto !important;
+}
+.bg-red{
+  background: rgb(3, 7, 94) !important;
+}

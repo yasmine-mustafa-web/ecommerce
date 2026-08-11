@@ -12,6 +12,7 @@ import Navigation from './Navigation';
 import { useNavigate } from 'react-router-dom';
 import {useContext , useState , useEffect} from 'react';
 import { MyContext } from '../../App';
+
 const Header = () => {
     const navigate = useNavigate();
     const context = useContext(MyContext);

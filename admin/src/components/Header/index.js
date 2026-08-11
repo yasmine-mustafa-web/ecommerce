@@ -10,11 +10,41 @@ import { FaRegBell } from "react-icons/fa6";
 import {Button, Avatar, Menu, Portal } from "@chakra-ui/react"
 import { IoIosSettings } from "react-icons/io";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useNavigate } from 'react-router-dom';
+import {useContext , useState , useEffect} from 'react';
+import { MyContext } from '../../App';
+
 
 const Header = ({
     isSidebarOpen,
     setIsSidebarOpen
 }) =>{    
+
+     const navigate = useNavigate();
+      const context = useContext(MyContext);
+  
+      const [existingUser , setExistingUser] = useState(false);
+  
+      useEffect(() =>{
+          const token = localStorage.getItem("token");
+          setExistingUser(!!token);
+          
+      }, [context?.isLogin]);
+  
+      const handleLogout=() =>{
+          localStorage.removeItem("token");
+          setExistingUser(false);
+          context.setIsLogin(false);
+          context.setAlertBox(
+              {
+                  open:true,
+                  error:false,
+                  msg:"Logged out successfully!"
+              }
+          )
+          navigate('/');
+      }
+  
     return(
     <>
     <header className=" d-flex align-items-center">
@@ -41,7 +71,6 @@ const Header = ({
                 </div>
                 <div className="col-lg-5 col-md-5 d-flex align-items-center part3 justify-content-end">
                     <div className="btnsHolder ms-auto">
-                           <button className="btn rounded-circle me-3"><MdLightMode/></button>
 
                      <Menu.Root positioning={{ placement: "right-start" }}>
       <Menu.Trigger asChild>
@@ -156,6 +185,8 @@ const Header = ({
         </Menu.Positioner>
       </Portal>
     </Menu.Root>
+
+  
                     </div>
                  
 
@@ -181,12 +212,21 @@ const Header = ({
       </Portal>
     </Menu.Root>
     </div>
-      <div className="userInfo align-items-center ms-2">
+    {context.isLogin?(
+      <>
+       <div className="userInfo align-items-center ms-2">
                             <h6 className="mb-0 pb-0 text-capitalize">yasmina aly</h6>
                             <p className="text-secondary mt-0 pt-0">@yasminallyy</p>
                              </div>
+                             <div className="mx-2">
+                        <button onClick={handleLogout} className="btn">logout</button>
+                     </div>
+                     </>
                         
-                     
+    ):(  <button  onClick={() => navigate('/signIn')}>Sign In</button>   )
+                     }
+     
+                
                         </div>
                     </div>
                   
