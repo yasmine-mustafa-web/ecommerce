@@ -98,7 +98,7 @@ const SignUp = () =>{
           error:false,
           msg:"Account created successfully"
         })
-        navigate('/signIn');
+        navigate('/');
         }catch(err) {
             console.error("SIGNUP ERROR:", err); 
           context.setAlertBox({
