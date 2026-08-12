@@ -68,7 +68,8 @@ const SignIn = () => {
       });
       localStorage.setItem("token", response.data.token);
       context.setIsLogin(true);
-      navigate("/");
+      context.setUser(response.data.user);
+      navigate("/dashboard");
     } catch (err) {
       console.log("SIGNIN ERROR:", err);
       context.setAlertBox({

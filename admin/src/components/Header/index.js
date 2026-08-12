@@ -51,7 +51,7 @@ const Header = ({
         <div className="container-fluid">
             <div className="row d-flex align-items-center">
                 <div className="col-lg-3 col-md-3 part1 ps-1">
-                    <Link to={'/'} className="d-flex align-items-center logo">
+                    <Link to={'/dashboard'} className="d-flex align-items-center logo">
                     <img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg'/>
                     <span className="ms-2 text-dark fw-bold ">Pharmacy</span>
                     </Link>
@@ -190,7 +190,10 @@ const Header = ({
                     </div>
                  
 
-                   <div className="myAccWrapper d-flex align-items-center">
+              
+    {context.isLogin?(
+      <>
+           <div className="myAccWrapper d-flex align-items-center">
                      <div className="myAcc d-flex align-items-center">
                         <div className="userImg d-flex">
                              
@@ -212,23 +215,22 @@ const Header = ({
       </Portal>
     </Menu.Root>
     </div>
-    {context.isLogin?(
-      <>
        <div className="userInfo align-items-center ms-2">
-                            <h6 className="mb-0 pb-0 text-capitalize">yasmina aly</h6>
-                            <p className="text-secondary mt-0 pt-0">@yasminallyy</p>
+                            <h6 className="mb-0 pb-0 text-capitalize">{context.user?.username}</h6>
+                            <p className="text-secondary mt-0 pt-0">@{context.user?.username}</p>
                              </div>
                              <div className="mx-2">
-                        <button onClick={handleLogout} className="btn">logout</button>
+                        <button onClick={handleLogout} className="btn bg-red text-white rounded-4">logout</button>
                      </div>
+                          </div>
+                    </div>
                      </>
                         
-    ):(  <button  onClick={() => navigate('/signIn')}>Sign In</button>   )
+    ):(  <button className="btn bg-red text-white rounded-4"  onClick={() => navigate('/')}>Sign In</button>   )
                      }
      
                 
-                        </div>
-                    </div>
+                   
                   
 
                 </div>

@@ -19,7 +19,7 @@ function Layout() {
   
     const [isHeaderFooterShow ,
     setisHeaderFooterShow ] = useState(true);
-
+    const [user, setUser] = useState(null);
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [isLogin, setIsLogin] = useState(() =>{
        return !!localStorage.getItem("token");
@@ -32,8 +32,8 @@ function Layout() {
     });
 
     const hideHeaderFooter= 
-    location.pathname === "/signIn"
-
+    location.pathname === "/"
+    
      useEffect(() =>{
           const token = localStorage.getItem("token");
           setIsLogin(!!token)
@@ -47,7 +47,9 @@ function Layout() {
     isLogin, 
     setIsLogin,
     isSidebarOpen,
-    setIsSidebarOpen
+    setIsSidebarOpen,
+    user,
+    setUser
   }
   return (
     <MyContext.Provider value={values} >
@@ -64,11 +66,11 @@ function Layout() {
 
       <main >
       <Routes>
-        <Route path='/'  element={<DashBoard/>}/>
+        <Route path='/dashboard'  element={<DashBoard/>}/>
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<AddProduct />} />
         <Route path="/products/edit/:id" element={<EditProduct />} />
-        <Route path="/signIn" element={<SignIn/>}/>
+        <Route path="/" element={<SignIn/>}/>
       </Routes>
       {!hideHeaderFooter &&  <Footer />}
       </main>

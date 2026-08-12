@@ -9,7 +9,7 @@ router.post(`/login` , async(req,res) =>{
     try{
         const existingUser = await Admin.findOne({username : username, password: password});
         if(!existingUser){
-        return res.status(200).json({msg:'user not found'})
+        return res.status(404).json({msg:'user not found'})
         }
 
         // const matchPassword= await bcrypt.compare(password , existingUser.password);
