@@ -20,7 +20,7 @@ const Footer =()=>{
                 </div>
                 <div className="col align-items-center d-flex">
                     <span className="me-2">< MdOutlineDeliveryDining /></span>
-                    <span>Free delivery fo order over LE.999</span>
+                    <span>Free delivery for order over LE.999</span>
                 </div><div className="col align-items-center d-flex">
                     <span className="me-2">< CiDiscount1 /></span>
                     <span>Daily discounts</span>

@@ -13,7 +13,6 @@
   import { TiTick } from "react-icons/ti";
   import ZoomImage from '../../components/ZoomImg';
   import { useLocation } from "react-router-dom";
-  import RelatedProducts from './RelatedProducts.js';
 
   const Transition = React.forwardRef(function Transition(props, ref) {
       return <Slide direction='up' ref={ref} {...props} />;
@@ -159,8 +158,6 @@
                       </div>
           </div>
 
-          <RelatedProducts title='related products'/>
-                  <RelatedProducts title='recently viewed products'/>
 
           </>
       )
