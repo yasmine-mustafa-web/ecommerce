@@ -15,10 +15,24 @@ import ProductImageUpload from "../ProductImageUpload";
 
 const ProductForm=()=>{
     const [categories, setCategories] = useState([]);
+    const [images, setImages] = useState([]);
+    const navigate = useNavigate();
+    const { id } = useParams();
 
-useEffect(() => {
-    loadCategories();
-}, []);
+
+    const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    category: [],
+    brand: "",
+    price: "",
+    countInStock: "",
+    isFeatured: false
+});
+
+    useEffect(() => {
+        loadCategories();
+    }, []);
 
 const loadCategories = async () => {
     try {
@@ -28,9 +42,7 @@ const loadCategories = async () => {
         toast.error("Failed to load categories");
     }
 };
-    const [images, setImages] = useState([]);
-    const navigate = useNavigate();
-    const { id } = useParams();
+
 
 useEffect(() => {
     if (id) loadProduct();
@@ -40,27 +52,16 @@ const loadProduct = async () => {
     try {
         const res = await getProduct(id);
         setFormData(res.data);
+        if (res.data.images) setImages(res.data.images);
     } catch (err) {
         toast.error("Failed to load product");
     }
 };
-    const [formData, setFormData] = useState({
+   const handleCheckboxChange = (e) => {
+        const { name, checked } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: checked }));
+    };
 
-    name: "",
-
-    description: "",
-
-    category: [],
-
-    brand: "",
-
-    price: "",
-
-    countInStock: "",
-
-    isFeatured: false
-
-});
 const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -75,8 +76,12 @@ const handleSubmit = async (e) => {
         payload.append("countInStock", formData.countInStock);
         payload.append("isFeatured", formData.isFeatured);
 
-        images.forEach((file) => {
-            payload.append("images", file);
+        images.forEach((item) => {
+            if (item instanceof File) {
+            payload.append("images", item);
+            }else if (typeof item === "string"){
+                payload.append("existingImages" , item)
+            }
         });
 
         if (id) {
@@ -89,20 +94,13 @@ const handleSubmit = async (e) => {
         navigate("/products");
     } catch (err) {
         toast.error(err.response?.data?.message || "Something went wrong");
+        console.log(err);
     }
 };
-    const handleChange = (e) => {
+    const handleChange = (e) => {   
+     const {name , value} = e.target;
 
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-
-        ...prev,
-
-        [name]: value
-
-    }));
-
+    setFormData((prev) => ({...prev , [name]:value}))
 };
 return (
 
@@ -140,7 +138,7 @@ onChange={(e) => {
 }}
 >
 {categories.map((cat) => (
-    <option key={cat._id} value={cat._id}>
+    <option key={cat._id || cat.id} value={cat._id || cat.id}>
         {cat.name}
     </option>
 ))}

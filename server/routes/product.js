@@ -6,8 +6,26 @@ const pLimit = require('p-limit');
 const { cloudinary } = require("../cloudinary/index");
 const multer = require('multer');
 const fs = require('fs');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ storage: multer.memoryStorage() });
 
+
+const streamUpload = (fileBuffer) => {
+    return new Promise((resolve, reject) => {
+
+        const stream = cloudinary.uploader.upload_stream(
+            {},
+            (error, result) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(result);
+                }
+            }
+        );
+
+        stream.end(fileBuffer);
+    });
+};
 
 router.get('/' , async(req,res) =>{
     const productList= await Product.find().populate('category');
@@ -17,25 +35,41 @@ router.get('/' , async(req,res) =>{
     res.send(productList);
 })
 
-router.post('/' , async(req,res) =>{
+router.post('/' ,  upload.array('images'), async(req,res) =>{
+    try{
+        console.log("BODY:", req.body);
+        console.log("FILES:", req.files);
+
+        if (!req.files || req.files.length === 0) {
+            return res.status(400).json({
+                message: "No images were uploaded",
+                status: false
+            });
+        }
+        
+         const categoryArray = Array.isArray(req.body.category)
+            ? req.body.category
+            : [req.body.category];
+    
     const categories=await Category.find({
-    _id: { $in: req.body.category }
-});
+    _id: { $in:categoryArray }
 
-if (categories.length !== req.body.category.length) {
-    return res.status(404).send('invalid category');
-}
+    });
+    if (categories.length !== categoryArray.length) {
+        return res.status(404).send('invalid category');
+    }
+    console.log("FILES LENGTH:", req.files?.length);
 
-       const limit = pLimit(3);
+    const limit = pLimit(3);
+
+    const imagesToUpload = req.files.map((file)=>{
+        return limit (()=>
+           streamUpload(file.buffer)
+        )
+    })
+    const uploadStatus = await Promise.all(imagesToUpload);
     
-        const imagesToUpload = req.body.images.map((img)=>{
-            return limit (async()=>{
-                const result = await cloudinary.uploader.upload(img);
-                return result;
-            })
-        })
-        const uploadStatus = await Promise.all(imagesToUpload);
-    
+
     const imgUrl = uploadStatus.map((item)=>{
         return item.secure_url
     })
@@ -72,7 +106,13 @@ if (categories.length !== req.body.category.length) {
         })
     }
    return res.status(201).json(product);
-})
+} catch(error){
+    console.log("error:", error);
+    console.log("ERROR MESSAGE:", error.message);  
+    return res.status(500).json({ message: 'create failed', error: error.message || error });
+    
+}
+});
 router.get('/:id' , async(req,res) =>{
     const product =  await Product.findById(req.params.id);
     if(!product){

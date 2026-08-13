@@ -15,7 +15,7 @@ const SideBar = ({ isSidebarOpen }) => {
         {
             title: "Dashboard",
             icon: <MdDashboard />,
-            path: "/"
+            path: "/dashboard"
         },
         {
             title: "Products",

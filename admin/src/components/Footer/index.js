@@ -2,8 +2,8 @@
 
 const Footer = () =>{
     return(
-        <div className="text-align-center align-items-center text-dark">
-          <p> &copy; 2026 || All rights are reserved </p> 
+        <div className="footer bg-red text-align-center align-items-center text-white">
+          <p className="text-secondary"> &copy; 2026 || All rights are reserved </p> 
         </div>
     )
 }

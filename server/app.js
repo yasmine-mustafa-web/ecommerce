@@ -45,7 +45,8 @@ app.use(authJwt({ secret:process.env.JSON_WEB_TOKEN_SECRET_KEY, algorithms: ['HS
     path: [
       '/api/user/signup',
       '/api/user/signin',
-      '/api/admin/login'
+      '/api/admin/login',
+      { url: /^\/api\/categories/, methods: ['GET'] } 
     ]
 }));
 

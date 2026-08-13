@@ -10,6 +10,24 @@
 
     const ProductTable=()=>{
     const [loading, setLoading] = useState(true);
+    const [products,setProducts] = useState([]);
+
+    useEffect(()=>{
+     loadProducts();
+    },[]);
+
+
+      const loadProducts=async()=>{
+        try{
+        setLoading(true);
+        const res=await getProducts();
+        setProducts(Array.isArray(res.data) ? res.data : []);  
+        } catch (err) {
+         toast.error( err.response?.data?.message ||"Failed to load product");
+        }finally {
+        setLoading(false);
+        }
+    }
     const handleDelete = async (id) => {
 
         const confirmDelete = window.confirm(
@@ -19,50 +37,31 @@
         if (!confirmDelete) return;
 
         try {
-
             await deleteProduct(id);
-
             toast.success("Product deleted successfully");
-
             loadProducts();
-
         } catch (err) {
-
             toast.error(
                 err.response?.data?.message || "Failed to delete product"
             );
-
         }
 
-    };
-    const [products,setProducts]=useState([]);
-    useEffect(()=>{
+    }; 
 
-    loadProducts();
+    const renderCategories = (category) => {
+    if (!category) return "N/A";
 
-    },[]);
-    const loadProducts=async()=>{
-
-    try{
-    setLoading(true);
-
-    const res=await getProducts();
-
-    setProducts(res.data);
-
+    if (Array.isArray(category)) {
+      if (category.length === 0) return "N/A";
+      return category
+        .map((cat) => (typeof cat === "object" ? cat.name : cat))
+        .join(", ");
     }
 
-    catch(err){
+    return typeof category === "object" ? category.name : category;
+  };
 
-    console.log(err);
 
-    }
-    finally {
-
-            setLoading(false);
-
-        }
-    }
     if (loading) {
 
             return (
@@ -103,12 +102,18 @@
     </thead>
 
     <tbody>
+        {products.length === 0 ? (
+              <tr>
+                <td colSpan="6" className="text-center py-4">
+                  No products found.
+                </td>
+              </tr>
+            ) : (
 
-    {
 
-    products.map(item=>(
+    products.map((item)=>(
 
-    <tr key={item._id}>
+    <tr key={item._id || item.id}>
 
     <td>
 
@@ -122,7 +127,7 @@
 
     <td>{item.name}</td>
 
-    <td>{item.category?.name}</td>
+    <td>{renderCategories(item.category)}</td>
 
     <td>${item.price}</td>
 
@@ -133,7 +138,7 @@
     <div className="d-flex gap-2">
 
     <Link
-    to={`/products/edit/${item._id}`}
+    to={`/products/edit/${item._id || item.id} `}
     className="btn btn-primary btn-sm"
     >
 
@@ -143,7 +148,7 @@
 
     <button
     className="btn btn-danger btn-sm"
-    onClick={()=>handleDelete(item._id)}
+    onClick={()=>handleDelete(item._id || item.id)}
     >
 
     <FaTrash/>
@@ -158,7 +163,7 @@
 
     ))
 
-    }
+            )}
 
     </tbody>
 

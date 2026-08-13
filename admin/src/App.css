@@ -320,3 +320,9 @@ margin-top: -25px !important;
 .bg-red{
   background: rgb(3, 7, 94) !important;
 }
+.footer{
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px 0px;
+  
+}
