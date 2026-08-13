@@ -82,9 +82,11 @@ function Layout() {
 
 function App() {
     return (
+      <Provider>
         <BrowserRouter>
             <Layout />
         </BrowserRouter>
+        </Provider>
     );
 }
 

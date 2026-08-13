@@ -4,7 +4,7 @@ const AddProduct = () => {
 
     return (
 
-        <div className="container-fluid">
+        <div className="container-fluid" style={{padding:"80px"}}>
 
             <div className="d-flex justify-content-between align-items-center mb-4">
 

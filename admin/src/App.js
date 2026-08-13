@@ -8,7 +8,6 @@ import SideBar from './components/SideBar/index.js';
 import { useState , useEffect , createContext } from "react";
 import Products from "./pages/Products";
 import AddProduct from "./pages/AddProduct";
-import EditProduct from "./pages/EditProduct";
 import AlertBox from "./components/AlertBox/index.js";
 import SignIn from "./pages/SignIn";
 import Footer from "./components/Footer/index.js";
@@ -69,7 +68,6 @@ function Layout() {
         <Route path='/dashboard'  element={<DashBoard/>}/>
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<AddProduct />} />
-        <Route path="/products/edit/:id" element={<EditProduct />} />
         <Route path="/" element={<SignIn/>}/>
       </Routes>
       {!hideHeaderFooter &&  <Footer />}

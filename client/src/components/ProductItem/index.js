@@ -15,7 +15,7 @@ const navigate = useNavigate();
 
         const goToDetails = () => {
            navigate("/product/details", {
-        state: {
+            state: {
             name: props.name,
             images: props.images,
             description: props.description,
@@ -67,7 +67,9 @@ const context= useContext(MyContext);
         <li className={`list-group-item ${
     props.countInStock > 0 ? 'text-green' : 'text-danger'
       }`}>
-          {props.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+         {props.countInStock > 0
+    ? `In Stock: ${props.countInStock}`
+    : "Out of Stock"}
       </li>
         <li className="list-group-item">
           <RatingGroup.Root

@@ -137,6 +137,7 @@ margin-top: -25px !important;
     top:80px;
     left:0;
     height:calc(100vh - 80px);
+    z-index: 99999;
 }
 .dashboardCard{
     background:#fff;

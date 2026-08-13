@@ -21,10 +21,10 @@ const plus=()=>{
 }
     return(
         <div className='qtyDrop d-flex align-items-center'>
-                                    <button disabled={state=== 'out of stock'} onClick={minus}><FaMinus/></button>
+                                    <button onClick={minus}><FaMinus/></button>
                                     <input type='text' value={inputVal} readOnly/>
 
-                                    <button onClick={plus} disabled={state=== 'out of stock'}><FaPlus/></button>
+                                    <button onClick={plus}><FaPlus/></button>
                             </div>
     )
 }

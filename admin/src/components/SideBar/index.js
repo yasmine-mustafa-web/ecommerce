@@ -23,29 +23,14 @@ const SideBar = ({ isSidebarOpen }) => {
             path: "/products"
         },
         {
-            title: "Categories",
+            title: "Add Products",
             icon: <MdCategory />,
-            path: "/categories"
-        },
-        {
-            title: "Brands",
-            icon: <FaTags />,
-            path: "/brands"
-        },
-        {
-            title: "Orders",
-            icon: <MdShoppingCart />,
-            path: "/orders"
+            path: "/products/add"
         },
         {
             title: "Customers",
             icon: <MdPeople />,
             path: "/customers"
-        },
-        {
-            title: "Settings",
-            icon: <MdSettings />,
-            path: "/settings"
         }
     ];
 

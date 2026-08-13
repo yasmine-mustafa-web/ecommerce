@@ -45,7 +45,7 @@ const DashBoard = () =>{
     }
 ];
 return(
-<div className="container-fluid">
+<div className="container-fluid" style={{padding:"80px"}}>
 
     <div className="row">
 

@@ -8,7 +8,7 @@ const Products = () => {
 
     return(
 
-        <div className="container-fluid">
+        <div className="container-fluid" style={{padding:"80px"}}>
 
             <div className="d-flex align-items-center justify-content-between mb-4">
 
@@ -16,7 +16,7 @@ const Products = () => {
 
                 <Link to="/products/add">
 
-                    <Button colorPalette="blue">
+                    <Button className="btn rounded-4 bg-red text-white d-flex align-items-center" >
 
                         <FaPlus />
 

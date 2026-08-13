@@ -46,7 +46,7 @@ router.post('/' ,  upload.array('images'), async(req,res) =>{
                 status: false
             });
         }
-        
+
          const categoryArray = Array.isArray(req.body.category)
             ? req.body.category
             : [req.body.category];
@@ -142,7 +142,7 @@ router.put('/:id' , upload.array('images') , async(req,res) =>{
             countInStock: req.body.countInStock,
             price: req.body.price,
             rating: req.body.rating,
-            category: req.body.category,
+            category: categoryArray,
             isFeatured: req.body.isFeatured,
             type:req.body.type,
             MFG:req.body.MFG,
