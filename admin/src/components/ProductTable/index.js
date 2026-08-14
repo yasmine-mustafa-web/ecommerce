@@ -129,7 +129,7 @@
 
     <td>{renderCategories(item.category)}</td>
 
-    <td>${item.price}</td>
+    <td><sup>EGP</sup>{item.price}</td>
 
     <td>{item.countInStock}</td>
 
@@ -137,14 +137,7 @@
 
     <div className="d-flex gap-2">
 
-    <Link
-    to={`/products/edit/${item._id || item.id} `}
-    className="btn btn-primary btn-sm"
-    >
-
-    <FaEdit/>
-
-    </Link>
+  
 
     <button
     className="btn btn-danger btn-sm"

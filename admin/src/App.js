@@ -63,8 +63,8 @@ function Layout() {
       />
     }
 
-      <main >
-      <Routes>
+      <main  className={`mainContent ${!isSidebarOpen ? "collapsed" : ""}`} >
+      <Routes >
         <Route path='/dashboard'  element={<DashBoard/>}/>
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<AddProduct />} />

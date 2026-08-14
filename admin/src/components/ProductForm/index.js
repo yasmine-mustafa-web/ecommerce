@@ -1,4 +1,4 @@
-import { useState , useEffect } from "react";
+import { useState , useEffect , useContext } from "react";
 import { createProduct ,  getProduct, updateProduct } from "../../Services/productApi";
 import toast from "react-hot-toast";
 import { useNavigate , useParams  } from "react-router-dom";
@@ -11,9 +11,12 @@ import {
 } from "@chakra-ui/react";
 
 import ProductImageUpload from "../ProductImageUpload";
+import AlertBox from "../AlertBox";
+import { MyContext } from '../../App';
 
 
 const ProductForm=()=>{
+    const context = useContext(MyContext);
     const [categories, setCategories] = useState([]);
     const [images, setImages] = useState([]);
     const navigate = useNavigate();
@@ -27,7 +30,10 @@ const ProductForm=()=>{
     brand: "",
     price: "",
     countInStock: "",
-    isFeatured: false
+    isFeatured: false,
+    type:"",
+    life:"",
+    MFG:""
 });
 
     useEffect(() => {
@@ -75,7 +81,9 @@ const handleSubmit = async (e) => {
         payload.append("price", formData.price);
         payload.append("countInStock", formData.countInStock);
         payload.append("isFeatured", formData.isFeatured);
-
+        payload.append("type" , formData.type);
+        payload.append("life" , formData.life);
+        payload.append("MFG" , formData.MFG);
         images.forEach((item) => {
             if (item instanceof File) {
             payload.append("images", item);
@@ -84,12 +92,16 @@ const handleSubmit = async (e) => {
             }
         });
 
-        if (id) {
-            await updateProduct(id, payload);
-            toast.success("Product Updated Successfully");
-        } else {
+      {
             await createProduct(payload);
             toast.success("Product Added Successfully");
+            context.setAlertBox(
+              {
+                  open:true,
+                  error:false,
+                  msg:"product added successfully!"
+              }
+          )
         }
         navigate("/products");
     } catch (err) {
@@ -186,6 +198,33 @@ onChange={handleChange}
 
 </div>
 
+<div className="col-md-4 mb-4">
+<label>Type</label>
+<Input
+type="text"
+name="type"
+onChange={handleChange}
+value={formData.type}
+/>
+</div>
+<div className="col-md-4 mb-4">
+<label>MFG</label>
+<Input
+type="date"
+onChange={handleChange}
+value={formData.MFG}
+name="MFG"
+/>
+</div>  
+<div className="col-md-4 mb-4">
+<label>Life</label>
+<Input 
+name="life"
+onChange={handleChange}
+value={formData.life}
+/>
+</div>
+
 <div className="col-12 mb-4">
 
 <label>Description</label>
@@ -207,9 +246,9 @@ onChange={handleChange}
 <div className="col-12">
 
 <Button
-colorPalette="blue"
 size="lg"
 type="submit"
+className="btn bg-red rounded-4 text-white"
 >
   {id ? "Update Product" : "Save Product"}
 </Button>

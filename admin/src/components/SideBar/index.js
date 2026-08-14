@@ -26,29 +26,29 @@ const SideBar = ({ isSidebarOpen }) => {
             title: "Add Products",
             icon: <MdCategory />,
             path: "/products/add"
-        },
-        {
-            title: "Customers",
-            icon: <MdPeople />,
-            path: "/customers"
         }
     ];
 
     return (
-        <aside className={`sidebar ${isSidebarOpen ? "" : "collapsed"}`}>
-
+        <aside className={`sidebar ${isSidebarOpen ? "" : "collapsed"}`} aria-label="Main navigation">
+            <div className="sidebar-brand">
+                <span className="brand-icon">🛒</span>
+                {isSidebarOpen && <span className="brand-text">Admin Panel</span>}
+            </div>
             <ul>
 
                 {
                     menu.map((item, index) => (
 
-                        <li key={index}>
+                        <li  title={!isSidebarOpen ? item.title : undefined} key={index}>
 
                             <NavLink
                                 to={item.path}
+                                end={item.end}
                                 className={({ isActive }) =>
                                     isActive ? "active" : ""
                                 }
+                                aria-label={item.title}
                             >
 
                                 <span className="icon">

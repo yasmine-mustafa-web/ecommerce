@@ -6,22 +6,33 @@ import { useEffect, useState } from "react";
 import { getProducts } from "../../Services/productApi";
 import { getCategories } from "../../Services/categoryApi";
 import {
-    FaBoxOpen,
-    FaShoppingCart,
-    FaUsers,
-    FaDollarSign
+FaBoxOpen,
+FaShoppingCart,
+FaUsers,
+FaDollarSign
 } from "react-icons/fa";
 
 
 const DashBoard = () =>{
     const [productCount, setProductCount] = useState(0);
+    const [loading , setLoading] = useState(true);
+    const [error , setError] = useState(null);
+    
+
     useEffect(() => {
-    getProducts().then(res => setProductCount(res.data.length)).catch(console.log);
-}, []);
+    getProducts()
+    .then(res => setProductCount(res.data.length))
+    .catch(err =>{
+    console.log(err);
+    setError("couldn't load products count");
+    }).finally(() => setLoading(false))}
+    , []);
+
+
     const cards = [
     {
         title: "Products",
-        value:  productCount,
+        value:  loading ? "..." : productCount ,
         icon: <FaBoxOpen />,
         color: "#4f46e5"
     },
@@ -45,9 +56,14 @@ const DashBoard = () =>{
     }
 ];
 return(
-<div className="container-fluid" style={{padding:"80px"}}>
-
-    <div className="row">
+<div className="container-fluid">
+<h2 className="mb-4 fw-semibold">Dashboard</h2>
+{error && (
+    <div className="alert alert-warning py-2" role="alert">
+        {error}
+    </div>
+)}
+    <div className="row g-4 mb-4">
 
         {
             cards.map((card,index)=>(
@@ -71,7 +87,7 @@ return(
 
     </div>
 
-    <div className="row">
+    <div className="row g-4 mb-4">
 
     <div className="col-lg-8">
 
@@ -82,18 +98,18 @@ return(
     <div className="col-lg-4">
           <TopProducts />
     </div>
-<div className="row mt-4">
+    </div>
+<div className="row g-4">
 
     <div className="col-12">
 
         <RecentOrders />
 
     </div>
+    </div>
 
 </div>
-</div>
 
-</div>
 )}
 
 export default DashBoard;

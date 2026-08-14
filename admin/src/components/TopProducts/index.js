@@ -28,7 +28,7 @@ const TopProducts = () => {
             <h6>{item.name}</h6>
             <span>{item.countInStock} in stock</span>
           </div>
-          <div className="stock">${item.price}</div>
+          <div className="stock"><sup>EGP</sup>{item.price}</div>
         </div>
       ))}
     </div>

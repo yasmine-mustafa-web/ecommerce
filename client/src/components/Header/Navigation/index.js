@@ -11,17 +11,26 @@ import { PiHairDryer } from "react-icons/pi";
 import { GiWrappedSweet } from "react-icons/gi";
 import { TiMessage } from "react-icons/ti";
 import { MdProductionQuantityLimits } from "react-icons/md";
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import { LuBeef } from "react-icons/lu";
 import { GiChickenLeg } from "react-icons/gi";
 import { GiFrenchFries } from "react-icons/gi";
 import { GiSandwich } from "react-icons/gi";
 import { MdOutlinePriceCheck } from "react-icons/md";
 import { TfiShine } from "react-icons/tfi";
+import {getCategories} from "../../../Services/categoryApi";
+
 
 const Navigation = () =>{
 
     const[isOpenSideBarVal , setisOpenSideBarVal]= useState(false);
+    const [categories ,  setCategories] = useState([]);
+
+    useEffect(() =>{
+        getCategories()
+        .then((res)=> setCategories(res.data))
+        .catch((err) => console.log(err));
+    },[])
 
     return(
           <nav>
@@ -37,8 +46,20 @@ const Navigation = () =>{
                                  <div className={`sideBarNav ${isOpenSideBarVal === true ? "open" : ""}`}>
                                     <ul>
                                     <li className="list-inline-item"><Link to="/"><Button><IoMdHome />Home</Button></Link></li>
-                                    <li className="list-inline-item"><Link to="/"><Button><MdFoodBank />Meats and Food</Button></Link></li>
-
+                                   {categories.map((cat) => ( 
+                                    <li className="list-inline-item" key={cat._id || cat.id}>
+                                        <Link to={`/listing?category=${encodeURIComponent(cat.name)}`} >
+                                        <Button>
+                                            {cat.image ? (
+                                                <img src={cat.image} alt={cat.name} style={{ width: 18, height: 18, borderRadius: "50%", objectFit: "cover", marginRight: 6 }} />
+                                            ): (
+                                                 <MdFoodBank />
+                                            )}
+                                            {cat.name}
+                                        </Button>
+                                        </Link>
+                                    </li>   
+                                   ))}
                                     </ul>
                                  </div>
                                 </div>
