@@ -107,6 +107,13 @@ const handleSubmit = async (e) => {
     } catch (err) {
         toast.error(err.response?.data?.message || "Something went wrong");
         console.log(err);
+             context.setAlertBox(
+              {
+                  open:true,
+                  error:true,
+                  msg:"product isn't added!"
+              }
+          )
     }
 };
     const handleChange = (e) => {   

@@ -14,7 +14,7 @@ console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 
 app.use(cors(
     {
-    origin: ["http://localhost:3000", "http://localhost:5173"],
+    origin: ["http://localhost:3000", "http://localhost:3001"],
     credentials: true
 }
 ));
@@ -47,6 +47,7 @@ app.use(authJwt({ secret:process.env.JSON_WEB_TOKEN_SECRET_KEY, algorithms: ['HS
       '/api/user/signin',
       '/api/admin/login',
       { url: /^\/api\/categories/, methods: ['GET'] },
+      { url: /^\/api\/categories/, methods: ['POST'] },
       { url: /^\/api\/products/, methods: ['GET'] },
       { url: /^\/api\/products/, methods: ['POST'] }
     ]

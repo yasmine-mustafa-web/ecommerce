@@ -20,7 +20,7 @@ import korean from "../../assets/korean.png";
 import sunscreen from "../../assets/sunscreen.jpeg";
 import { Link } from "react-router-dom";
 import {getProducts} from "../../Services/productApi";
-
+import { getCategories } from "../../Services/categoryApi";
 const Home = () =>{
      var productSliderOptions = {
     dots: true,
@@ -41,8 +41,7 @@ const Home = () =>{
 };
 
 const [products, setProducts] = useState([]);
-const [productsNew, setProductsNew] = useState([]);
-
+const [categories, setCategories] = useState([]);
 useEffect(() => {
     getProducts()
         .then((res) => {
@@ -62,37 +61,23 @@ useEffect(() => {
                 category: p.category?.map((c) => c.name )  || [],
             }));
             setProducts(mapped);
-            setProductsNew([...mapped].reverse());
         })
         .catch((err) => console.log(err));
 }, []);
 
-const categories = [
-    {
-      image:skincare
-    },
-      {
-          image:haircare
-       
-    },
-      {
-      
-      image:oralcare
-    },
-      {
-       image:nailcare
-    },
-      {
-        image:korean
-    },
-      {
-     image:under200
-    },
-      {
-       image:sunscreen
-    }
-  ]
+useEffect(() => {
+  const fetchCategories = async () => {
+    try {
+      const res = await getCategories();
 
+      setCategories(res.data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
+
+  fetchCategories();
+}, []);
 return(
     
     <>
@@ -105,7 +90,8 @@ return(
     <Slider {...catSliderOptions}>
   {categories.map((item,index) => (
       <HomeCat
-      key={index}
+      key={item._id}
+      id={item._id}
       image={item.image}
     />
   ))}
@@ -133,7 +119,7 @@ return(
                             <h3>BEST SELLERS</h3>
 
                              </div>
-                             <Link to="/listing?sort=bestsellers" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
+                             <Link to="/listing/:id" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
                     </div>
                             <div className="productRow w-100 mt-3">
   <Slider {...productSliderOptions}>
@@ -160,40 +146,6 @@ return(
   </Slider>
 </div>
   
-
-                   <div className="d-flex align-items-center mt-5">
-                        <div className="info">
-                            <h3>NEW PRODUCTS</h3>
-                            <p className="text-secondary">New products with updated stocks</p>
-                             </div>
-                             <Link to="/listing?sort=bestsellers" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
-                    </div>
-                   
-                            <div className="productRow w-100 mt-3 d-flex productRow2">
-    {productsNew.map((product, index) => (
-      <ProductItem
-        key={index}
-        images  ={product.images}
-        title={product.title}
-        price={product.price}
-        discountprice={product.discountprice}
-        realprice={product.realprice}
-        brand={product.brand}
-        discount={product.discount}
-        description={product.description}
-        rating={product.rating}
-        isFeatured={product.isFeatured}
-        type={product.type}
-        MFG={product.MFG}
-        life={product.life}
-        className={
-          index===0 ?"card-right" :index===products.length-1 ?"card-left" :"card-middle"
-        }
-      />
-    ))}
-</div>
-
-
 <div className="secHomeBanner col-md-9 d-flex align-items-center my-4">
   <div>
       <img src="https://eg.arabiccoupon.com/sites/default/files/styles/article/public/field/image/70off-boots-summer-sale-with-boots-promo-code-en-arabiccoupon-articles-m08-c.jpg"/>

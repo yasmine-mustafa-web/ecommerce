@@ -11,8 +11,12 @@ import { FaAngleDown } from 'react-icons/fa6';
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import {getProducts} from "../../Services/productApi";
+import { useParams } from "react-router-dom";
 const Listing = () => {
- 
+    const {id} = useParams();
+
+    console.log("Category ID:", id);
+
     const [products, setProducts] = useState([]);
 
 useEffect(() => {
@@ -26,7 +30,10 @@ useEffect(() => {
                 brand: p.brand,
                 description: p.description,
                 rating: p.rating,
-                category: p.category?.map((c) => c.name )  || [],
+                category: p.category?.map((c) => ({
+                    _id:c._id,
+                    name:c.name 
+                }))  || [],
                 type:p.type,
                 MFG:p.MFG,
                 life:p.life,
@@ -49,12 +56,42 @@ useEffect(() => {
         products.forEach((product) => {
             if (product.category  && Array.isArray(product.category)){
                  product.category.forEach((cat) => {
-                counts[cat] = (counts[cat] || 0) + 1;
+                counts[cat.name] = (counts[cat] || 0) + 1;
                  })
             } 
         });
+
         return Object.entries(counts).map(([name, count]) => ({ name, count }));
     }, [products]);
+
+    useEffect(() => {
+
+    if (!id || products.length === 0) return;
+
+    const categoryFromUrl = products
+        .flatMap(product => product.category || [])
+        .find(category => category._id === id);
+
+    if (categoryFromUrl) {
+        setSelectedCategories([categoryFromUrl.name]);
+    }
+
+    }, [id, products]);
+
+    useEffect(()=>{
+        if(id && products.length > 0){
+            const selectedCategory = products
+            .flatMap(product => product.category || [])
+            .find(category => {
+                return category._id === id;
+            });
+            if(selectedCategories){
+                setSelectedCategories([selectedCategory.name]);
+            }
+        }
+    },[id , products])
+
+
     const brandsList = useMemo(() => {
         const counts = {};
         products.forEach((product) => {
@@ -90,7 +127,7 @@ useEffect(() => {
     const filteredProducts = products.filter((product) => {
         const matchesBrand = selectedBrands.length === 0 || selectedBrands.includes(product.brand);
         const matchesState = selectedState.length === 0 || selectedState.includes(product.state);
-        const matchesCategory = selectedCategories.length === 0 || (Array.isArray(product.category) && product.category.some((cat) => selectedCategories.includes(cat)));
+        const matchesCategory = selectedCategories.length === 0 || (Array.isArray(product.category) && product.category.some((cat) => selectedCategories.includes(cat.name)));
         const priceValue = Number(
             String(product.discountprice || product.price).replace(/,/g, "")
         );

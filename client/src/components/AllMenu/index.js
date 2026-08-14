@@ -40,7 +40,7 @@ const AllMenu=({images , name , discount ,price , countInStock ,rating }) => {
         </li>
 
         <li className="list-group-item text-secondary">
-          {price} LE
+        <sup>EGP</sup>{price}
         </li>
       </ul>
 

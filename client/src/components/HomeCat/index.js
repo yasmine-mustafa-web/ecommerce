@@ -1,12 +1,16 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
 
-const HomeCat =({image,name,className}) =>{
+const HomeCat =({image ,id ,className}) =>{
+    const navigate = useNavigate();
 
+    const handleClick = () => {
+        navigate(`/listing/${id}`)
+    }
     return(
         
-    <div className={`catItem ${className} cursor`}>      
+    <div className={`catItem ${className || ""} cursor`}
+    onClick={handleClick}
+    >      
         <img src={image}/>
     </div>
     )

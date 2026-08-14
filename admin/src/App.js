@@ -32,6 +32,8 @@ function Layout() {
 
     const hideHeaderFooter= 
     location.pathname === "/"
+
+    const isSignInPage = location.pathname==="/";
     
      useEffect(() =>{
           const token = localStorage.getItem("token");
@@ -52,17 +54,23 @@ function Layout() {
   }
   return (
     <MyContext.Provider value={values} >
-        {!hideHeaderFooter && 
-      <Header
-       isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}/>
-        }
-         {!hideHeaderFooter && 
-      <SideBar
+        {!isSignInPage && (
+          <>
+        <Header
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
+        />
+        <SideBar
         isSidebarOpen={isSidebarOpen}
       />
-    }
-
+      </>
+  )}
+     
+      {isSignInPage ? (
+           <Routes>
+          <Route path="/" element={<SignIn />} />
+        </Routes>
+      ):(
       <main  className={`mainContent ${!isSidebarOpen ? "collapsed" : ""}`} >
       <Routes >
         <Route path='/dashboard'  element={<DashBoard/>}/>
@@ -72,6 +80,7 @@ function Layout() {
       </Routes>
       {!hideHeaderFooter &&  <Footer />}
       </main>
+      )}
         <AlertBox/>
     </MyContext.Provider >
   );

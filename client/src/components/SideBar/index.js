@@ -24,41 +24,41 @@ const [value,setValue]=useState([100,60000]);
 const[value2,setValue2]=useState(0);
 
         return(
-            <div className="sidebar sticky-top" style={{fontFamily:"'Dosis' , sans-serif"}}>
-            <div className="filteredBox">
-                <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product categories</h6>
-                <div className="scroll" >
-              
-                    <ul>
-                       {categoriesList.map(({ name, count }) => (
-                      <li key={name} className="mb-0 mt-0">
-                      <div className="d-flex align-items-center">
-                        <FormControlLabel
-                        control={<Checkbox/>} 
-                        label={name}
-                        checked={selectedCategories.includes(name)}
-                        onChange={() => toggleCategory(name)}
-                          />
-                        {/* <input
-                          className="form-check-input"
-                          type="checkbox"
-                          role="switch"
-                          id={`cat-${name}`}
+              <div className="sidebar sticky-top" style={{fontFamily:"'Dosis' , sans-serif"}}>
+              <div className="filteredBox">
+                  <h6 className="fw-bold text-uppercase" style={{fontFamily:"'Dosis' , sans-serif"}}>product categories</h6>
+                  <div className="scroll" >
+                
+                      <ul>
+                        {categoriesList.map(({ name, count }) => (
+                        <li key={name} className="mb-0 mt-0">
+                        <div className="d-flex align-items-center">
+                          <FormControlLabel
+                          control={<Checkbox/>} 
+                          label={name}
                           checked={selectedCategories.includes(name)}
                           onChange={() => toggleCategory(name)}
-                        />
-                        <label className="form-check-label text-capitalize" htmlFor={`cat-${name}`}>
-                          {name}
-                        </label> */}
-                      
-                      <span className="text-secondary ms-auto me-1">({count})</span>
-                      </div>
-                  </li>
-                ))}
-                    </ul>
-                  
-                </div>
-            </div><br/><br/>
+                            />
+                          {/* <input
+                            className="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id={`cat-${name}`}
+                            checked={selectedCategories.includes(name)}
+                            onChange={() => toggleCategory(name)}
+                          />
+                          <label className="form-check-label text-capitalize" htmlFor={`cat-${name}`}>
+                            {name}
+                          </label> */}
+                        
+                        <span className="text-secondary ms-auto me-1">({count})</span>
+                        </div>
+                    </li>
+                  ))}
+                      </ul>
+                    
+                  </div>
+              </div><br/><br/>
               <div className="filteredBox">
                 <h6 className="text-uppercase fw-bold">filter by price</h6>
                 <RangeSlider value={value} onInput={setValue} min={100} max={6000} step={100}/>

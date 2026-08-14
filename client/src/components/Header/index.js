@@ -78,6 +78,8 @@ const Header = () => {
                         <>
                             <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signIn btn bg-red text-white me-2 rounded-4" onClick={() => navigate('/signIn')}>Sign In</button>
                             <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => navigate('/signUp')}>Sign Up</button>
+                            <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => navigate('http://localhost:3001/')}>Admin Dashboard</button>
+
                         </>
                             )}
                          </div>
