@@ -3,6 +3,7 @@ import { RatingGroup } from "@chakra-ui/react";
 import QtyBox from "../../components/QtyBox";
 import { IoIosClose } from "react-icons/io";
 import {MyContext} from "../../App";
+import { useContext } from "react";
 
 const Cart = ()=>{
     const {cart , updateCartQty , removeFromCart , cartTotal} = useContext(MyContext);
