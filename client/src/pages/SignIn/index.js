@@ -1,14 +1,14 @@
-    import { useContext, useEffect, useState } from "react";
+    import { useContext , useState } from "react";
     import {MyContext } from '../../App';
     import { Button } from '@mui/material';
     import { Link , useNavigate } from "react-router-dom";
     import { FcGoogle } from "react-icons/fc";
     import { FaFacebookF } from "react-icons/fa";
     import axios from "axios";
+    import api from "../../Services/api";
 
 
     const SignIn = () =>{
-        const [inputIndex , setInputIndex]=useState();
         const [isLoading, setIsLoading] = useState(false);
         const [formfields , setFormfields]=useState({email: "" , password:""});
 
@@ -17,19 +17,7 @@
         const context = useContext(MyContext);
         
 
-
-        useEffect(()=>{
-            window.scrollTo(0,0);
-            context.setisHeaderFooterShow(false);
-            return () => {
-            context.setisHeaderFooterShow(true);
-        };
-        },[context])
-
-        const focusInput = (index) =>{
-            setInputIndex(index)
-        }   
-
+  
         const onchangeInput = (e) =>{
             const{name,value}=e.target;
             setFormfields((prev) => ({
@@ -49,7 +37,7 @@
             return;
             }
             if(formfields.password.trim()===""){
-                context.setAlarmBox({
+                context.setAlertBox({
                     open:true,
                     error:true,
                     msg:"password cannot be blank"
@@ -60,8 +48,8 @@
 
         try{
            setIsLoading(true);
-           const response= await axios.post(
-              "http://localhost:4000/api/user/signin",
+           const response= await api.post(
+              "/user/signin",
               formfields
            );
 

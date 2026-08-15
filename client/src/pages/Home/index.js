@@ -125,7 +125,8 @@ return(
   <Slider {...productSliderOptions}>
     {products.map((product, index) => (
       <ProductItem
-        key={index}
+        _id={product._id}
+        key={product._id}
         isFeatured={product.isFeatured}
         images={product.images}
         title={product.title}

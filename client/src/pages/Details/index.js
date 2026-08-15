@@ -13,6 +13,8 @@
   import { TiTick } from "react-icons/ti";
   import ZoomImage from '../../components/ZoomImg';
   import { useLocation, useParams , useNavigate } from "react-router-dom";
+  import { MyContext } from "../../App";
+  import { getProduct } from "../../Services/productApi";
 
   const Transition = React.forwardRef(function Transition(props, ref) {
       return <Slide direction='up' ref={ref} {...props} />;
@@ -44,17 +46,17 @@
     return <div className="container py-5">Loading product...</div>;
     } 
 
-    if(!state){
+    if(!product){
       return <h2>Product not found</h2>
     }
 
 
     const add = () => {
-    if (product.countInStock > 0) {
+    if (!product || product.countInStock <= 0) {
+      return ;
+    }
       context.addToCart(product, quantity);
       navigate("/cart");
-    }
-
      };
 
       return(
@@ -77,7 +79,7 @@
               <li className="list-group-item">
             <RatingGroup.Root
               count={5}
-              defaultValue={Number(rating) || 0}
+              defaultValue={Number(product.rating) || 0}
               size="sm"
               colorPalette="yellow"
               readOnly
@@ -150,7 +152,7 @@
 <div className='d-flex align-items-center gap-3'>
       <QtyBox value={quantity} onChange={setQuantity}  max={product.countInStock}/>
       <Button  onClick={add} disabled={product.countInStock===0}
-      style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'125px' , maxWidth: '220px', fontSize:'.9rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={countInStock === 0} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
+      style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'125px' , maxWidth: '220px', fontSize:'.9rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={product.countInStock === 0} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
 </div>
 <div className='my-5 d-flex align-items-center gap-2'>
   <button  type="button" className=" text-uppercase btn rounded-pill d-flex align-items-center py-2 px-2" style={{height: '2.0625rem' , border:'1px solid rgba(0,0,0,0.3)',    fontFamily: '"Dosis", sans-serif'

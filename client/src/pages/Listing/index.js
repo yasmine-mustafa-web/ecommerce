@@ -80,19 +80,6 @@ const Listing = () => {
 
     }, [id, products]);
 
-    useEffect(()=>{
-        if(id && products.length > 0){
-            const selectedCategory = products
-            .flatMap(product => product.category || [])
-            .find(category => {
-                return category._id === id;
-            });
-            if(selectedCategories){
-                setSelectedCategories([selectedCategory.name]);
-            }
-        }
-    },[id , products])
-
 
     const brandsList = useMemo(() => {
         const counts = {};
@@ -164,10 +151,6 @@ const Listing = () => {
         }
     }, [filteredProducts, sortBy]);
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [productsPerPage, setProductsPerPage] = useState(8);
-    const [gridColoumns, setGridColoumns] = useState(4);
-
     const totalPages = Math.ceil(sortedProducts.length / productsPerPage);
 
     const paginatedProducts = sortedProducts.slice(
@@ -184,8 +167,7 @@ const Listing = () => {
         setCurrentPage(1);
     }, [selectedBrands, selectedState, priceRange, selectedCategories, productsPerPage, sortBy]);
 
-    const [anchorEl , setAnchorEl]=useState(null);
-    const open=Boolean(anchorEl);
+     const open=Boolean(anchorEl);
     const handleClick=(event)=>{
         setAnchorEl(event.currentTarget);
     }

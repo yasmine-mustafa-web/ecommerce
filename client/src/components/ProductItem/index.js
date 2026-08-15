@@ -31,6 +31,8 @@ const title = props.title ?? props.name;
   countInStock:props.countInStock || 0
 }
 
+console.log("PRODUCT:", product);
+
 const goToDetails = () => {
   if(product._id)
     navigate(`/product/details/${product._id}`)

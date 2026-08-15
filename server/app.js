@@ -57,6 +57,7 @@ app.use(`/api/user` , userRouter)
 app.use(`/api/categories` , categoryRoutes);
 app.use(`/api/products` , productRoutes);
 app.use(`/api/admin` , adminRouter);
+app.use("/api/orders", require("./routes/order"));
 
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {

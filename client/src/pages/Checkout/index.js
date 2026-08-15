@@ -9,7 +9,7 @@ const navigate = useNavigate();
 const [form,setForm] = useState({name:"" , phone:"" , address:""});
 const [loading, setLoading] = useState(false);
 
-if(!cart.lenght) return <div className="container py-5 text-center"><h3>Your Cart is empty</h3></div>
+if(!cart.length) return <div className="container py-5 text-center"><h3>Your Cart is empty</h3></div>
  
     const submit = async e => {
         e.preventDefault();

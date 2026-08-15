@@ -31,11 +31,11 @@ const Cart = ()=>{
                 <thead>
                 <tr className="tableRow text-secondary" >
 
-                    <th width="45%">Product</th>
-                    <th width="15%" style={{flexWrap:'nowrap' , whiteSpace:'nowrap'}}>Price</th>
-                    <th width="20%">Quantity</th>
-                    <th width="10%">Subtotal</th>
-                    <th width="10%">Remove</th>
+                    <th>Product</th>
+                    <th style={{flexWrap:'nowrap' , whiteSpace:'nowrap'}}>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Remove</th>
                 </tr>
                 </thead>
                 <tbody className="align-items-center">

@@ -4,7 +4,7 @@ import { Button } from '@mui/material';
 import { Link , useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
-import axios from "axios";
+import api from "../../Services/api";
 
 
 const SignUp = () =>{
@@ -86,8 +86,8 @@ const SignUp = () =>{
         try{
           setIsLoading(true);
         
-          const response = await axios.post(
-             "http://localhost:4000/api/user/signup",
+          const response = await api.post(
+             "/user/signup",
              formfields
           )
 
