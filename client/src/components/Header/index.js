@@ -3,24 +3,14 @@ import {Button} from '@mui/material';
 import { FiUser } from "react-icons/fi";
 import { IoBagOutline } from "react-icons/io5";
 import { useNavigate } from 'react-router-dom';
-import {useContext , useState , useEffect} from 'react';
+import {useContext} from 'react';
 import { MyContext } from '../../App';
 
 const Header = () => {
     const navigate = useNavigate();
     const context = useContext(MyContext);
-
-    const [setExistingUser] = useState(false);
-
-    useEffect(() =>{
-        const token = localStorage.getItem("token");
-        setExistingUser(!!token);
-        
-    }, [context?.isLogin ,  context?.setExistingUser]);
-
     const handleLogout=() =>{
         localStorage.removeItem("token");
-        setExistingUser(false);
         context.setIsLogin(false);
         context.setAlertBox(
             {
