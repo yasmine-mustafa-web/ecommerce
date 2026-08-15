@@ -3,7 +3,7 @@ import { MdOutlineMenu } from "react-icons/md";
 import { MdMenuOpen } from "react-icons/md";
 import { Avatar, Menu} from "@chakra-ui/react"
 import { useNavigate } from 'react-router-dom';
-import {useContext , useState , useEffect} from 'react';
+import {useContext } from 'react';
 import { MyContext } from '../../App';
 
 
@@ -15,17 +15,8 @@ const Header = ({
      const navigate = useNavigate();
       const context = useContext(MyContext);
   
-      const [existingUser , setExistingUser] = useState(false);
-  
-      useEffect(() =>{
-          const token = localStorage.getItem("token");
-          setExistingUser(!!token);
-          
-      }, [context?.isLogin]);
-  
       const handleLogout=() =>{
           localStorage.removeItem("token");
-          setExistingUser(false);
           context.setIsLogin(false);
           context.setAlertBox(
               {
