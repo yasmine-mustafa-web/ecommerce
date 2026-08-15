@@ -51,7 +51,7 @@ const Header = ({
             <div className="row d-flex align-items-center">
                 <div className="col-lg-3 col-md-3 part1 ps-1">
                     <Link to={'/dashboard'} className="d-flex align-items-center logo">
-                    <img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg'/>
+                    <img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg' alt=""/>
                     <span className="ms-2 text-dark fw-bold ">Pharmacy</span>
                     </Link>
                 </div>

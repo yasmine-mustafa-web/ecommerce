@@ -12,7 +12,6 @@
   import SignUp from './pages/SignUp/index.js';
   import Listing from './pages/Listing/index.js';
   import Details from './pages/Details/index.js';
-  import ProductModal from './components/ProductModal/index.js';
   import Cart from './pages/Cart/index.js'
   import AlertBox from "./components/AlertBox/index.js";
   import Checkout from './pages/Checkout/index.js';
@@ -94,8 +93,7 @@
 
 
       const hideHeaderFooter= 
-      ["/signIn" , "/signUp"].
-      includes(location.pathname)
+      ["/signIn" , "/signUp"].includes(location.pathname)
 
       const values = {
         alertBox,

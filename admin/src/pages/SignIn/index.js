@@ -86,7 +86,7 @@ const SignIn = () => {
     <section className="signInPage justify-content-center p-0">
       <div className="card border-0 p-0 box">
         <div className="text-center align-items-center">
-          <img src="https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg" />
+          <img src="https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg" alt="" />
         </div>
 
         <form className="formSign" onSubmit={signIn}>
