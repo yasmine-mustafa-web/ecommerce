@@ -12,7 +12,7 @@ import { TiTick } from "react-icons/ti";
 import Slider from "react-slick";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/styles.min.css"
-import { MyContext } from '../../App';
+
 
 
 
@@ -118,7 +118,7 @@ const ProductModal =({open , closeProductModal , product})=>{
 
                    
                     <div className='item'>
-                      <img className='w-100' onClick={()=>goto(i)} src={img}/>
+                      <img className='w-100' onClick={()=>goto(i)} alt='' src={img}/>
                     </div>
                      ))}
                   </Slider>
@@ -135,12 +135,6 @@ const ProductModal =({open , closeProductModal , product})=>{
                     <div className='d-flex align-items-center gap-3'>
                           <QtyBox/>
                          
-                    </div>
-                    <div className='my-5 d-flex align-items-center gap-2'>
-                      <button  type="button" className=" text-uppercase btn rounded-pill d-flex align-items-center py-2 px-2" style={{height: '2.0625rem' , border:'1px solid rgba(0,0,0,0.3)',    fontFamily: '"Dosis", sans-serif'
-    , fontSize:'14px'}}><FaRegHeart className='fs-6' /> &nbsp; add to wishlist</button>
-                         <button  type="button" className=" text-uppercase btn  d-flex align-items-center py-2 px-2" style={{height: '2.0625rem'   , fontFamily: '"Dosis", sans-serif'
-    , fontSize:'14px'}}><MdOutlineCompareArrows /> &nbsp; add to compare</button>
                     </div>
                           <div style={{borderBottom:'1px solid rgba(0,0,0,0.1)' , color:'#3e445a'}} className='align-items-center'>
                           <div  >

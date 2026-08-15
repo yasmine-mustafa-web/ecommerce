@@ -90,7 +90,6 @@
     <input type="password" value={formfields.password} onChange={onchangeInput} required  className="form-control" id="password" name="password" placeholder="Password"/>
     <label htmlFor="password">Password</label>
     </div>   
-    <a className="cursor">Forgot password?</a>
     <Button disabled={isLoading} className="my-3 btn w-100 btn-lg bg-red text-white fw-semibold" type="submit">
          {isLoading ? "Signing In..." : "Sign In"}
     </Button>

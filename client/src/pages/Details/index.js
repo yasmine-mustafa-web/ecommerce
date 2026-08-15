@@ -2,7 +2,6 @@
   import { RatingGroup } from "@chakra-ui/react";
   import { useState} from 'react';
   import React, { useEffect , useContext } from 'react';
-  import Slide from '@mui/material/Slide';
   import { Carousel, IconButton, Image } from "@chakra-ui/react"
   import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
   import QtyBox from '../../components/QtyBox';

@@ -10,7 +10,7 @@ const Header = () => {
     const navigate = useNavigate();
     const context = useContext(MyContext);
 
-    const [existingUser , setExistingUser] = useState(false);
+    const [setExistingUser] = useState(false);
 
     useEffect(() =>{
         const token = localStorage.getItem("token");

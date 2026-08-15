@@ -19,10 +19,9 @@ const Listing = () => {
      const [selectedState, setSelectedState] = useState([]);
      const [selectedCategories, setSelectedCategories] = useState([]);
      const [priceRange, setPriceRange] = useState([0, 3000]);
-     const [sortBy, setSortBy] = useState('latest');
+     const [sortBy] = useState('latest');
     const[productView,setProductView] = useState('four');
     const [productsPerPage, setProductsPerPage] = useState(8);
-    const [gridColoumns, setGridColoumns] = useState(4);
     const [currentPage, setCurrentPage] = useState(1);
     const [anchorEl, setAnchorEl] = useState(null);
     const categoriesList = useMemo(() => {
@@ -185,7 +184,7 @@ const Listing = () => {
   />
 
          <div className="content-right">
-            <img className="rounded-4 w-100 object-fit-cover" src="https://i.ytimg.com/vi/VFzcPwyT8RU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGFIgZShgMA8=&rs=AOn4CLCu0g88-ssSpWvh5QUNCEwrMc7rqA" />
+            <img className="rounded-4 w-100 object-fit-cover" src="https://i.ytimg.com/vi/VFzcPwyT8RU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGFIgZShgMA8=&rs=AOn4CLCu0g88-ssSpWvh5QUNCEwrMc7rqA" alt="" />
             <div className="showBy w-100 d-flex rounded-4 mt-3">
             <div className="btnWrapper">
             <Button onClick={() => setProductView('one')}><IoMdMenu /></Button>
