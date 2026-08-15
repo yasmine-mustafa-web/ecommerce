@@ -2,13 +2,10 @@ import { NavLink } from "react-router-dom";
 
 import {
     MdDashboard,
-    MdShoppingCart,
     MdCategory,
-    MdPeople,
-    MdSettings
 } from "react-icons/md";
 
-import { FaBoxOpen, FaTags } from "react-icons/fa";
+import { FaBoxOpen} from "react-icons/fa";
 const SideBar = ({ isSidebarOpen }) => {
 
     const menu = [

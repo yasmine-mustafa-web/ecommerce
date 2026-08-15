@@ -4,7 +4,6 @@ import TopProducts from "../../components/TopProducts";
 import RecentOrders from "../../components/RecentOrders";
 import { useEffect, useState } from "react";
 import { getProducts } from "../../Services/productApi";
-import { getCategories } from "../../Services/categoryApi";
 import { getOrders } from "../../Services/orderApi";
 import {
 FaBoxOpen,

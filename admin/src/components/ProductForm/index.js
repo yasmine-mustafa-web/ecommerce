@@ -1,17 +1,15 @@
 import { useState , useEffect , useContext } from "react";
-import { createProduct ,  getProduct, updateProduct } from "../../Services/productApi";
+import { createProduct ,  getProduct} from "../../Services/productApi";
 import toast from "react-hot-toast";
 import { useNavigate , useParams  } from "react-router-dom";
 import { getCategories } from "../../Services/categoryApi";
 import {
     Input,
     Textarea,
-    Select,
     Button
 } from "@chakra-ui/react";
 
 import ProductImageUpload from "../ProductImageUpload";
-import AlertBox from "../AlertBox";
 import { MyContext } from '../../App';
 
 
@@ -51,10 +49,9 @@ const loadCategories = async () => {
 
 
 useEffect(() => {
-    if (id) loadProduct();
-}, [id]);
-
-const loadProduct = async () => {
+    
+    const loadProduct = async () => {
+        if(!id) return;
     try {
         const res = await getProduct(id);
         setFormData(res.data);
@@ -63,10 +60,10 @@ const loadProduct = async () => {
         toast.error("Failed to load product");
     }
 };
-   const handleCheckboxChange = (e) => {
-        const { name, checked } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: checked }));
-    };
+   loadProduct();
+}, [id]);
+
+
 
 const handleSubmit = async (e) => {
     e.preventDefault();
@@ -92,7 +89,7 @@ const handleSubmit = async (e) => {
             }
         });
 
-      {
+      
             await createProduct(payload);
             toast.success("Product Added Successfully");
             context.setAlertBox(
@@ -102,7 +99,7 @@ const handleSubmit = async (e) => {
                   msg:"product added successfully!"
               }
           )
-        }
+        
         navigate("/products");
     } catch (err) {
         toast.error(err.response?.data?.message || "Something went wrong");
@@ -248,7 +245,7 @@ onChange={handleChange}
 
 <ProductImageUpload onImagesChange={setImages} />
 
-</div>
+</div>  
 
 <div className="col-12">
 

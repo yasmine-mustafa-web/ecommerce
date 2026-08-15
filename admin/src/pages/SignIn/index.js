@@ -1,13 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App";
 import { Button } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { FaFacebookF } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = () => {
-  const [inputIndex, setInputIndex] = useState();
+  const [setInputIndex] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [formfields, setFormfields] = useState({ username: "", password: "" });
 
@@ -21,10 +19,6 @@ const SignIn = () => {
       context.setisHeaderFooterShow(true);
     };
   }, [context]);
-
-  const focusInput = (index) => {
-    setInputIndex(index);
-  };
 
   const onchangeInput = (e) => {
     const { name, value } = e.target;

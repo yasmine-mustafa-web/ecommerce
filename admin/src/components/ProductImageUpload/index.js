@@ -1,26 +1,7 @@
 import { useState } from "react";
 
-const ProductImageUpload = ({ onImagesChange }) => {
-
-   
+const ProductImageUpload = ({ onImagesChange }) => {   
     const [images, setImages] = useState([]);
-
-    const handleImages = (e) => {
-
-        const files = [...e.target.files];
-
-        const preview = files.map(file => ({
-
-            file,
-
-            url: URL.createObjectURL(file)
-
-        }));
-
-        setImages(preview);
-
-    };
-
 
     const handleFileChange = (e) =>{
         const files = Array.from(e.target.files);

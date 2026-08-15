@@ -1,14 +1,8 @@
 import { Link } from "react-router-dom";
 import { MdOutlineMenu } from "react-icons/md";
 import { MdMenuOpen } from "react-icons/md";
-import { MdLightMode } from "react-icons/md";
-import { MdDarkMode } from "react-icons/md";
 import { IoIosCart } from "react-icons/io";
-import { MdOutlineMailOutline } from "react-icons/md";
-import { FaRegBell } from "react-icons/fa6";
-import {Button, Avatar, Menu, Portal } from "@chakra-ui/react"
-import { IoIosSettings } from "react-icons/io";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import { Avatar, Menu, Portal } from "@chakra-ui/react"
 import { useNavigate } from 'react-router-dom';
 import {useContext , useState , useEffect} from 'react';
 import { MyContext } from '../../App';
@@ -22,7 +16,7 @@ const Header = ({
      const navigate = useNavigate();
       const context = useContext(MyContext);
   
-      const [existingUser , setExistingUser] = useState(false);
+      const [setExistingUser] = useState(false);
   
       useEffect(() =>{
           const token = localStorage.getItem("token");
@@ -78,22 +72,13 @@ const Header = ({
                      <div className="myAcc d-flex align-items-center">
                         <div className="userImg d-flex">
                              
-                                 <Menu.Root positioning={{ placement: "right-end" }}>
+      <Menu.Root positioning={{ placement: "right-end" }}>
       <Menu.Trigger rounded="full" focusRing="outside">
         <Avatar.Root size="sm">
           <Avatar.Fallback name="Segun Adebayo" />
           <Avatar.Image className="object-fit-contain w-100" src="https://bluemoji.io/cdn-proxy/646218c67da47160c64a84d5/66b3eba284d9bc814570814d_18.png" />           
         </Avatar.Root>
       </Menu.Trigger>
-      <Portal>
-        <Menu.Positioner>
-          <Menu.Content>
-            <Menu.Item value="account">Account</Menu.Item>
-            <Menu.Item value="settings">Settings</Menu.Item>
-            <Menu.Item value="logout">Logout</Menu.Item>
-          </Menu.Content>
-        </Menu.Positioner>
-      </Portal>
     </Menu.Root>
     </div>
        <div className="userInfo align-items-center ms-2">
