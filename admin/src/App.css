@@ -43,28 +43,7 @@ header button.rounded-circle svg{
 header button.rounded-circle svg:hover{
   color: #0858f7 !important;
 }
-.searchBox{
-  width: 400px !important;
-  height: 40px !important;
-  background: #f0f5ff !important;
-  border-radius: 6px;
-  padding: 3px 15px;
-}
-.searchBox input{
-  background: none;
-  border: 0px;
-  outline: none;
-  padding: 0px 5px;
-  font-size: 14px ;
-  color: #292929;
-}
-.searchBox input::-webkit-input-placeholder{
-  color: rgba(0,0,0,0.6);
-}
-.searchBox svg{
-  font-size: 18px;
-  color: #292929;
-}
+
 .myAcc{
   text-align: left !important;
 }

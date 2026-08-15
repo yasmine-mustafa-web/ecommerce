@@ -1,14 +1,7 @@
 import {Link} from 'react-router-dom';
-import Logo from '../../assets/Screenshot_2026-07-12_163830-removebg-preview.png';
-import CountryDropDown from '../CountryDropDown';
 import {Button} from '@mui/material';
-import { IoIosSearch } from "react-icons/io";
 import { FiUser } from "react-icons/fi";
 import { IoBagOutline } from "react-icons/io5";
-import SerachBox from './SearchBox';
-import { RxHamburgerMenu } from "react-icons/rx";
-import {FaAngleDown} from 'react-icons/fa6';
-import Navigation from './Navigation';
 import { useNavigate } from 'react-router-dom';
 import {useContext , useState , useEffect} from 'react';
 import { MyContext } from '../../App';
@@ -36,7 +29,7 @@ const Header = () => {
                 msg:"Logged out successfully!"
             }
         )
-        navigate('/');
+        navigate('/my-orders');
     }
 
     return (
@@ -49,19 +42,13 @@ const Header = () => {
                         </p>
                     </div>
                 </div>
-                <header className="header">
+                <header className="header py-2">
                     <div className="container-fluid">
-                        <div className="row">
-                            <div className="logoWrapper d-flex align-items-center col-sm-2">
+                        <div className="d-flex flex-nowrap align-items-center justify-content-between">
+                            <div className="logoWrapper d-flex align-items-center me-3">
                                 <Link to={'/'}><img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg'/></Link>
                             </div>
-                        <div className='part2 d-flex align-items-center col-sm-10'>
-                         <CountryDropDown />
-                        <SerachBox />
-
-
-                         <div className='part3 d-flex align-items-center ml-auto' >
-                          
+                         <div className='part3 d-flex align-items-center gap-2' >                          
                             <Button className='circle align-items-center justify-content-center' onClick={() => navigate(context.isLogin? "/cart" : "/signIn")}><FiUser /></Button>
                             <div className='ml-auto cartTab d-flex align-items-center'>
                                 <span className='price mx-2' style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}}><sup>EGP</sup> {context.cartTotal.toFixed(0)}</span>
@@ -71,7 +58,6 @@ const Header = () => {
                                 
                                 </div>
 
-                            </div>
                             {context?.isLogin? (
                                 <button onClick={handleLogout} className='btn logout text-white bg-red rounded-4'>Logout</button>
                             ):(
@@ -90,7 +76,6 @@ const Header = () => {
                     </div>
                 </header>
 
-      <Navigation />
 
             </div>
         </>
