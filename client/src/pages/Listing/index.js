@@ -15,11 +15,31 @@ import { useParams } from "react-router-dom";
 const Listing = () => {
     const {id} = useParams();
 
-    console.log("Category ID:", id);
-
     const [products, setProducts] = useState([]);
+     const [selectedBrands, setSelectedBrands] = useState([]);
+     const [selectedState, setSelectedState] = useState([]);
+     const [selectedCategories, setSelectedCategories] = useState([]);
+     const [priceRange, setPriceRange] = useState([0, 3000]);
+     const [sortBy, setSortBy] = useState('latest');
+    const[productView,setProductView] = useState('four');
+    const [productsPerPage, setProductsPerPage] = useState(8);
+    const [gridColoumns, setGridColoumns] = useState(4);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const categoriesList = useMemo(() => {
+        const counts = {};
+        products.forEach((product) => {
+            if (product.category  && Array.isArray(product.category)){
+                 product.category.forEach((cat) => {
+                counts[cat.name] = (counts[cat.name] || 0) + 1;
+                 })
+            } 
+        });
 
-useEffect(() => {
+        return Object.entries(counts).map(([name, count]) => ({ name, count }));
+    }, [products]);
+
+    useEffect(() => {
     getProducts()
         .then((res) => {
             const mapped = res.data.map((p) => ({
@@ -45,24 +65,6 @@ useEffect(() => {
         })
         .catch((err) => console.log(err));
 }, []);
-     const [selectedBrands, setSelectedBrands] = useState([]);
-     const [selectedState, setSelectedState] = useState([]);
-     const [selectedCategories, setSelectedCategories] = useState([]);
-     const [priceRange, setPriceRange] = useState([0, 3000]);
-     const [sortBy, setSortBy] = useState('latest');
-    const[productView,setProductView] = useState('four');
-    const categoriesList = useMemo(() => {
-        const counts = {};
-        products.forEach((product) => {
-            if (product.category  && Array.isArray(product.category)){
-                 product.category.forEach((cat) => {
-                counts[cat.name] = (counts[cat] || 0) + 1;
-                 })
-            } 
-        });
-
-        return Object.entries(counts).map(([name, count]) => ({ name, count }));
-    }, [products]);
 
     useEffect(() => {
 
@@ -191,8 +193,6 @@ useEffect(() => {
         setAnchorEl(null);
     }
     return (
-        <>
-
             <section className="productsListing">
                 <div className="container">
                     <div className="productListing d-flex">
@@ -210,42 +210,34 @@ useEffect(() => {
   />
 
          <div className="content-right">
-             <div>
-  <img className="rounded-4 w-100 object-fit-cover" src="https://i.ytimg.com/vi/VFzcPwyT8RU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGFIgZShgMA8=&rs=AOn4CLCu0g88-ssSpWvh5QUNCEwrMc7rqA" />
-  <div className="showBy w-100 d-flex rounded-4 mt-3">
-      <div className="btnWrapper">
-          <Button onClick={() => setProductView('one')}><IoMdMenu /></Button>
-          <Button onClick={() =>setProductView('two') }>< RxDragHandleDots2/></Button>
-          <Button onClick={() => setProductView('three')}><CgMenuGridO /></Button>
-          <Button onClick={() => setProductView('four')}><TfiLayoutGrid4 /></Button>
-      </div>
-    
+            <img className="rounded-4 w-100 object-fit-cover" src="https://i.ytimg.com/vi/VFzcPwyT8RU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AH-CYAC0AWKAgwIABABGFIgZShgMA8=&rs=AOn4CLCu0g88-ssSpWvh5QUNCEwrMc7rqA" />
+            <div className="showBy w-100 d-flex rounded-4 mt-3">
+            <div className="btnWrapper">
+            <Button onClick={() => setProductView('one')}><IoMdMenu /></Button>
+            <Button onClick={() =>setProductView('two') }>< RxDragHandleDots2/></Button>
+            <Button onClick={() => setProductView('three')}><CgMenuGridO /></Button>
+            <Button onClick={() => setProductView('four')}><TfiLayoutGrid4 /></Button>
+            </div>
               <div className="ms-auto showByFilter align-items-center">
-          <div className="d-flex gap-0 align-items-center"><span className="text-secondary show">Show</span>   <Button className="text-dark align-items-center ms-0 px-0" onClick={handleClick}> 9 <FaAngleDown className="ms-1"/> </Button></div>   
+                <span className="text-secondary show">Show</span> 
+                <Button className="text-dark align-items-center ms-0 px-0" onClick={e => setAnchorEl(e.currentTarget)}> {productsPerPage} <FaAngleDown className="ms-1"/> </Button> 
                 <Menu 
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
-                onClose={handleClose}
+                onClose={() => setAnchorEl(null)}
                 MenuListProps={{
                     'aria-labelledby':'basic-button',
                 }}
                 >
-                <MenuItem onClick={handleClose}>12</MenuItem>
-                <MenuItem onClick={handleClose}>24</MenuItem>
-                <MenuItem onClick={handleClose}>36</MenuItem>
-                <MenuItem onClick={handleClose}>48</MenuItem>
+                {[8,12,24,36,48].map(n => <MenuItem key={n} onClick={() => {setProductsPerPage(n);setAnchorEl(null)}}>{n}</MenuItem>)}
                 </Menu>
               </div>
-          </div>
       </div>
 
 
-      <div className={`productListing productRow w-100 mt-4 d-flex`} style={{ flexWrap: 'wrap' }}>
-        
-            
-
-          {paginatedProducts.map((product, index) => (
+      <div className='productListing productRow w-100 mt-4 d-fle' style={{ flexWrap: 'wrap' }}>
+          {paginatedProducts.length? paginatedProducts.map((product, index) => (
               <ProductItem
                   key={product._id ||index}
                   itemView={productView}
@@ -261,21 +253,22 @@ useEffect(() => {
                   life={product.life}
                   isFeatured={product.isFeatured}
                   className={
-index === 0 ? "card-right" : index === paginatedProducts.length - 1 ? "card-left" : "card-middle"
+                index === 0 ? "card-right" : index === paginatedProducts.length - 1 ? "card-left" : "card-middle"
                   }
               />
-          ))}
+          )): <div className="w-100 py-5 text-center"><h5>No products found</h5></div>
+        }
 
       </div>
       {totalPages > 1 && (
           <div className="pagination d-flex justify-content-center align-items-center gap-2 mt-4">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                   <button
-key={page}
-onClick={() => goToPage(page)}
-className={`page-btn ${currentPage === page ? "active" : ""}`}
+                    key={page}
+                    onClick={() => goToPage(page)}
+                    className={`page-btn ${currentPage === page ? "active" : ""}`}
                   >
-{page}
+                    {page}
                   </button>
               ))}
 
@@ -289,10 +282,9 @@ className={`page-btn ${currentPage === page ? "active" : ""}`}
           </div>
       )}
   </div>
-                    </div>
-                </div>
-            </section>
-        </>
+</div>
+</div>
+</section>
     )
 }
 
