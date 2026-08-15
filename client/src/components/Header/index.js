@@ -62,12 +62,12 @@ const Header = () => {
 
                          <div className='part3 d-flex align-items-center ml-auto' >
                           
-                            <Button className='circle align-items-center justify-content-center'><FiUser /></Button>
+                            <Button className='circle align-items-center justify-content-center' onClick={() => navigate(context.isLogin? "/cart" : "/signIn")}><FiUser /></Button>
                             <div className='ml-auto cartTab d-flex align-items-center'>
-                                <span className='price mx-2' style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}}>LE 0</span>
+                                <span className='price mx-2' style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}}><sup>EGP</sup> {context.cartTotal.toFixed(0)}</span>
                                 <div className='position-relative  mx-2'>
-                                   <Button className='circle'><IoBagOutline /></Button>
-                                    <span className='count d-flex align-items-center justify-content-center'>0</span>
+                                   <Button className='circle' onClick={() => navigate("/cart")}><IoBagOutline /></Button>
+                                    <span className='count d-flex align-items-center justify-content-center'>{context.cartCount}</span>
                                 
                                 </div>
 
@@ -78,7 +78,7 @@ const Header = () => {
                         <>
                             <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signIn btn bg-red text-white me-2 rounded-4" onClick={() => navigate('/signIn')}>Sign In</button>
                             <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => navigate('/signUp')}>Sign Up</button>
-                            <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => navigate('http://localhost:3001/')}>Admin Dashboard</button>
+                            <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => window.open('http://localhost:3001/' , '_blank')}>Admin Dashboard</button>
 
                         </>
                             )}

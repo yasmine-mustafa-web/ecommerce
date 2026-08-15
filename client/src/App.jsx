@@ -17,7 +17,7 @@ import Details from './pages/Details/index.js';
 import ProductModal from './components/ProductModal/index.js';
 import Cart from './pages/Cart/index.js'
 import AlertBox from "./components/AlertBox/index.js";
-import Checkout from './components/Checkout/index.js';
+import Checkout from './pages/Checkout/index.js';
 export const MyContext = createContext();
 
 function Layout() {
