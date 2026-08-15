@@ -16,7 +16,7 @@
   import Cart from './pages/Cart/index.js'
   import AlertBox from "./components/AlertBox/index.js";
   import Checkout from './pages/Checkout/index.js';
-
+  import MyOrders from './pages/MyOrders/index.js';
   export const MyContext = createContext(null);
 
   function Layout() {
@@ -123,6 +123,7 @@
           <Route path="/product/details/:id" element={<Details />} />
           <Route path="/cart"  element={<Cart/>}/>
           <Route path="/checkout"  element={<Checkout/>}/> 
+          <Route path="/my-orders" element={<MyOrders />} />
           <Route path="/signIn"  element={<SignIn/>}/>
           <Route path="/signUp"  element={<SignUp/>}/>
           <Route path="*" element={<Home />} />

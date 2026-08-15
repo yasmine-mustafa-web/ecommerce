@@ -5,6 +5,7 @@ import RecentOrders from "../../components/RecentOrders";
 import { useEffect, useState } from "react";
 import { getProducts } from "../../Services/productApi";
 import { getCategories } from "../../Services/categoryApi";
+import { getOrders } from "../../Services/orderApi";
 import {
 FaBoxOpen,
 FaShoppingCart,
@@ -15,18 +16,42 @@ FaDollarSign
 
 const DashBoard = () =>{
     const [productCount, setProductCount] = useState(0);
+    const [orderCount, setOrderCount] = useState(0);
+    const [revenue, setRevenue] = useState(0);
     const [loading , setLoading] = useState(true);
     const [error , setError] = useState(null);
     
 
     useEffect(() => {
-    getProducts()
-    .then(res => setProductCount(res.data.length))
-    .catch(err =>{
+
+    const loadDashboard = async () =>{
+        try{
+            setLoading(true)
+
+            const [productsRes , ordersRes] = await Promise.all(
+                [
+                 getProducts(),
+                  getOrders()
+                ]
+            )
+            const products = productsRes.data || [];
+            setProductCount(products.length);
+
+
+        const orders = ordersRes.data || [];
+        setOrderCount(orders.length);
+
+        const totalRevenue = orders.reduce(
+        (sum, order) => sum + Number(order.total || 0),
+          0
+    );
+    setRevenue(totalRevenue);
+    }catch(err){
     console.log(err);
-    setError("couldn't load products count");
-    }).finally(() => setLoading(false))}
-    , []);
+    setError("couldn't load dashboard data");
+    }finally{setLoading(false)}}
+    loadDashboard();
+    }, []);
 
 
     const cards = [
@@ -38,19 +63,21 @@ const DashBoard = () =>{
     },
     {
         title: "Orders",
-        value: 321,
+        value: loading? "..." : orderCount,
         icon: <FaShoppingCart />,
         color: "#06b6d4"
     },
     {
         title: "Users",
-        value: 852,
+        value: "_",
         icon: <FaUsers />,
         color: "#22c55e"
     },
     {
         title: "Revenue",
-        value: "$24,500",
+         value: loading
+        ? "..."
+        : `EGP ${revenue.toFixed(2)}`,
         icon: <FaDollarSign />,
         color: "#f97316"
     }

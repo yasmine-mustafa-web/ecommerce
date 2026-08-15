@@ -9,7 +9,9 @@ const productRoutes=require('./routes/product');
 const plimit = require('p-limit')
 const userRouter = require('./routes/user');
 const adminRouter = require('./routes/admin');
-const authJwt = require("../server/helper/jwt");
+const authJwt = require("../server/helper/jwt"
+);
+const orderRouter = require("./routes/order");
 console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 
 app.use(cors(
@@ -57,7 +59,7 @@ app.use(`/api/user` , userRouter)
 app.use(`/api/categories` , categoryRoutes);
 app.use(`/api/products` , productRoutes);
 app.use(`/api/admin` , adminRouter);
-app.use("/api/orders", require("./routes/order"));
+app.use("/api/orders", orderRouter);
 
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {

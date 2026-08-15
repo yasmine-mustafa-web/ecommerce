@@ -1,26 +1,9 @@
 const orders = [
     {
         id:"#1001",
-        customer:"Ahmed",
-        total:"250 EGP",
-        status:"Delivered"
-    },
-    {
-        id:"#1002",
-        customer:"Sara",
-        total:"120 EGP",
+        customer:"yasmine mustafa",
+        total:"970 EGP",
         status:"Pending"
-    },
-    {
-        id:"#1003",
-        customer:"Yasmine",
-        total:"430 EGP",
-        status:"Cancelled"
-    },
-    { id:"#1004",
-        customer:"Mohamed",
-        total:"82 EGP",
-        status:"Delivered"
     }
 ];
 

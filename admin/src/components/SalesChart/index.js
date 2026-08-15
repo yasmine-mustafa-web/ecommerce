@@ -40,13 +40,7 @@ const SalesChart=()=>{
                 label: "Sales",
 
                 data: [
-                    1200,
-                    1900,
-                    1500,
-                    2500,
-                    3200,
-                    2900,
-                    4100
+                   985
                 ],
                   borderColor: "#4f46e5",
 

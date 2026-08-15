@@ -26,7 +26,7 @@ if(!cart.length) return <div className="container py-5 text-center"><h3>Your Car
         });
         clearCart();
         setAlertBox({open:true , error:false , msg:"Order placed successfully!"});
-        navigate("/")
+        navigate("/my-orders")
     }catch(err){
         setAlertBox({
             open:true,
