@@ -9,7 +9,7 @@ const HomeCat =({image ,id ,className , name}) =>{
     onClick={() => navigate(`/listing/${id}`)} role="button" 
     tabIndex={0} onKeyDown={ e => e.key === "Enter" && navigate(`/listing/${id}`)}
     >      
-        <img src={image}/>
+        <img src={image} alt=""/>
     </div>
     )
 }

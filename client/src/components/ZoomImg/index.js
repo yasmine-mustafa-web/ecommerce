@@ -1,6 +1,5 @@
 import { Image } from "@chakra-ui/react";
 import { useRef, useState } from "react";
-import ProductModal from "../ProductModal";
 
 
 const ZoomImage = ({ src }) => {

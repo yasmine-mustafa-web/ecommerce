@@ -1,7 +1,5 @@
   import { Button } from '@mui/material';
-  import Dialog from '@mui/material/Dialog'
   import { RatingGroup } from "@chakra-ui/react";
-  import { MdClose } from "react-icons/md";
   import { useState} from 'react';
   import React, { useEffect , useContext } from 'react';
   import Slide from '@mui/material/Slide';
@@ -15,10 +13,6 @@
   import { useLocation, useParams , useNavigate } from "react-router-dom";
   import { MyContext } from "../../App";
   import { getProduct } from "../../Services/productApi";
-
-  const Transition = React.forwardRef(function Transition(props, ref) {
-      return <Slide direction='up' ref={ref} {...props} />;
-  })
 
   const Details =()=>{
     const {id} = useParams();
@@ -151,7 +145,7 @@
 <p>{product.description}</p>
 <div className='d-flex align-items-center gap-3'>
       <QtyBox value={quantity} onChange={setQuantity}  max={product.countInStock}/>
-      <Button  onClick={add} disabled={product.countInStock===0}
+      <Button  onClick={add}
       style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'125px' , maxWidth: '220px', fontSize:'.9rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={product.countInStock === 0} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
 </div>
 <div className='my-5 d-flex align-items-center gap-2'>

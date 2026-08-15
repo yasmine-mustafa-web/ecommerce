@@ -4,7 +4,6 @@ import { IoMdMenu } from "react-icons/io";
 import { CgMenuGridO } from "react-icons/cg";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import { TfiLayoutGrid4 } from "react-icons/tfi";
-import { Link } from "react-router-dom";
 import { useState, useMemo, useEffect } from "react";
 import ProductItem from "../../components/ProductItem";
 import { FaAngleDown } from 'react-icons/fa6';
@@ -168,12 +167,6 @@ const Listing = () => {
     }, [selectedBrands, selectedState, priceRange, selectedCategories, productsPerPage, sortBy]);
 
      const open=Boolean(anchorEl);
-    const handleClick=(event)=>{
-        setAnchorEl(event.currentTarget);
-    }
-     const handleClose=(event)=>{
-        setAnchorEl(null);
-    }
     return (
             <section className="productsListing">
                 <div className="container">

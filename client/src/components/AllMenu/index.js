@@ -2,7 +2,6 @@ import { RatingGroup } from "@chakra-ui/react";
 import { SlSizeFullscreen } from "react-icons/sl";
 import { Button } from "@mui/material";
 import { FaRegHeart } from "react-icons/fa";
-import Slider from "react-slick";
 
 
 

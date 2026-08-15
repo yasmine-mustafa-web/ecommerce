@@ -2,9 +2,6 @@
     import {MyContext } from '../../App';
     import { Button } from '@mui/material';
     import { Link , useNavigate } from "react-router-dom";
-    import { FcGoogle } from "react-icons/fc";
-    import { FaFacebookF } from "react-icons/fa";
-    import axios from "axios";
     import api from "../../Services/api";
 
 
@@ -80,7 +77,7 @@
                 <div className="container">
                     <div className="card border-0 p-0 box">
                         <div className="text-center">
-                            <img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg' />
+                            <img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg' alt="" />
                         </div>
                             
     <form onSubmit={signIn}>
@@ -99,20 +96,6 @@
     </Button>
     <p>Not registerd? <Link to='/signUp'>Sign up</Link></p>
 
-    <div className="d-flex align-items-center my-4">
-    <hr className="flex-grow-1 m-0" />
-    <span className="px-3 text-secondary">OR</span>
-    <hr className="flex-grow-1 m-0" />
-    </div>
-    <ul className="socialsForm d-flex p-0 m-0 text-center justify-content-center gap-2">
-        <li> 
-        <Link  style={{ width: "90px", height: "50px" }} className="rounded-4 btn btn-outline-secondary d-flex align-items-center text-center justify-content-center" to='#'><FcGoogle/></Link> 
-        </li>
-        <li>
-        <Link  style={{ width: "90px", height: "50px" }} className="rounded-4 btn btn-outline-secondary d-flex align-items-center text-center justify-content-center" to='#'><FaFacebookF/></Link>        
-
-        </li>
-    </ul>
     </form>
                 </div>
                 </div>

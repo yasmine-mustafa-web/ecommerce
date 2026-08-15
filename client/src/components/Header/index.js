@@ -46,7 +46,7 @@ const Header = () => {
                     <div className="container-fluid">
                         <div className="d-flex flex-nowrap align-items-center justify-content-between">
                             <div className="logoWrapper d-flex align-items-center me-3">
-                                <Link to={'/'}><img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg'/></Link>
+                                <Link to={'/'}><img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg' alt=''/></Link>
                             </div>
                          <div className='part3 d-flex align-items-center gap-2' >                          
                             <Button className='circle align-items-center justify-content-center' onClick={() => navigate(context.isLogin? "/cart" : "/signIn")}><FiUser /></Button>

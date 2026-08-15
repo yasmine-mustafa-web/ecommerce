@@ -1,23 +1,14 @@
 import HomeBanner from "../../components/HomeBanner";
 import { useState , useEffect } from "react";
-import {Button} from '@mui/material';
 import { IoIosArrowRoundForward } from "react-icons/io";
 import React from "react";
 import Slider from "react-slick";
 import ProductItem from "../../components/ProductItem";
-import AllMenu from "../../components/AllMenu";
 import HomeCat from "../../components/HomeCat";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import offersIMG from "../../assets/special-offer-star-7527442-removebg-preview.png";
 import { GoMail } from "react-icons/go";
-import oralcare from "../../assets/oralhygiene.png" ;
-import haircare from "../../assets/haircare.png";
-import nailcare from "../../assets/nailcare.png";
-import under200 from "../../assets/under200.png";
-import skincare from "../../assets/skincare.png";
-import korean from "../../assets/korean.png";
-import sunscreen from "../../assets/sunscreen.jpeg";
 import { Link } from "react-router-dom";
 import {getProducts} from "../../Services/productApi";
 import { getCategories } from "../../Services/categoryApi";
@@ -106,11 +97,11 @@ return(
             <div className="row">
                 <div className="col-md-3">
                     <div className="banner">
-                    <img src="https://www.twffer.com/uploads/offers_attachments/1000/0b061b2a-d195-46b9-b699-13a39664b543.jpg" className="sideImg cursor w-100"/>
+                    <img src="https://www.twffer.com/uploads/offers_attachments/1000/0b061b2a-d195-46b9-b699-13a39664b543.jpg" alt="" className="sideImg cursor w-100"/>
                     </div>
 
                      <div className="banner mt-4">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw1sOY2nPR5FnkMrzya1ECZ0vzBF7DzqkF3EJqx9bJw7EPUIYlU5GsLqJg&s=10" className="sideImg cursor w-100"/>
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw1sOY2nPR5FnkMrzya1ECZ0vzBF7DzqkF3EJqx9bJw7EPUIYlU5GsLqJg&s=10" alt="" className="sideImg cursor w-100"/>
                     </div>
                 </div>
                  <div className="col-md-9">
@@ -149,10 +140,10 @@ return(
   
 <div className="secHomeBanner col-md-9 d-flex align-items-center my-4">
   <div>
-      <img src="https://eg.arabiccoupon.com/sites/default/files/styles/article/public/field/image/70off-boots-summer-sale-with-boots-promo-code-en-arabiccoupon-articles-m08-c.jpg"/>
+      <img src="https://eg.arabiccoupon.com/sites/default/files/styles/article/public/field/image/70off-boots-summer-sale-with-boots-promo-code-en-arabiccoupon-articles-m08-c.jpg" alt=""/>
   </div>
   <div>
-    <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW_kFLvo9XsKB3KEKhrFFXie4u-KbF0S2JXnBpj7TH77Z4bpvQMHLogLE&s=10"/>
+    <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRW_kFLvo9XsKB3KEKhrFFXie4u-KbF0S2JXnBpj7TH77Z4bpvQMHLogLE&s=10" alt=""/>
   </div>
 </div>
 
@@ -177,7 +168,7 @@ return(
         </form>
       </div>
       <div className="col-md-6">
-        <img className="offersIMG" src={offersIMG}/>
+        <img className="offersIMG" src={offersIMG} alt=""/>
       </div>
 
     </div>

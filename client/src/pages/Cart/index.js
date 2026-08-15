@@ -1,5 +1,4 @@
 import { Link , useNavigate} from "react-router-dom";
-import { RatingGroup } from "@chakra-ui/react";
 import QtyBox from "../../components/QtyBox";
 import { IoIosClose } from "react-icons/io";
 import {MyContext} from "../../App";
@@ -43,7 +42,7 @@ const Cart = ()=>{
                         <tr key={item._id}>
                             <td>
                                 <Link to={`/product/details/${item._id}`} className="d-flex align-items-center gap-3">
-                                <img src={item.images?.[0]} style={{width:80 , height:80 , objectFit:"contain"}}/>
+                                <img src={item.images?.[0]} style={{width:80 , height:80 , objectFit:"contain"}} alt=""/>
                                 <h6>{item.name}</h6>
                                 </Link>
                             </td>

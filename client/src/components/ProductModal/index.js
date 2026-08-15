@@ -2,17 +2,13 @@ import { Button } from '@mui/material';
 import Dialog from '@mui/material/Dialog'
 import { RatingGroup } from "@chakra-ui/react";
 import { MdClose } from "react-icons/md";
-import { useState , useRef , useContext} from 'react';
-import React, { useEffect } from 'react';
+import { useRef , useContext} from 'react';
+import React from 'react';
 import Slide from '@mui/material/Slide';
-import { Carousel, IconButton, Image } from "@chakra-ui/react"
-import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
 import QtyBox from '../QtyBox';
 import { FaRegHeart } from "react-icons/fa";
 import { MdOutlineCompareArrows } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
-import ZoomImage from '../ZoomImg';
-import Details from '../../pages/Details';
 import Slider from "react-slick";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/styles.min.css"
@@ -25,9 +21,6 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 const ProductModal =({open , closeProductModal , product})=>{
-
-    const context = useContext(MyContext);
-
    var settings={
       dots:false,
       infinite:false,

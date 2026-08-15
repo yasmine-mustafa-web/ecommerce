@@ -1,8 +1,5 @@
-import { Slider, Stack, Text } from "@chakra-ui/react"
-import FormGroup from "@mui/material/FormGroup";
 import { FormControlLabel } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-import {Label } from "@mui/icons-material";
 import RangeSlider from 'react-range-slider-input';
 import 'react-range-slider-input/dist/style.css';
 import { useState } from "react";
@@ -21,7 +18,6 @@ const SideBar=({
         
 
 const [value,setValue]=useState([100,60000]);
-const[value2,setValue2]=useState(0);
 
         return(
               <div className="sidebar sticky-top" style={{fontFamily:"'Dosis' , sans-serif"}}>
@@ -113,7 +109,7 @@ const[value2,setValue2]=useState(0);
                         </div>
                           </div><br/><br/>
                         <div className="w-100">
-                <img className="m-0 p-0" src="https://cdn.wowdeals.me/uploads/catalogues/issues/160/83124/cover/551x752/1714757737.jpg"/>
+                <img className="m-0 p-0" src="https://cdn.wowdeals.me/uploads/catalogues/issues/160/83124/cover/551x752/1714757737.jpg" alt=""/>
          
             </div>
             </div>

@@ -96,10 +96,10 @@ const Footer =()=>{
                     </div>
                     <div className="d-flex gap-2 imgFooterContainer">
                         <div>
-                            <img src="https://freelogopng.com/images/all_img/1664287128google-play-store-logo-png.png" />
+                            <img alt="" src="https://freelogopng.com/images/all_img/1664287128google-play-store-logo-png.png" />
                         </div>
                         <div>
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/3840px-Download_on_the_App_Store_Badge.svg.png" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/3840px-Download_on_the_App_Store_Badge.svg.png" alt=""/>
                         </div>
                     </div>
                                         <div className="socailContainer d-flex gap-1 fs-4">

@@ -4,8 +4,6 @@ import { Button } from "@mui/material";
 import { FaRegHeart } from "react-icons/fa";
 import ProductModal from "../ProductModal";
 import { useContext,  useState } from 'react';
-import { Link } from "react-router-dom";
-import Details from '../../pages/Details';
 import { useNavigate } from "react-router-dom";
 import { MyContext } from "../../App";
 
@@ -50,7 +48,7 @@ const goToDetails = () => {
         <Button onClick={(e)=>{e.stopPropagation(); }}>< FaRegHeart style={{fontSize:'20px'}}/></Button>
       </div>
       <div className="imgWrapper">
-      <img src={product.images?.[0]} className="card-img-top"/>
+      <img src={product.images?.[0]} className="card-img-top" alt=""/>
       </div>
     
 </div>
