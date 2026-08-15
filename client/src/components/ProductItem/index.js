@@ -12,34 +12,29 @@ import { MyContext } from "../../App";
 
 const ProductItem = (props) => {
 const navigate = useNavigate();
+const context = useContext(MyContext);
+const [modalOpen, setModalOpen] = useState(false);
+const title = props.title ?? props.name;
 
-        const goToDetails = () => {
-           navigate("/product/details", {
-            state: {
-            name: props.name,
-            images: props.images,
-            description: props.description,
-            brand: props.brand,
-            price: props.price,
-            type: props.type,
-            MFG: props.MFG,
-            life: props.life,
-            rating: props.rating,
-            isFeatured:props.isFeatured,
-            countInStock:props.countInStock
-        },
-    });
-  };
-const context= useContext(MyContext);
-  const [isOpenProductModal,setIsOpenProductModal] = useState(false);
-   const viewProductDetails=()=>{
-      setIsOpenProductModal(true);
-    }
+  const product = {
+  _id:props._id,
+  name: title,
+  images: props.images || [],
+  description: props.description || "",
+  brand: props.brand || "",
+  price: props.price || 0,
+  type: props.type || "",
+  MFG: props.MFG ||"",
+  life: props.life || "",
+  rating: props.rating || 0,
+  isFeatured:props.isFeatured || "",
+  countInStock:props.countInStock || 0
+}
 
-  const closeProductModal=()=>{
-    setIsOpenProductModal(false);
-  }
-
+const goToDetails = () => {
+  if(product._id)
+    navigate(`/product/details/${product._id}`)
+    else navigate("/product/details", { state: product });}
 
   return (
     <>
@@ -47,29 +42,31 @@ const context= useContext(MyContext);
         style={{ cursor: "pointer"}}>
       <div className="upperCard">
          <div className="actions">
-        <Button  onClick={(e)=>{e.stopPropagation();   viewProductDetails();}}>
+        <Button  onClick={(e)=>{e.stopPropagation();   setModalOpen();}}>
           <SlSizeFullscreen />
         </Button>
         <Button onClick={(e)=>{e.stopPropagation(); }}>< FaRegHeart style={{fontSize:'20px'}}/></Button>
       </div>
       <div className="imgWrapper">
-      <img src={props.images?.[0]} className="card-img-top"/>
+      <img src={product.images?.[0]} className="card-img-top"/>
       </div>
     
 </div>
      
 <div className="productInfo">
       <div className="card-body">
-      <h6 className="card-title fw-bold ">{props.name}</h6>
+      <h6 className="card-title fw-bold ">{product.name}</h6>
       </div>
 
       <ul className="list-group list-group-flush">
         <li className={`list-group-item ${
-    props.countInStock > 0 ? 'text-green' : 'text-danger'
+    product.countInStock > 0 ? 'text-green' : 'text-danger'
       }`}>
-         {props.countInStock > 0
-    ? `In Stock: ${props.countInStock}`
+         {product.countInStock > 0
+    ? `In Stock: ${product.countInStock}`
     : "Out of Stock"}
+
+
       </li>
         <li className="list-group-item">
           <RatingGroup.Root
@@ -77,28 +74,30 @@ const context= useContext(MyContext);
             defaultValue={3}
             size="sm"
             colorPalette="yellow"
+            readOnly
           >
             <RatingGroup.HiddenInput />
             <RatingGroup.Control />
           </RatingGroup.Root>
         </li>
        <div className="d-flex gap-2 align-items-center">
-              <li style={{border:'none'}} className="list-group-item text-secondary"><sup>EGP</sup>{props.price}</li>
+              <li style={{border:'none'}} className="list-group-item text-secondary"><sup>EGP</sup>{product.price}</li>
         </div>
        
       </ul>
 
       <div className="card-body">
-        <button  onClick={(e)=>{ e.preventDefault(); e.stopPropagation();}} className="btn btn-card w-100">
+        <button disabled={product.countInStock===0}
+         onClick={(e)=>{ e.preventDefault(); e.stopPropagation(); if(product.countInStock>0) context.addToCart(product)}} className="btn btn-card w-100">
           Add to cart
         </button>
       </div>
     </div>
     </div>
- {isOpenProductModal === true && <ProductModal
-  open={isOpenProductModal}
-        closeProductModal={closeProductModal}
-        product={props}
+ {modalOpen === true && <ProductModal
+  open={modalOpen}
+        closeProductModal={() => setModalOpen(false)}
+        product={product}
  /> }   
     </>
   );
