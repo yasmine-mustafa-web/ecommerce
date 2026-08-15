@@ -1,31 +1,17 @@
-import { FaMinus } from "react-icons/fa6";
-import { FaPlus } from "react-icons/fa6";
-import { Button } from '@mui/material';
-import { useState } from "react";
+import { FaMinus , FaPlus } from "react-icons/fa6";
 
+const QtyBox=({value =1 , onChange , max = Infinity})=>{
+ const set = n => {
+    const next = Math.max(1 , Math.min(Number(max) || Infinity , Number(n) || 1));
+    onChange?.(next);
+ };
 
-const QtyBox=({state})=>{
-
-const [inputVal , setInputVal] = useState(1);
-
-const minus=()=>{
-    if(inputVal!==1 && inputVal>0 ){
-        setInputVal(inputVal -1)
-    }else{
-        setInputVal(1);
-    }
-}
-
-const plus=()=>{
-    setInputVal(inputVal +1)
-}
     return(
         <div className='qtyDrop d-flex align-items-center'>
-                                    <button onClick={minus}><FaMinus/></button>
-                                    <input type='text' value={inputVal} readOnly/>
-
-                                    <button onClick={plus}><FaPlus/></button>
-                            </div>
+            <button type='button' onClick={() => set(value-1)}><FaMinus/></button>
+            <input type='text' value={value} readOnly/>
+            <button onClick={() => set(value + 1)}><FaPlus/></button>
+    </div>
     )
 }
 
