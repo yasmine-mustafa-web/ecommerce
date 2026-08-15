@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { MdOutlineMenu } from "react-icons/md";
 import { MdMenuOpen } from "react-icons/md";
-import { IoIosCart } from "react-icons/io";
-import { Avatar, Menu, Portal } from "@chakra-ui/react"
+import { Avatar, Menu} from "@chakra-ui/react"
 import { useNavigate } from 'react-router-dom';
 import {useContext , useState , useEffect} from 'react';
 import { MyContext } from '../../App';
@@ -16,7 +15,7 @@ const Header = ({
      const navigate = useNavigate();
       const context = useContext(MyContext);
   
-      const [setExistingUser] = useState(false);
+      const [existingUser , setExistingUser] = useState(false);
   
       useEffect(() =>{
           const token = localStorage.getItem("token");

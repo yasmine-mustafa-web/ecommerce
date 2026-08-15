@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = () => {
-  const [setInputIndex] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [formfields, setFormfields] = useState({ username: "", password: "" });
 
