@@ -1,15 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-const HomeCat =({image ,id ,className}) =>{
+const HomeCat =({image ,id ,className , name}) =>{
     const navigate = useNavigate();
 
-    const handleClick = () => {
-        navigate(`/listing/${id}`)
-    }
     return(
         
     <div className={`catItem ${className || ""} cursor`}
-    onClick={handleClick}
+    onClick={() => navigate(`/listing/${id}`)} role="button" 
+    tabIndex={0} onKeyDown={ e => e.key === "Enter" && navigate(`/listing/${id}`)}
     >      
         <img src={image}/>
     </div>
