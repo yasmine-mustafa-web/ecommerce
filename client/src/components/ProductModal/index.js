@@ -2,12 +2,10 @@ import { Button } from '@mui/material';
 import Dialog from '@mui/material/Dialog'
 import { RatingGroup } from "@chakra-ui/react";
 import { MdClose } from "react-icons/md";
-import { useRef , useContext} from 'react';
+import { useRef} from 'react';
 import React from 'react';
 import Slide from '@mui/material/Slide';
 import QtyBox from '../QtyBox';
-import { FaRegHeart } from "react-icons/fa";
-import { MdOutlineCompareArrows } from "react-icons/md";
 import { TiTick } from "react-icons/ti";
 import Slider from "react-slick";
 import InnerImageZoom from "react-inner-image-zoom";

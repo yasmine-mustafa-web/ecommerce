@@ -16,7 +16,7 @@ const Header = () => {
         const token = localStorage.getItem("token");
         setExistingUser(!!token);
         
-    }, [context?.isLogin]);
+    }, [context?.isLogin ,  context?.setExistingUser]);
 
     const handleLogout=() =>{
         localStorage.removeItem("token");
