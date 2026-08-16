@@ -12,6 +12,7 @@ import { GoMail } from "react-icons/go";
 import { Link } from "react-router-dom";
 import {getProducts} from "../../Services/productApi";
 import { getCategories } from "../../Services/categoryApi";
+import { subscribeNewsletter } from "../../Services/newsletterApi";
 const Home = () =>{
      var productSliderOptions = {
     dots: true,
@@ -33,6 +34,9 @@ const Home = () =>{
 
 const [products, setProducts] = useState([]);
 const [categories, setCategories] = useState([]);
+const [email , setEmail] = useState("");
+const [subStatus , setSubStatus] = useState("");
+const [subMessage , setSubMessage]= useState("");
 useEffect(() => {
     getProducts()
         .then((res) => {
@@ -69,6 +73,23 @@ useEffect(() => {
 
   fetchCategories();
 }, []);
+
+  const handleNewsLetterSubscribeSubmit = async (e) =>{
+    e.preventDefault();
+    if(!email){
+      return;
+    }
+    setSubStatus("loading");
+     try{
+      const res = await subscribeNewsletter(email);
+      setSubStatus("success");
+      setSubMessage(res.data.message || "Subscribed successfully!");
+      setEmail("")
+     }catch (err){
+      setSubStatus("error");
+      setSubMessage(err.response?.data?.message || "Something went wrong!")
+     }
+  }
 return(
     
     <>
@@ -161,11 +182,22 @@ return(
         <p className="text-white mb-2 fs-6">20% discount on your first order</p>
         <h4 className="text-white mb-2 fs-3 fw-bold">Join our newsletter and get...</h4>
         <p className="text-secondary text-white">Join our email subscription now to get updates on promotions and coupons.</p>
-        <form>
+        {subStatus === "success" ?(
+          <p className="text-white fw-bold">{subMessage}</p>
+        ):(
+        <form onSubmit={handleNewsLetterSubscribeSubmit}>
         <span><GoMail /></span>
         <input type="email" placeholder="YOUR EMAIL ADDRESS"/>
-        <button className="btn ms-auto text-white bg-red fw-bold" style={{height:'52px'}}>Subscribe</button>
+        <button disabled={subStatus === "loading"} className="btn ms-auto text-white bg-red fw-bold" style={{height:'52px'}}>
+        {subStatus === "loading" ? "Sending" : "Subscribe"}
+          </button>
         </form>
+        )
+      }
+      {subStatus === "error" && (
+        <p className="text-white fw-bold mt-2">{subMessage}</p>
+      )}
+       
       </div>
       <div className="col-md-6">
         <img className="offersIMG" src={offersIMG} alt=""/>

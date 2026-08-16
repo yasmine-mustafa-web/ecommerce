@@ -11,6 +11,7 @@ const userRouter = require('./routes/user');
 const adminRouter = require('./routes/admin');
 const authJwt = require("../server/helper/jwt"
 );
+const newsletterRouter = require('./routes/newsletter');
 const orderRouter = require("./routes/order");
 console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 
@@ -60,6 +61,7 @@ app.use(`/api/categories` , categoryRoutes);
 app.use(`/api/products` , productRoutes);
 app.use(`/api/admin` , adminRouter);
 app.use("/api/orders", orderRouter);
+app.use(`/api/newsLetter` , newsletterRouter );
 
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
