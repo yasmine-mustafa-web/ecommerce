@@ -1,6 +1,6 @@
 # E-Commerce Website (Client, Admin & Server)
 
-# A simple pharmacy website that:
+**A simple pharmacy website that**:
 
 **Displays products**
 
