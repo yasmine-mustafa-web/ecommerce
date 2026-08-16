@@ -54,7 +54,7 @@ const Header = () => {
                         <>
                             <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signIn btn bg-red text-white me-2 rounded-4" onClick={() => navigate('/signIn')}>Sign In</button>
                             <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => navigate('/signUp')}>Sign Up</button>
-                            <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => window.open('http://localhost:3001/' , '_blank')}>Admin Dashboard</button>
+                            <button style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}} className="signUp btn me-2 rounded-4" onClick={() => window.open('https://admin-dashboard-flax-nu-76.vercel.app/' , '_blank')}>Admin Dashboard</button>
 
                         </>
                             )}
