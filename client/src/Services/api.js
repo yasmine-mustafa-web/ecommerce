@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
 
-    baseURL:  import.meta.env.VITE_API_URL ||"https://ecommerce-atgp.vercel.app/",
+    baseURL:  import.meta.env.REACT_APP_API_URL ||"https://ecommerce-atgp.vercel.app/api",
 
     withCredentials: true
 
