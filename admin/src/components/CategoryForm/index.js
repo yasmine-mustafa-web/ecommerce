@@ -29,9 +29,10 @@ const CategoryForm = () =>{
         }
         const reader = new FileReader();
         reader.onloadend = () =>{
-            setFormData((prev) => ({...prev , image:reader.result}))
+            setFormData((prev) => ({...prev , image:reader.result}));
+            setPreview(reader.result);
         };
-        reader.readAsDataURL(false);
+        reader.readAsDataURL(file);
     }
 
     const handleSubmit = async(e) =>{
