@@ -11,6 +11,8 @@ import AddProduct from "./pages/AddProduct";
 import AlertBox from "./components/AlertBox/index.js";
 import SignIn from "./pages/SignIn";
 import Footer from "./components/Footer/index.js";
+import Categories from "./pages/Categories";
+import AddCategory from './pages/AddCategories/index.js';
 export const MyContext = createContext();
 
 function Layout() {
@@ -76,6 +78,8 @@ function Layout() {
         <Route path='/dashboard'  element={<DashBoard/>}/>
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<AddProduct />} />
+        <Route path="/categories" element={<Categories />} /> 
+        <Route path="/categories/add" element={<AddCategory />} />
         <Route path="/" element={<SignIn/>}/>
       </Routes>
       {!hideHeaderFooter &&  <Footer />}

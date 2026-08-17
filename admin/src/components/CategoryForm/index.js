@@ -19,7 +19,7 @@ const CategoryForm = () =>{
     
     const handleChange =(e) => {
         const {name , value} = e.target;
-        setFormData((pev) => ({...prev , [name]:value}))
+        setFormData((prev) => ({...prev , [name]:value}))
     };
 
     const handleImageChange = (e) =>{
@@ -27,7 +27,7 @@ const CategoryForm = () =>{
         if(!file){
             return;
         }
-        const reader = newFileReader();
+        const reader = new FileReader();
         reader.onloadend = () =>{
             setFormData((prev) => ({...prev , image:reader.result}))
         };
@@ -56,7 +56,7 @@ const CategoryForm = () =>{
             })
             navigate("/categories")
         }catch(err){
-            toast.error(err.ressponse?.data?.message || "Something went wrong");
+            toast.error(err.response?.data?.message || "Something went wrong");
             context.setAlertBox({
                 open:true,
                 error:true,
@@ -83,7 +83,6 @@ const CategoryForm = () =>{
                         <Input
                           accept="image/*"
                           type="file"
-                          value={formData.name}
                           onChange={handleImageChange}
                         />
                     </div>

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../../Services/api";
 
 const SignIn = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,8 +49,8 @@ const SignIn = () => {
 
     try {
       setIsLoading(true);
-      const response = await axios.post(
-        "https://ecommerce-atgp.vercel.app/api/admin/login",
+      const response = await api.post(
+        "admin/login",
         formfields,
       );
 

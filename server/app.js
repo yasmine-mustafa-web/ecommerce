@@ -17,7 +17,7 @@ console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 app.use(cors(
     {
     origin: ["https://ecommerce-gvhn.vercel.app", "https://admin-dashboard-flax-nu-76.vercel.app" ,
-        "http://localhost:3000"
+        "http://localhost:3000" , "http://localhost:3001"
     ],
     credentials: true
 }
