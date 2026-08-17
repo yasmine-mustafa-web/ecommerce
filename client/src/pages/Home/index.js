@@ -12,7 +12,7 @@ import { GoMail } from "react-icons/go";
 import { Link } from "react-router-dom";
 import {getProducts} from "../../Services/productApi";
 import { getCategories } from "../../Services/categoryApi";
-import { subscribeNewsletter } from "../../Services/newsletterApi";
+import { subscribeNewsLetter } from "../../Services/newsLetterApi";
 const Home = () =>{
      var productSliderOptions = {
     dots: true,
@@ -81,7 +81,7 @@ useEffect(() => {
     }
     setSubStatus("loading");
      try{
-      const res = await subscribeNewsletter(email);
+      const res = await subscribeNewsLetter(email);
       setSubStatus("success");
       setSubMessage(res.data.message || "Subscribed successfully!");
       setEmail("")

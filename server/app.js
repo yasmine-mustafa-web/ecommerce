@@ -1,7 +1,6 @@
 require('dotenv/config');
 const express = require('express');
 const app=express();
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors=require('cors');
 const categoryRoutes=require('./routes/category');
@@ -17,7 +16,9 @@ console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 
 app.use(cors(
     {
-    origin: ["https://pharmacy-ecommerce-kappa.vercel.app", "https://admin-dashboard-flax-nu-76.vercel.app"],
+    origin: ["https://pharmacy-ecommerce-kappa.vercel.app", "https://admin-dashboard-flax-nu-76.vercel.app" ,
+        "http://localhost:3000"
+    ],
     credentials: true
 }
 ));

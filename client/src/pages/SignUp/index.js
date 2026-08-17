@@ -6,7 +6,7 @@ import api from "../../Services/api";
 
 
 const SignUp = () =>{
-    const [ setInputIndex] = useState();
+    const [, setInputIndex] = useState();
     const [ isLoading , setIsLoading] = useState(false);
     const [formfields , setFormfields] = useState({
       firstName:"",

@@ -20,7 +20,7 @@ const Footer =()=>{
                 </div>
                 <div className="col align-items-center d-flex">
                     <span className="me-2">< MdOutlineDeliveryDining /></span>
-                    <span>Free delivery for order over LE.999</span>
+                    <span>Delivery on time</span>
                 </div><div className="col align-items-center d-flex">
                     <span className="me-2">< CiDiscount1 /></span>
                     <span>Daily discounts</span>
@@ -103,8 +103,13 @@ const Footer =()=>{
                         </div>
                     </div>
                                         <div className="socailContainer d-flex gap-1 fs-4">
-                                <span><CiFacebook /></span>
-                                <span><CiInstagram/></span>
+                              
+                               <Link to="https://www.instagram.com/elezabypharmacy/?hl=en">
+                               <span><CiInstagram className="text-decoration-none"/></span></Link>
+                               <Link to="https://www.facebook.com/elezabypharmacy/">
+                               <span><CiFacebook className="text-decoration-none" /></span>
+                               </Link> 
+                                
                         </div>
                         </div>
                         </div>
