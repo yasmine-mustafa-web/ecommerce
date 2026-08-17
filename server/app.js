@@ -16,7 +16,7 @@ console.log('Cloudinary key loaded:', !!process.env.CLOUDINARY_KEY);
 
 app.use(cors(
     {
-    origin: ["https://pharmacy-ecommerce-kappa.vercel.app", "https://admin-dashboard-flax-nu-76.vercel.app" ,
+    origin: ["https://ecommerce-gvhn.vercel.app", "https://admin-dashboard-flax-nu-76.vercel.app" ,
         "http://localhost:3000"
     ],
     credentials: true
