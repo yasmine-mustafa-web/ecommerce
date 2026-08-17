@@ -70,9 +70,43 @@ const CategoryForm = () =>{
         <div className="card shadow border-0">
             <form className="card-body" onSubmit={handleSubmit}>
                 <div className="row">
-                    
+                    <div className="col-md-6 mb-4">
+                        <label>Category Name</label>
+                        <Input
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                        />
+                    </div>
+                         <div className="col-md-6 mb-4">
+                        <label>Image</label>
+                        <Input
+                          accept="image/*"
+                          type="file"
+                          value={formData.name}
+                          onChange={handleImageChange}
+                        />
+                    </div>
+                    {preview && (
+                        <div className="col-12 mb-4">
+                            <img 
+                            alt="preview"
+                            src={preview}
+                            className="rounded"
+                            width="120"
+                            />
+                        </div>
+                    )}
+                    <div className="col-12">
+                     <Button size="lg" type="submit" isLoading={submitting}
+                      className="btn bg-red rounded-4 text-white">
+                        Save Category
+                     </Button>
+                    </div>
                 </div>
             </form> 
         </div>
     )
 }
+
+export default CategoryForm;
