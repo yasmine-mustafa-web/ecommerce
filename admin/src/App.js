@@ -74,6 +74,7 @@ function Layout() {
         </Routes>
       ):(
       <main  className={`mainContent ${!isSidebarOpen ? "collapsed" : ""}`} >
+        <div style={{flex:1}}>
       <Routes >
         <Route path='/dashboard'  element={<DashBoard/>}/>
         <Route path="/products" element={<Products />} />
@@ -82,6 +83,7 @@ function Layout() {
         <Route path="/categories/add" element={<AddCategory />} />
         <Route path="/" element={<SignIn/>}/>
       </Routes>
+      </div>
       {!hideHeaderFooter &&  <Footer />}
       </main>
       )}

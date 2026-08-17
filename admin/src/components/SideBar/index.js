@@ -4,7 +4,7 @@ import {
     MdDashboard,
     MdCategory,
 } from "react-icons/md";
-
+import { IoIosAdd } from "react-icons/io";
 import { FaBoxOpen} from "react-icons/fa";
 const SideBar = ({ isSidebarOpen }) => {
 
@@ -21,9 +21,18 @@ const SideBar = ({ isSidebarOpen }) => {
         },
         {
             title: "Add Products",
-            icon: <MdCategory />,
+            icon: <IoIosAdd/>,
             path: "/products/add"
+        },{
+            title:"Categories",
+            icon:<MdCategory/>,
+            path:"/categories"
+        },{
+            title:"Add Categories",
+            icon:<IoIosAdd/>,
+            path:"/categories/add"
         }
+
     ];
 
     return (
