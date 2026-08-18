@@ -2,7 +2,7 @@ import axios from "axios";
 
 const api = axios.create({
 
-    baseURL: "http://localhost:4000/api" || "https://ecommerce-atgp.vercel.app/api",
+    baseURL:"https://ecommerce-atgp.vercel.app/api",
 
     withCredentials: true
 

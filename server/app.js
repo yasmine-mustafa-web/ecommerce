@@ -29,9 +29,7 @@ main().catch(err => {
     console.log('there is an errorr');
 });
 async function main() {
-        await mongoose.connect(
-        'mongodb://yasminealyy:yasmina12@ac-slz8z22-shard-00-00.nuxgayy.mongodb.net:27017,ac-slz8z22-shard-00-01.nuxgayy.mongodb.net:27017,ac-slz8z22-shard-00-02.nuxgayy.mongodb.net:27017/e-commerce?ssl=true&replicaSet=atlas-11c28c-shard-0&authSource=admin&appName=Cluster0'
-    );
+        await mongoose.connect(process.env.CONNECTION_STRING)
     console.log('connected')
 }
 // mongoose.connect(process.env.CONNECTION_STRING,{
@@ -44,7 +42,7 @@ async function main() {
 // .catch((e) =>{
 //     console.log('error:' , e)
 // })
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 app.use(authJwt({ secret:process.env.JSON_WEB_TOKEN_SECRET_KEY, algorithms: ['HS256'] }).unless({
     path: [
       '/api/user/signup',
