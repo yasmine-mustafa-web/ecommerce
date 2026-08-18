@@ -30,51 +30,7 @@ const Footer =()=>{
                 </div>
                 </div>
 
-                    <div className="secFooter  justify-content-between row mt-4">
-                        <div className="col">
-                            <h5 className="fw-bold">Care</h5>
-                            <ul>
-                                <li><Link to="#">Skin care</Link></li>
-                                <li><Link to="#">Hair care</Link></li>
-                                <li><Link to="#">Oral care</Link></li>
-
-                            </ul>
-                        </div>
-
-                         <div className="col">
-                            <h5 className="fw-bold">Care</h5>
-                            <ul>
-                                <li><Link to="#">Skin care</Link></li>
-                                <li><Link to="#">Hair care</Link></li>
-                                <li><Link to="#">Oral care</Link></li>
-
-                            </ul>
-                        </div> <div className="col">
-                            <h5 className="fw-bold">Care</h5>
-                            <ul>
-                                <li><Link to="#">Skin care</Link></li>
-                                <li><Link to="#">Hair care</Link></li>
-                                <li><Link to="#">Oral care</Link></li>
-
-                            </ul>
-                        </div> <div className="col">
-                            <h5 className="fw-bold">Care</h5>
-                            <ul>
-                                <li><Link to="#">Skin care</Link></li>
-                                <li><Link to="#">Hair care</Link></li>
-                                <li><Link to="#">Oral care</Link></li>
-
-                            </ul>
-                        </div> <div className="col align-items-center">
-                            <h5 className="fw-bold">Care</h5>
-                            <ul>
-                                <li><Link to="#">Skin care</Link></li>
-                                <li><Link to="#">Hair care</Link></li>
-                                <li><Link to="#">Oral care</Link></li>
-
-                            </ul>
-                        </div>
-                    </div>
+                    
                       </div>
                         </div>
                       <footer className="mb-4">
@@ -96,10 +52,14 @@ const Footer =()=>{
                     </div>
                     <div className="d-flex gap-2 imgFooterContainer">
                         <div>
-                            <img alt="" src="https://freelogopng.com/images/all_img/1664287128google-play-store-logo-png.png" />
+                        <Link to="https://play.google.com/store/apps/details?hl=en-US&id=com.awfar.elezaby&utm_source=chatgpt.com" target="_blank">
+                        <img alt="" src="https://freelogopng.com/images/all_img/1664287128google-play-store-logo-png.png" />
+                        </Link>    
                         </div>
                         <div>
+                        <Link to="https://apps.apple.com/eg/app/elezaby/id1528993866?platform=iphone&utm_source=chatgpt.com" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/3840px-Download_on_the_App_Store_Badge.svg.png" alt=""/>
+                        </Link>
                         </div>
                     </div>
                                         <div className="socailContainer d-flex gap-1 fs-4">
@@ -116,7 +76,7 @@ const Footer =()=>{
                 </div>
           </div>
           <div>
-            <p className="text-secondary text-center my-4">Copyright 2026 © E-COMMERCE. All rights reserved. Developed by Yasmine.</p>
+            <p className="text-secondary text-center my-4">Copyright 2026 © E-COMMERCE. All rights reserved. Developed by <Link to="https://cv-website-kappa-blue.vercel.app/" target="_blank">Yasmina</Link>.</p>
           </div>
                           </footer>
 </>

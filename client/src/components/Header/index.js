@@ -19,7 +19,7 @@ const Header = () => {
                 msg:"Logged out successfully!"
             }
         )
-        navigate('/my-orders');
+        navigate('/');
     }
 
     return (

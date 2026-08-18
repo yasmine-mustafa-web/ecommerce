@@ -1,5 +1,6 @@
-import axios from "axios";
-const API_URL = "https://ecommerce-atgp.vercel.app/api/newsLetter";
+import api from "./api";
+
 export const subscribeNewsLetter = (email) =>{
-    return axios.post(API_URL , {email});
+    return api.post("/newsLetter" , {email});
 }
+

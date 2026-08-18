@@ -77,6 +77,8 @@ useEffect(() => {
   const handleNewsLetterSubscribeSubmit = async (e) =>{
     e.preventDefault();
     if(!email){
+      setSubStatus("error");
+      setSubMessage("Please enter your email")
       return;
     }
     setSubStatus("loading");
@@ -187,7 +189,7 @@ return(
         ):(
         <form onSubmit={handleNewsLetterSubscribeSubmit}>
         <span><GoMail /></span>
-        <input type="email" placeholder="YOUR EMAIL ADDRESS"/>
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="YOUR EMAIL ADDRESS" required/>
         <button disabled={subStatus === "loading"} className="btn ms-auto text-white bg-red fw-bold" style={{height:'52px'}}>
         {subStatus === "loading" ? "Sending" : "Subscribe"}
           </button>

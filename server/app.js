@@ -48,6 +48,7 @@ app.use(authJwt({ secret:process.env.JSON_WEB_TOKEN_SECRET_KEY, algorithms: ['HS
       '/api/user/signup',
       '/api/user/signin',
       '/api/admin/login',
+      {url:/^\/api\/newsLetter(\/)?$/, methods:['POST']},
       { url: /^\/api\/categories/, methods: ['GET'] },
       { url: /^\/api\/categories/, methods: ['POST'] },
       { url: /^\/api\/products/, methods: ['GET'] },
@@ -59,12 +60,12 @@ app.use(`/api/user` , userRouter)
 app.use(`/api/categories` , categoryRoutes);
 app.use(`/api/products` , productRoutes);
 app.use(`/api/admin` , adminRouter);
-app.use("/api/orders", orderRouter);
+app.use(`/api/orders`, orderRouter);
 app.use(`/api/newsLetter` , newsletterRouter );
 
 app.use((err, req, res, next) => {
   if (err.name === 'UnauthorizedError') {
-    return res.status(401).json({ msg: 'Invalid or missing token' });
+    return res.status(401).json({ msg: 'You must signin first' });
   }
   next(err);
 });
