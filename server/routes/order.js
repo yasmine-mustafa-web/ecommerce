@@ -47,6 +47,7 @@ router.post("/", async (req,res) => {
 });
 
 router.get("/mine", async (req,res) => {
+  res.set("Cache-Control", "no-store");
   const userId = getUserId(req);
   if (!userId) return res.status(401).json({message:"Please sign in first"});
   res.json(await Order.find({user:userId}).populate("items.product").sort({createdAt:-1}));

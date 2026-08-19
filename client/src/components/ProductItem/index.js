@@ -42,7 +42,7 @@ const goToDetails = () => {
         style={{ cursor: "pointer"}}>
       <div className="upperCard">
          <div className="actions">
-        <Button  onClick={(e)=>{e.stopPropagation();   setModalOpen();}}>
+        <Button  onClick={(e)=>{e.stopPropagation();   setModalOpen(true);}}>
           <SlSizeFullscreen />
         </Button>
         <Button onClick={(e)=>{e.stopPropagation(); }}>< FaRegHeart style={{fontSize:'20px'}}/></Button>
@@ -65,7 +65,9 @@ const goToDetails = () => {
          {product.countInStock > 0
     ? `In Stock: ${product.countInStock}`
     : "Out of Stock"}
-
+          {product.countInStock <= 7
+    ? `Please hurry! only ${product.countInStock} left`
+    : ""}
 
       </li>
         <li className="list-group-item">

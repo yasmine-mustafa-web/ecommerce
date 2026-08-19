@@ -2,16 +2,16 @@ import { Button } from '@mui/material';
 import Dialog from '@mui/material/Dialog'
 import { RatingGroup } from "@chakra-ui/react";
 import { MdClose } from "react-icons/md";
-import { useRef} from 'react';
+import { useRef , useContext , useState} from 'react';
 import React from 'react';
 import Slide from '@mui/material/Slide';
 import QtyBox from '../QtyBox';
 import { TiTick } from "react-icons/ti";
 import Slider from "react-slick";
 import InnerImageZoom from "react-inner-image-zoom";
+import { MyContext } from "../../App";
+import { useNavigate } from 'react-router-dom';
 import "react-inner-image-zoom/lib/styles.min.css"
-
-
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -19,6 +19,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 })
 
 const ProductModal =({open , closeProductModal , product})=>{
+
+  const navigate = useNavigate();
+  const context = useContext(MyContext);
+  const [quantity, setQuantity] = useState(1);
+
    var settings={
       dots:false,
       infinite:false,
@@ -49,6 +54,14 @@ const ProductModal =({open , closeProductModal , product})=>{
       zoomSliderBig.current.slickGoTo(index);
 
     }
+
+    const add = () => {
+    if (!product || product.countInStock <= 0) {
+      return ;
+    }
+      context.addToCart(product, quantity);
+      navigate("/listing");
+     };
 
     return(
         <>
@@ -126,15 +139,18 @@ const ProductModal =({open , closeProductModal , product})=>{
                             <div className='d-flex info algin-items-center mb-2'>
                                 <h4 className='netPrice lg'><sup>EGP</sup>{product.price}</h4>                             
                                 </div>
-                             <span className='badge  bg-success'>No. of items in stock:{product.countInStock}</span>
+                             <span className='badge  bg-success'>In Stock:{product.countInStock}</span>
                             
                   
-                    <p className='mt-3'>{product.description}</p>
+                    <p className='mt-3'>
+                      {product.description}
+                      </p>
                     <div className='d-flex align-items-center gap-3'>
-                          <QtyBox/>
-                         
+                          <QtyBox value={quantity} onChange={setQuantity}  max={product.countInStock}/>
+                          <Button  onClick={add}
+                          style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'125px' , maxWidth: '220px', fontSize:'.9rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={product.countInStock === 0} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
                     </div>
-                          <div style={{borderBottom:'1px solid rgba(0,0,0,0.1)' , color:'#3e445a'}} className='align-items-center'>
+                          <div style={{borderBottom:'1px solid rgba(0,0,0,0.1)' , color:'#3e445a'}} className='align-items-center mt-5'>
                           <div  >
                           <p className='d-flex align-items-center mb-1'><TiTick className='fs-6 text-green' /> Type : {product.type} </p>
                           </div>

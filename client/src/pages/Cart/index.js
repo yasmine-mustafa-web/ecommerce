@@ -4,9 +4,17 @@ import { IoIosClose } from "react-icons/io";
 import {MyContext} from "../../App";
 import { useContext } from "react";
 
+const SHIPPING_COST = 30;
+
 const Cart = ()=>{
-    const {cart , updateCartQty , removeFromCart , cartTotal} = useContext(MyContext);
+
+    const {cart , updateCartQty , removeFromCart , cartTotal , user} = useContext(MyContext);
     const navigate = useNavigate();
+    const isFirstOrder = !user?.orders?.length; 
+    const shippingCost = isFirstOrder ? 0 : SHIPPING_COST;
+    const finalTotal = cartTotal + shippingCost;
+
+
     if(!cart.length) return (
         <section className="section cartPage my-5">
             <div className="container text-center py-5">
@@ -60,9 +68,25 @@ const Cart = ()=>{
             <div className="col-md-4">
                 <div className="card p-3 cartDetails">
                     <h5>Cart totals</h5><hr />
+                    {isFirstOrder?(
+                     <div className="d-flex"><h6>Subtotal</h6><p className="ms-auto"><sup>EGP</sup>{cartTotal.toFixed(2)*(15/100)} 15% discount on your first order!</p></div>
+                    ):(
                     <div className="d-flex"><h6>Subtotal</h6><p className="ms-auto"><sup>EGP</sup>{cartTotal.toFixed(2)}</p></div>
+                        )}
                 <hr/>
-                    <div className="d-flex"><h6>Total</h6><h5 className="ms-auto"><sup>EGP</sup>{cartTotal.toFixed(2)}</h5></div>
+                    <div className="d-flex">
+                    <h6>Shipping</h6>
+                    <p className="ms-auto">
+                        {isFirstOrder ? (
+                            <span className="text-success fw-bold">Free <span className="text-secondary "> <br/>Your First Time</span></span>
+                        ):(
+                             <>
+                             <sup>EGP</sup>{shippingCost.toFixed(2)}
+                             </>
+                        )}
+                    </p>
+                    </div>
+                    <div className="d-flex"><h6>Total</h6><h5 className="ms-auto"><sup>EGP</sup>{finalTotal.toFixed(2)}</h5></div>
                 <hr />
                 <button onClick={() => navigate("/checkout")} className="btn btn-danger w-100 rounded-1 text-white py-3 fw-bold">Proceed to checkout</button>
                 </div>

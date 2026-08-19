@@ -161,7 +161,7 @@ return(
   </Slider>
 </div>
   
-<div className="secHomeBanner col-md-9 d-flex align-items-center my-4">
+<div className="secHomeBanner col-md-9 d-flex align-items-center my-5">
   <div>
       <img src="https://eg.arabiccoupon.com/sites/default/files/styles/article/public/field/image/70off-boots-summer-sale-with-boots-promo-code-en-arabiccoupon-articles-m08-c.jpg" alt=""/>
   </div>
@@ -181,7 +181,7 @@ return(
   <div className="container">
     <div className="row">
       <div className="col-md-6">
-        <p className="text-white mb-2 fs-6">20% discount on your first order</p>
+        <p className="text-white mb-2 fs-6">15% discount on your first order</p>
         <h4 className="text-white mb-2 fs-3 fw-bold">Join our newsletter and get...</h4>
         <p className="text-secondary text-white">Join our email subscription now to get updates on promotions and coupons.</p>
         {subStatus === "success" ?(

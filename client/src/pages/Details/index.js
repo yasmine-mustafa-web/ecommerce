@@ -1,12 +1,8 @@
   import { Button } from '@mui/material';
-  import { RatingGroup } from "@chakra-ui/react";
-  import { useState} from 'react';
-  import React, { useEffect , useContext } from 'react';
-  import { Carousel, IconButton, Image } from "@chakra-ui/react"
+  import React, { useEffect , useContext , useState } from 'react';
+  import { Carousel, IconButton, Image  , RatingGroup} from "@chakra-ui/react"
   import { LuChevronLeft, LuChevronRight } from "react-icons/lu"
   import QtyBox from '../../components/QtyBox';
-  import { FaRegHeart } from "react-icons/fa";
-  import { MdOutlineCompareArrows } from "react-icons/md";
   import { TiTick } from "react-icons/ti";
   import ZoomImage from '../../components/ZoomImg';
   import { useLocation, useParams , useNavigate } from "react-router-dom";

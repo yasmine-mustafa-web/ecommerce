@@ -13,6 +13,7 @@ import SignIn from "./pages/SignIn";
 import Footer from "./components/Footer/index.js";
 import Categories from "./pages/Categories";
 import AddCategory from './pages/AddCategories/index.js';
+import api from "./Services/api";
 export const MyContext = createContext();
 
 function Layout() {
@@ -39,7 +40,15 @@ function Layout() {
     
      useEffect(() =>{
           const token = localStorage.getItem("token");
-          setIsLogin(!!token)
+          setIsLogin(!!token);
+
+          if(token){
+            api.get("/admin/me" , {
+              header:{Authorization : `Bearer ${token}`}
+            })
+          .then(res => setUser(res.data.user))
+          .catch(err => console.error("Failed to fetch User:" , err))
+          }
         },[])
 
   const values={
