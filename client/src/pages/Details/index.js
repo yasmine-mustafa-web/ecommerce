@@ -147,12 +147,7 @@
       <Button  onClick={add}
       style={{ textTransform:'none',zIndex:'3' , fontFamily:'"Inter", sans-serif' ,width:'125px' , maxWidth: '220px', fontSize:'.9rem' , height: '2.75rem' , borderRadius: '1.875rem', fontWeight:'500' }} disabled={product.countInStock === 0} className={`align items-center text-align-center btn bg-red text-white `}>Add to cart</Button>
 </div>
-<div className='my-5 d-flex align-items-center gap-2'>
-  <button  type="button" className=" text-uppercase btn rounded-pill d-flex align-items-center py-2 px-2" style={{height: '2.0625rem' , border:'1px solid rgba(0,0,0,0.3)',    fontFamily: '"Dosis", sans-serif'
-, fontSize:'14px'}}><FaRegHeart className='fs-6' /> &nbsp; add to wishlist</button>
-    <button  type="button" className=" text-uppercase btn  d-flex align-items-center py-2 px-2" style={{height: '2.0625rem'   , fontFamily: '"Dosis", sans-serif'
-    , fontSize:'14px'}}><MdOutlineCompareArrows /> &nbsp; add to compare</button>
-</div>
+
       <div style={{borderBottom:'1px solid rgba(0,0,0,0.1)' , color:'#3e445a'}} className='align-items-center'>
       <div  >
       <p className='d-flex align-items-center mb-1'><TiTick className='fs-6 text-green' /> Type : {product.type}</p>

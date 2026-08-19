@@ -96,10 +96,12 @@ const SignUp = () =>{
           error:false,
           msg:"Account created successfully"
         })
+        localStorage.setItem("token", response.data.token);
+        context.setIsLogin(true);
         navigate('/');
         }catch(err) {
             console.error("SIGNUP ERROR:", err); 
-          context.setAlertBox({
+            context.setAlertBox({
             open:true,
             error:true,
             msg: err?.response?.data?.msg || "smth went wrong"
