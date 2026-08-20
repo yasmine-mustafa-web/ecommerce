@@ -2,7 +2,7 @@
   import './App.css';
 
 
-  import { BrowserRouter, Route, Routes , useLocation } from 'react-router-dom';
+  import { BrowserRouter, Route, Routes , useLocation , Link } from 'react-router-dom';
   import Home from "./pages/Home";
   import Header from "./components/Header"
   import { Provider } from "./components/ui/provider.jsx";
@@ -16,15 +16,54 @@
   import AlertBox from "./components/AlertBox/index.js";
   import Checkout from './pages/Checkout/index.js';
   import MyOrders from './pages/MyOrders/index.js';
+  import api from './Services/api.js';
   export const MyContext = createContext(null);
 
+  function getCurrentUserId(){
+    try{
+      const token = localStorage.getItem("token");
+      if (!token) {
+        return null;
+      }
+      const payload = JSON.parse(atob(token.split(".")[1]))
+      return payload.id || null;
+    }catch{
+      return null
+    }
+  }
+
+  function loadCartFor(userId) {
+    try{
+      return JSON.parse(localStorage.getItem(`cart_${userId || "guest"}`) || "[]")
+    }catch{
+      return[];
+    }
+  }
+
+
   function Layout() {
-
+    
+    const [userId, setUserId] = useState(getCurrentUserId);
     const location = useLocation();
-
     const [isLogin, setIsLogin] = useState(() =>{
       return !!localStorage.getItem("token");
     });
+
+    const refreshOrderStatus= async()=>{
+      if(!localStorage.getItem("token")){
+        setHasOrders(false);
+        return;
+      }try{
+        const res = await api.get("/orders/mine");
+        setHasOrders(res.data.length > 0);
+        } catch {
+          setHasOrders(false);
+        }
+      }
+      useEffect(() => {
+      refreshOrderStatus();
+    }, [isLogin, userId]);
+    
 
     const [alertBox, setAlertBox] = useState({
     open: false,
@@ -32,17 +71,31 @@
     msg: ""
     });
     
-    const [cart , setCart] = useState(() =>{
-      try{ return JSON.parse(localStorage.getItem("cart") || "[]")}
-      catch{return []}
-    })
+    const [cart , setCart] = useState(() => loadCartFor(userId));
+    const [hasOrders , setHasOrders]= useState(false);
+
+    useEffect(() =>{
+      localStorage.setItem(`cart_${userId ||"guest"}` , JSON.stringify(cart))
+    },[cart , userId])
+
+
+    // const [cart , setCart] = useState(() =>{
+    //   try{ return JSON.parse(localStorage.getItem("cart") || "[]")}
+    //   catch{return []}
+    // })
     
       useEffect(() =>{
         localStorage.setItem("cart" , JSON.stringify(cart))},[cart])
 
       useEffect(()=>{
         setIsLogin(!!localStorage.getItem("token"))
-      },[location.pathname])
+        
+          const newUserId = getCurrentUserId();
+          if (newUserId !== userId) {
+            setUserId(newUserId);
+            setCart(loadCartFor(newUserId));
+          }
+            },[location.pathname , userId])
       
       const addToCart = (product, quantity = 1) => {
       const qty = Math.max(1, Number(quantity) || 1);
@@ -73,7 +126,15 @@
       };
     });
   });
-      setAlertBox({ open: true, error: false, msg: "Added to cart" });
+      setAlertBox({ open: true, error: false, 
+        msg: (
+          <>
+          Added to cart {""}
+          <Link to="/cart" className="text-dark cursor">
+          See your cart
+          </Link>
+          </>
+        ) });
     };
 
     const updateCartQty = (id, quantity) => {
@@ -106,7 +167,9 @@
         removeFromCart,
         clearCart, 
         cartCount,
-        cartTotal
+        cartTotal,
+        isFirstOrder: !hasOrders,
+        refreshOrderStatus,
     };
       
     return (

@@ -12,7 +12,7 @@ const Cart = ()=>{
     const navigate = useNavigate();
     const isFirstOrder = !user?.orders?.length; 
     const shippingCost = isFirstOrder ? 0 : SHIPPING_COST;
-    const finalTotal = cartTotal + shippingCost;
+    const finalTotal = isFirstOrder ? cartTotal * 0.85 : cartTotal + shippingCost;
 
 
     if(!cart.length) return (
@@ -69,7 +69,15 @@ const Cart = ()=>{
                 <div className="card p-3 cartDetails">
                     <h5>Cart totals</h5><hr />
                     {isFirstOrder?(
-                     <div className="d-flex"><h6>Subtotal</h6><p className="ms-auto"><sup>EGP</sup>{cartTotal.toFixed(2)*(15/100)} 15% discount on your first order!</p></div>
+                        <>
+                     <div className="d-flex"><h6>Subtotal</h6>
+                     <p className="ms-auto"><sup>EGP</sup>{cartTotal.toFixed(2)}</p>
+                     </div>
+                        <div className="d-flex">
+                        <h6>Discount <span className="text-secondary">(15% first order)</span></h6>
+                        <p className="ms-auto text-success">-<sup>EGP</sup>{(cartTotal * 0.15).toFixed(2)}</p>
+                        </div>
+                        </>
                     ):(
                     <div className="d-flex"><h6>Subtotal</h6><p className="ms-auto"><sup>EGP</sup>{cartTotal.toFixed(2)}</p></div>
                         )}

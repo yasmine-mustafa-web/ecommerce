@@ -118,8 +118,22 @@ const MyOrders = () => {
               </div>
 
               <div className="text-end">
-                <small>Total</small>
-                <h4>EGP {order.total.toFixed(2)}</h4>
+                {order.subtotal !== undefined && (
+                  <>
+                <small>Subtotal</small>
+                <p className="mb-1">EGP {order.subtotal.toFixed(2)}</p>
+                </>
+                )}
+                  {order.discount > 0 && (
+                    <p className="mb-1 text-success">Discount: -EGP {order.discount.toFixed(2)}</p>
+                  )}
+                   {order.shippingCost !== undefined && (
+                  <p className="mb-1">
+                    Shipping: {order.shippingCost > 0 ? `EGP ${order.shippingCost.toFixed(2)}` : "Free"}
+                  </p>
+                   )}
+                  <small>Total</small>
+                <h4>EGP {(order.total ?? 0).toFixed(2)}</h4>
               </div>
             </div>
           </div>

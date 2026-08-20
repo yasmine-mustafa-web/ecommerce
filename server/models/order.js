@@ -30,6 +30,20 @@ const orderSchema = new Schema({
         type:Number,
         required:true
     },
+    subtotal:{ type:Number,
+    required:true },
+
+    discount:{ type:Number,
+    required:true,
+    default:0 },
+
+    shippingCost:{ type:Number,
+    required:true,
+    default:0 },
+
+    total:{ type:Number,
+    required:true },
+    
     status:{
         type:String,
         enum:["pending","confirmed","shipped","delivered","cancelled"],

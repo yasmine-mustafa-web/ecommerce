@@ -3,14 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { MyContext } from "../../App";
 import api from "../../Services/api";
 
+const SHIPPING_COST=30;
+
 const Checkout = () =>{
-const {cart , cartTotal , clearCart , isLogin , setAlertBox} = useContext(MyContext);
+const {cart , cartTotal , clearCart , isLogin , setAlertBox , refreshOrderStatus ,isFirstOrder} = useContext(MyContext);
 const navigate = useNavigate();
 const [form,setForm] = useState({name:"" , phone:"" , address:""});
 const [loading, setLoading] = useState(false);
 
 if(!cart.length) return <div className="container py-5 text-center"><h3>Your Cart is empty</h3></div>
  
+const discount = isFirstOrder ? cartTotal * 0.15 : 0;
+const shippingCost = isFirstOrder ? 0 : SHIPPING_COST;
+const finalTotal = cartTotal - discount + shippingCost;
+
+
     const submit = async e => {
         e.preventDefault();
         if(!isLogin)
@@ -25,6 +32,7 @@ if(!cart.length) return <div className="container py-5 text-center"><h3>Your Car
             total:cartTotal
         });
         clearCart();
+        await refreshOrderStatus();
         setAlertBox({open:true , error:false , msg:"Order placed successfully!"});
         navigate("/my-orders")
     }catch(err){
@@ -61,7 +69,26 @@ if(!cart.length) return <div className="container py-5 text-center"><h3>Your Car
                         onChange={e=>setForm({...form,phone:e.target.value})}
                         />
                         <textarea className="form-control mb-3" required placeholder="Delivery address" rows="4" value={form.address} onChange={e=>setForm({...form,address:e.target.value})}/>
-                        <div className="d-flex justify-content-between mb-3"><b>Total</b><b>EGP {cartTotal.toFixed(2)}</b></div>
+                        <div className="d-flex justify-content-between mb-3">
+                        <b>Total</b><b>EGP {finalTotal.toFixed(2)}</b>
+                        </div>
+
+                          <div className="d-flex justify-content-between mb-2">
+                          <span>Subtotal</span>
+                          <span>EGP {cartTotal.toFixed(2)}</span>
+                        </div>
+
+                        {isFirstOrder && (
+                          <div className="d-flex justify-content-between mb-2 text-success">
+                            <span>Discount (15% first order)</span>
+                            <span>-EGP {discount.toFixed(2)}</span>
+                          </div>
+                        )}
+
+                        <div className="d-flex justify-content-between mb-3">
+                          <span>Shipping</span>
+                          <span>{isFirstOrder ? "Free" : `EGP ${shippingCost.toFixed(2)}`}</span>
+                        </div>
                         <button className="btn bg-red text-white" disabled={loading}>{loading ? "Placing order..." : "Place order"}</button>
                         </form>
                 </div>

@@ -4,6 +4,9 @@ const Order = require("../models/order");
 const Product = require("../models/product");
 const router = express.Router();
 
+const SHIPPING_COST = 30;
+const FIRST_ORDER_DISCOUNT_RATE = 0.15;
+
 function getUserId(req) {
     const header = req.headers.authorization || "";
     if(!header.startsWith("Bearer")) return null;
@@ -26,7 +29,7 @@ router.post("/", async (req,res) => {
     const products = await Product.find({ _id:{ $in:ids } });
     const byId = new Map(products.map(p => [String(p._id), p]));
 
-    let total = 0;
+    let subtotal = 0;
     const orderItems = [];
     for (const item of items) {
       const p = byId.get(String(item.product));
@@ -34,9 +37,15 @@ router.post("/", async (req,res) => {
       if (!p) return res.status(400).json({ message:"A product no longer exists" });
       if (!Number.isInteger(quantity) || quantity < 1 || quantity > p.countInStock)
         return res.status(400).json({ message:`Not enough stock for ${p.name}` });
-      total += p.price * quantity;
+      subtotal += p.price * quantity;
       orderItems.push({ product:p._id, quantity, price:p.price });
     }
+
+    const isFirstOrder = (await Order.countDocuments({ user:userId })) === 0;
+    const discount = isFirstOrder ? +(subtotal * FIRST_ORDER_DISCOUNT_RATE).toFixed(2) : 0;
+    const shippingCost = isFirstOrder ? 0 : SHIPPING_COST;
+    const total = +(subtotal - discount + shippingCost).toFixed(2);
+
 
     const order = await Order.create({ user:userId, customerName, phone, address, items:orderItems, total });
     for (const item of orderItems) await Product.findByIdAndUpdate(item.product, { $inc:{ countInStock:-item.quantity } });
@@ -44,7 +53,7 @@ router.post("/", async (req,res) => {
   } catch(error) {
     res.status(500).json({ message:"Could not create order", error:error.message });
   }
-});
+}); 
 
 router.get("/mine", async (req,res) => {
   res.set("Cache-Control", "no-store");
