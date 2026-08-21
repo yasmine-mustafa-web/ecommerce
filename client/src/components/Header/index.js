@@ -39,7 +39,7 @@ const Header = () => {
                                 <Link to={'/'}><img src='https://img.freepik.com/premium-vector/pharmacy-logo-vector_23987-171.jpg' alt=''/></Link>
                             </div>
                          <div className='part3 d-flex align-items-center gap-2' >                          
-                            <Button className='circle align-items-center justify-content-center' onClick={() => navigate(context.isLogin? "/cart" : "/signIn")}><FiUser /></Button>
+                            <Button className='circle align-items-center justify-content-center' onClick={() => navigate(context.isLogin? "/profile" : "/signIn")}><FiUser /></Button>
                             <div className='ml-auto cartTab d-flex align-items-center'>
                                 <span className='price mx-2' style={{flexWrap:"nowrap" , whiteSpace:"nowrap"}}><sup>EGP</sup> {context.cartTotal.toFixed(0)}</span>
                                 <div className='position-relative  mx-2'>

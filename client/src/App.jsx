@@ -17,6 +17,7 @@
   import Checkout from './pages/Checkout/index.js';
   import MyOrders from './pages/MyOrders/index.js';
   import api from './Services/api.js';
+  import Profile from "./pages/Profile/index.js"
   export const MyContext = createContext(null);
 
   function getCurrentUserId(){
@@ -185,6 +186,7 @@
           <Route path="/cart"  element={<Cart/>}/>
           <Route path="/checkout"  element={<Checkout/>}/> 
           <Route path="/my-orders" element={<MyOrders />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/signIn"  element={<SignIn/>}/>
           <Route path="/signUp"  element={<SignUp/>}/>
           <Route path="*" element={<Home />} />

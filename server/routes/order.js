@@ -47,7 +47,7 @@ router.post("/", async (req,res) => {
     const total = +(subtotal - discount + shippingCost).toFixed(2);
 
 
-    const order = await Order.create({ user:userId, customerName, phone, address, items:orderItems, total });
+    const order = await Order.create({ user:userId, customerName, phone, address, items:orderItems, subtotal,discount,shippingCost,total });
     for (const item of orderItems) await Product.findByIdAndUpdate(item.product, { $inc:{ countInStock:-item.quantity } });
     res.status(201).json(await order.populate("items.product"));
   } catch(error) {

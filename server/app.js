@@ -27,10 +27,15 @@ app.options('/*splat',cors());
 main().catch(err => {
     console.log(err);
     console.log('there is an errorr');
+    process.exit(1);
 });
 async function main() {
-        await mongoose.connect(process.env.CONNECTION_STRING)
+    await mongoose.connect(process.env.CONNECTION_STRING)
     console.log('connected')
+
+    app.listen(process.env.PORT, () => {
+        console.log(`is running on ${process.env.PORT}`);
+    });
 }
 // mongoose.connect(process.env.CONNECTION_STRING,{
 //     useNewUrlParser:true,
@@ -70,6 +75,6 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-app.listen(process.env.PORT ,()=>{
-    console.log(`is running on ${process.env.PORT}`)
-})
+// app.listen(process.env.PORT ,()=>{
+//     console.log(`is running on ${process.env.PORT}`)
+// })

@@ -27,9 +27,10 @@ const finalTotal = cartTotal - discount + shippingCost;
     try{
         setLoading(true);
         await api.post("/orders" , {
-            customerName:form.name , phone:form.phone , address:form.address,
+            customerName:form.name ,
+            phone:form.phone ,
+            address:form.address,
             items:cart.map(i => ({product:i._id , quantity:i.quantity})),
-            total:cartTotal
         });
         clearCart();
         await refreshOrderStatus();
