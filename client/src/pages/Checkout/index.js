@@ -65,6 +65,7 @@ const finalTotal = cartTotal - discount + shippingCost;
                         <input
                         className="form-control mb-3"
                         required
+                        type="tel"
                         placeholder="Phone"
                         value={form.phone}
                         onChange={e=>setForm({...form,phone:e.target.value})}

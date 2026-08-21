@@ -45,7 +45,7 @@
       return ;
     }
       context.addToCart(product, quantity);
-      navigate("/cart");
+      navigate(-1);
      };
 
       return(

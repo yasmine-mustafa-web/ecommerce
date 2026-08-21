@@ -6,6 +6,7 @@ const router = express.Router();
 
 const SHIPPING_COST = 30;
 const FIRST_ORDER_DISCOUNT_RATE = 0.15;
+const egyptianPhoneRegex = /^(010|011|012|015)\d{8}$/;
 
 function getUserId(req) {
     const header = req.headers.authorization || "";
@@ -22,8 +23,16 @@ router.post("/", async (req,res) => {
     if (!userId) return res.status(401).json({ message:"Please sign in first" });
 
     const { customerName, phone, address, items } = req.body;
-    if (!customerName || !phone || !address || !Array.isArray(items) || !items.length)
+    if (!customerName || !phone || !address || !Array.isArray(items) || !items.length){
       return res.status(400).json({ message:"Missing checkout information" });
+    }
+    const cleanPhone = String(phone).trim();
+
+    if (!egyptianPhoneRegex.test(phone)) {
+    return res.status(400).json({
+        message: "Please enter a valid Egyptian phone number"
+    });
+    }
 
     const ids = items.map(i => i.product);
     const products = await Product.find({ _id:{ $in:ids } });
@@ -47,7 +56,7 @@ router.post("/", async (req,res) => {
     const total = +(subtotal - discount + shippingCost).toFixed(2);
 
 
-    const order = await Order.create({ user:userId, customerName, phone, address, items:orderItems, subtotal,discount,shippingCost,total });
+    const order = await Order.create({ user:userId, customerName, phone:cleanPhone , address, items:orderItems, subtotal,discount,shippingCost,total });
     for (const item of orderItems) await Product.findByIdAndUpdate(item.product, { $inc:{ countInStock:-item.quantity } });
     res.status(201).json(await order.populate("items.product"));
   } catch(error) {

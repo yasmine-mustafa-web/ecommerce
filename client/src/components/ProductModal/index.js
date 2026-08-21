@@ -60,7 +60,7 @@ const ProductModal =({open , closeProductModal , product})=>{
       return ;
     }
       context.addToCart(product, quantity);
-      navigate("/listing");
+      navigate(-1);
      };
 
     return(
