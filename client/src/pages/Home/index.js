@@ -133,7 +133,7 @@ return(
                             <h3>BEST SELLERS</h3>
 
                              </div>
-                             <Link to="/listing/all" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
+                             <Link to="/listing" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
                     </div>
                             <div className="productRow w-100 mt-3">
   <Slider {...productSliderOptions}>

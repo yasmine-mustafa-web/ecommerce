@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import { Link , useNavigate } from "react-router-dom";
 import api from "../../Services/api"; 
 
+const egyptianPhoneRegex = /^(010|011|012|015)\d{8}$/;
 
 const SignUp = () =>{
     const [, setInputIndex] = useState();
@@ -73,20 +74,26 @@ const SignUp = () =>{
           });
           return;
         }
-         if (formfields.phone === ""){
-          context.setAlertBox({
-            open:true,
-            error:true,
-            msg:"phone cannnot be blank"
-          });
+        const cleanPhone=formfields.phone.trim().replace(/[\s-]/g, '');
+        if(!cleanPhone){
+          context.setAlertBox({open:true, error:true , msg:"Phone cannot be blank"});
           return;
         }
+        if (!egyptianPhoneRegex.test(cleanPhone)) {
+        context.setAlertBox({
+          open: true,
+          error: true,
+          msg: "Please enter a valid Egyptian phone number (e.g., 010xxxxxxxx)"
+        });
+        return;
+      }
         try{
           setIsLoading(true);
         
           const response = await api.post(
-             "/user/signup",
-             formfields
+             "/user/signup",{
+             ...formfields,
+             phone: cleanPhone}
           )
 
         console.log(response.data);
@@ -104,7 +111,7 @@ const SignUp = () =>{
             context.setAlertBox({
             open:true,
             error:true,
-            msg: err?.response?.data?.msg || "smth went wrong"
+            msg: err?.response?.data?.msg || err?.response?.data?.message || "smth went wrong"
           })
         }finally{
           setIsLoading(false);

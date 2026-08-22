@@ -4,10 +4,21 @@ const router = express.Router();
 const bcrypt=require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const egyptianPhoneRegex = /^(010|011|012|015)\d{8}$/;
+
 
 router.post(`/signup` , async(req,res) =>{
     const { firstName , lastName , password , phone , email} = req.body;
     try{
+        const phone = String(req.body.phone ?? '').replace(/[\s-]/g, '');
+        if (!phone) {
+            return res.status(400).json({ message: "Phone number is required" });
+        }
+        if (!egyptianPhoneRegex.test(phone)) {
+        return res.status(400).json({
+        message: "Please enter a valid Egyptian phone number"
+        })};
+
         const existingUser = await User.findOne({email:email})
 
         if(existingUser){
@@ -25,12 +36,11 @@ router.post(`/signup` , async(req,res) =>{
         });
 
         const token = jwt.sign({email:result.email , id:result._id} , process.env.JSON_WEB_TOKEN_SECRET_KEY);
-
+        
         res.status(200).json({
             user:result,
             token:token
         })
-
     }catch(error){
         console.log(error);
        return res.status(500).json({msg:"smth went wrong"})

@@ -64,9 +64,9 @@ const Footer =()=>{
                     </div>
                                         <div className="socailContainer d-flex gap-1 fs-4">
                               
-                               <Link to="https://www.instagram.com/elezabypharmacy/?hl=en">
+                               <Link to="https://www.instagram.com/elezabypharmacy/?hl=en" target="_blank">
                                <span><CiInstagram className="text-decoration-none"/></span></Link>
-                               <Link to="https://www.facebook.com/elezabypharmacy/">
+                               <Link to="https://www.facebook.com/elezabypharmacy/" target="_blank">
                                <span><CiFacebook className="text-decoration-none" /></span>
                                </Link> 
                                 
