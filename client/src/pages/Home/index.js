@@ -21,6 +21,27 @@ const Home = () =>{
     slidesToShow:4 ,
     slidesToScroll: 1,
     arrows:false,
+
+     responsive: [
+        {
+            breakpoint: 1200,
+            settings: {
+                slidesToShow: 3,
+            },
+        },
+        {
+            breakpoint: 768,
+            settings: {
+                slidesToShow: 2,
+            },
+        },
+        {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+            },
+        },
+    ],
   };
 
   const catSliderOptions = {
@@ -30,6 +51,32 @@ const Home = () =>{
   slidesToShow: 6,
   slidesToScroll: 1,
   arrows: true,
+  responsive: [
+      {
+          breakpoint: 1200,
+          settings: {
+              slidesToShow: 5,
+          },
+      },
+      {
+          breakpoint: 992,
+          settings: {
+              slidesToShow: 4,
+          },
+      },
+      {
+          breakpoint: 768,
+          settings: {
+              slidesToShow: 3,
+          },
+      },
+      {
+          breakpoint: 480,
+          settings: {
+              slidesToShow: 2,
+          },
+      },
+  ],
 };
 
 const [products, setProducts] = useState([]);
@@ -97,8 +144,8 @@ return(
     <>
     <HomeBanner/>
     <section className="feautredCat my-3">
-    <div className="container">
-      <h4>Feautred Categories</h4>
+    <div className="container px-3 px-md-2" >
+      <h4 className="mb-3">Featured Categories</h4>
     
     <div className="mt-3 w-100"> 
     <Slider {...catSliderOptions}>
@@ -115,10 +162,9 @@ return(
 </section>
 
     <section className="homeProducts">
-               <div
-        className="container">
-            <div className="row">
-                <div className="col-md-3">
+          <div className="container">
+            <div className="row g-4">
+                <div className="col-12 col-md-3">
                     <div className="banner">
                     <img src="https://www.twffer.com/uploads/offers_attachments/1000/0b061b2a-d195-46b9-b699-13a39664b543.jpg" alt="" className="sideImg cursor w-100"/>
                     </div>
@@ -127,13 +173,13 @@ return(
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw1sOY2nPR5FnkMrzya1ECZ0vzBF7DzqkF3EJqx9bJw7EPUIYlU5GsLqJg&s=10" alt="" className="sideImg cursor w-100"/>
                     </div>
                 </div>
-                 <div className="col-md-9">
-                    <div className="d-flex align-items-center">
+                 <div className="col-12 col-md-9">
+                    <div className="d-flex align-items-center justify-content-center mb-3">
                         <div className="info">
-                            <h3>BEST SELLERS</h3>
+                            <h3 className="mb-0">BEST SELLERS</h3>
 
                              </div>
-                             <Link to="/listing" className="viewAllBtn ml-3 btn d-flex" > View all<IoIosArrowRoundForward/></Link>
+                             <Link to="/listing" className="viewAllBtn ml-3 btn d-flex align-items-center"  > View all<IoIosArrowRoundForward/></Link>
                     </div>
                             <div className="productRow w-100 mt-3">
   <Slider {...productSliderOptions}>
@@ -161,7 +207,7 @@ return(
   </Slider>
 </div>
   
-<div className="secHomeBanner col-md-9 d-flex align-items-center my-5">
+<div className="secHomeBanner flex-column flex-md-row d-flex align-items-center my-5 gap-3">
   <div>
       <img src="https://eg.arabiccoupon.com/sites/default/files/styles/article/public/field/image/70off-boots-summer-sale-with-boots-promo-code-en-arabiccoupon-articles-m08-c.jpg" alt=""/>
   </div>
@@ -179,8 +225,8 @@ return(
 
 <section className="newsLetterSection bg-red my-3 align-items-center d-flex">
   <div className="container">
-    <div className="row">
-      <div className="col-md-6">
+    <div className="row align-items-center">
+      <div className="col-12 mb-4 mb-md-0">
         <p className="text-white mb-2 fs-6">15% discount on your first order</p>
         <h4 className="text-white mb-2 fs-3 fw-bold">Join our newsletter and get...</h4>
         <p className="text-secondary text-white">Join our email subscription now to get updates on promotions and coupons.</p>
@@ -201,7 +247,7 @@ return(
       )}
        
       </div>
-      <div className="col-md-6">
+      <div className="col-md-6 col-12 text-center">
         <img className="offersIMG" src={offersIMG} alt=""/>
       </div>
 
